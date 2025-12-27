@@ -12,79 +12,166 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: white;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
             color: #333;
-            padding: 20px;
+            padding: 30px 15px;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,74,5,0.15);
+            border-radius: 15px;
+            overflow: hidden;
         }
         
         header {
+            background: linear-gradient(135deg, #004A05 0%, #006908 100%);
+            padding: 40px 30px;
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #004A05;
+            position: relative;
+            overflow: hidden;
         }
         
-        .logo {
-            width: 150px;
-            height: auto;
-            margin-bottom: 15px;
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 50px,
+                rgba(255,255,255,0.03) 50px,
+                rgba(255,255,255,0.03) 100px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
         }
         
         .week-title {
+            background: white;
             color: #004A05;
-            font-size: 24px;
+            padding: 20px;
+            font-size: 22px;
             font-weight: bold;
-            margin-top: 10px;
+            text-align: center;
+            border-bottom: 3px solid #004A05;
+            letter-spacing: 1px;
         }
         
         .section {
-            margin-bottom: 35px;
+            padding: 40px 30px;
+            background: repeating-linear-gradient(
+                0deg,
+                white 0px,
+                white 140px,
+                #f8fff9 140px,
+                #f8fff9 280px
+            );
         }
         
         .section-title {
-            background: #004A05;
-            color: white;
-            padding: 12px 20px;
-            font-size: 22px;
+            font-size: 32px;
             font-weight: bold;
-            margin-bottom: 15px;
-            border-radius: 5px;
+            color: #004A05;
+            text-align: center;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
         }
         
-        .menu-item {
-            background: #f8f8f8;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            border-radius: 5px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #004A05;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,74,5,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
-            border-left: 4px solid #004A05;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border: 2px solid transparent;
         }
         
-        .menu-item:hover {
-            background: #e8f5e9;
-            transform: translateX(5px);
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,74,5,0.25);
+            border-color: #004A05;
         }
         
-        .item-name {
-            font-size: 20px;
-            font-weight: 500;
-            color: #333;
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid #004A05;
         }
         
-        .item-price {
+        .card-content {
+            padding: 20px;
+            background: linear-gradient(to bottom, white 0%, #fafff9 100%);
+        }
+        
+        .card-name {
             font-size: 20px;
             font-weight: bold;
             color: #004A05;
+            margin-bottom: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004A05;
+            text-align: right;
+            padding-top: 10px;
+            border-top: 2px solid #e0e0e0;
         }
         
         .modal {
@@ -94,102 +181,144 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0,0,0,0.85);
             z-index: 1000;
             overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .modal-content {
             background: white;
-            max-width: 700px;
+            max-width: 750px;
             margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
+            overflow: hidden;
             position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .modal-body {
+            padding: 35px;
         }
         
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 35px;
+            top: 20px;
+            right: 25px;
+            font-size: 40px;
             font-weight: bold;
-            color: #004A05;
+            color: white;
             cursor: pointer;
             border: none;
-            background: none;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
         
         .close-btn:hover {
-            color: #333;
+            background: #004A05;
+            transform: rotate(90deg);
         }
         
         .modal-title {
             color: #004A05;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            margin-bottom: 20px;
-            padding-right: 40px;
+            margin-bottom: 25px;
         }
         
         .modal-section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .modal-section h3 {
             color: #004A05;
-            font-size: 20px;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #004A05;
-            padding-bottom: 5px;
+            font-size: 22px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .modal-section p {
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #555;
         }
         
         .allergenes {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid #ffc107;
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
         }
         
         .allergenes strong {
             color: #856404;
+            font-size: 19px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <svg class="logo" viewBox="0 0 975 1129" xmlns="http://www.w3.org/2000/svg">
-                <rect width="975" height="975" fill="#004A05"/>
-                <path d="M391.5,177.8c125.8,0,227.9,102,227.9,227.9c0,63.4-25.9,120.7-67.7,162L391.5,727.9L231.2,567.7 c-41.8-41.3-67.7-98.6-67.7-162C163.5,279.9,265.6,177.8,391.5,177.8z" fill="white"/>
-                <text x="0" y="1050" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#004A05">LA CUISINE DE</text>
-                <text x="0" y="1250" font-family="Arial, sans-serif" font-size="180" font-weight="bold" fill="#004A05">JEANINE</text>
-            </svg>
-            
-            <!-- ⬇️ MODIFIER ICI LA DATE DE LA SEMAINE ⬇️ -->
-            <div class="week-title">Menu de la semaine du 30 Décembre au 5 Janvier</div>
+            <div class="logo-text">JEANINE</div>
+            <div class="logo-subtitle">La Cuisine de</div>
         </header>
+        
+        <!-- ⬇️ MODIFIER ICI LA DATE DE LA SEMAINE ⬇️ -->
+        <div class="week-title">Menu de la semaine du 30 Décembre au 5 Janvier</div>
 
         <!-- ========================================= -->
         <!-- ENTRÉES - MODIFIER ICI -->
         <!-- ========================================= -->
         <div class="section">
             <div class="section-title">🥗 Entrées</div>
-            
-            <div class="menu-item" onclick="openModal('entree1')">
-                <span class="item-name">Salade César</span>
-                <span class="item-price">6,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('entree2')">
-                <span class="item-name">Velouté de légumes</span>
-                <span class="item-price">5,50€</span>
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openModal('entree1')">
+                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?w=500" alt="Salade César" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Salade César</div>
+                        <div class="card-price">6,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('entree2')">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500" alt="Velouté de légumes" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Velouté de légumes</div>
+                        <div class="card-price">5,50€</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -198,30 +327,46 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-title">🍽️ Plats</div>
-            
-            <div class="menu-item" onclick="openModal('plat1')">
-                <span class="item-name">Poulet rôti aux herbes</span>
-                <span class="item-price">12,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plat2')">
-                <span class="item-name">Saumon grillé sauce citron</span>
-                <span class="item-price">14,90€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plat3')">
-                <span class="item-name">Lasagnes bolognaise</span>
-                <span class="item-price">11,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plat4')">
-                <span class="item-name">Curry de légumes végétarien</span>
-                <span class="item-price">10,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plat5')">
-                <span class="item-name">Bœuf bourguignon</span>
-                <span class="item-price">13,90€</span>
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openModal('plat1')">
+                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=500" alt="Poulet rôti" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Poulet rôti aux herbes</div>
+                        <div class="card-price">12,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plat2')">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500" alt="Saumon grillé" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Saumon grillé sauce citron</div>
+                        <div class="card-price">14,90€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plat3')">
+                    <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=500" alt="Lasagnes" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Lasagnes bolognaise</div>
+                        <div class="card-price">11,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plat4')">
+                    <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=500" alt="Curry végétarien" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Curry de légumes végétarien</div>
+                        <div class="card-price">10,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plat5')">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500" alt="Bœuf bourguignon" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Bœuf bourguignon</div>
+                        <div class="card-price">13,90€</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -230,15 +375,22 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-title">🍰 Desserts</div>
-            
-            <div class="menu-item" onclick="openModal('dessert1')">
-                <span class="item-name">Tarte aux pommes maison</span>
-                <span class="item-price">4,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('dessert2')">
-                <span class="item-name">Mousse au chocolat</span>
-                <span class="item-price">4,00€</span>
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openModal('dessert1')">
+                    <img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=500" alt="Tarte aux pommes" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Tarte aux pommes maison</div>
+                        <div class="card-price">4,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('dessert2')">
+                    <img src="https://images.unsplash.com/photo-1541599468348-e96984315921?w=500" alt="Mousse au chocolat" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Mousse au chocolat</div>
+                        <div class="card-price">4,00€</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -247,20 +399,30 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-title">➕ Les Petits +</div>
-            
-            <div class="menu-item" onclick="openModal('plus1')">
-                <span class="item-name">Pain artisanal</span>
-                <span class="item-price">1,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plus2')">
-                <span class="item-name">Donuts maison</span>
-                <span class="item-price">2,50€</span>
-            </div>
-            
-            <div class="menu-item" onclick="openModal('plus3')">
-                <span class="item-name">Boisson fraîche</span>
-                <span class="item-price">2,00€</span>
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openModal('plus1')">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500" alt="Pain artisanal" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Pain artisanal</div>
+                        <div class="card-price">1,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plus2')">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500" alt="Donuts maison" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Donuts maison</div>
+                        <div class="card-price">2,50€</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="openModal('plus3')">
+                    <img src="https://images.unsplash.com/photo-1437418747212-8d9709afab22?w=500" alt="Boisson fraîche" class="card-image">
+                    <div class="card-content">
+                        <div class="card-name">Boisson fraîche</div>
+                        <div class="card-price">2,00€</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -276,17 +438,20 @@
     <script>
         // ========================================
         // FICHES TECHNIQUES - MODIFIER ICI
+        // Pour changer les photos, remplace les URL après "image:"
         // ========================================
         
         const fiches = {
             // ENTRÉES
             entree1: {
                 nom: "Salade César",
+                image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800",
                 ingredients: "Laitue romaine, poulet grillé, parmesan, croûtons, sauce césar maison (huile d'olive, ail, anchois, citron, moutarde)",
                 allergenes: "Gluten, Poisson, Œuf, Lait, Moutarde"
             },
             entree2: {
                 nom: "Velouté de légumes",
+                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800",
                 ingredients: "Carottes, pommes de terre, poireaux, oignons, bouillon de légumes, crème fraîche, persil",
                 allergenes: "Lait, Céleri"
             },
@@ -294,26 +459,31 @@
             // PLATS
             plat1: {
                 nom: "Poulet rôti aux herbes",
+                image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800",
                 ingredients: "Poulet fermier, thym, romarin, ail, huile d'olive, pommes de terre grenaille, haricots verts",
                 allergenes: "Aucun"
             },
             plat2: {
                 nom: "Saumon grillé sauce citron",
+                image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800",
                 ingredients: "Filet de saumon frais, citron, beurre, aneth, riz basmati, légumes de saison",
                 allergenes: "Poisson, Lait"
             },
             plat3: {
                 nom: "Lasagnes bolognaise",
+                image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=800",
                 ingredients: "Bœuf haché, tomates, pâtes à lasagnes, béchamel (lait, beurre, farine), parmesan, oignons, ail",
                 allergenes: "Gluten, Lait, Céleri"
             },
             plat4: {
                 nom: "Curry de légumes végétarien",
+                image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800",
                 ingredients: "Pois chiches, patates douces, épinards, lait de coco, curry, curcuma, gingembre, riz basmati",
                 allergenes: "Aucun"
             },
             plat5: {
                 nom: "Bœuf bourguignon",
+                image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800",
                 ingredients: "Bœuf à braiser, vin rouge, carottes, champignons, lardons, oignons, bouquet garni, pommes de terre",
                 allergenes: "Sulfites (vin)"
             },
@@ -321,11 +491,13 @@
             // DESSERTS
             dessert1: {
                 nom: "Tarte aux pommes maison",
+                image: "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800",
                 ingredients: "Pommes golden, pâte brisée (farine, beurre, sucre, œuf), sucre, cannelle",
                 allergenes: "Gluten, Œuf, Lait"
             },
             dessert2: {
                 nom: "Mousse au chocolat",
+                image: "https://images.unsplash.com/photo-1541599468348-e96984315921?w=800",
                 ingredients: "Chocolat noir 70%, œufs, sucre, crème fraîche",
                 allergenes: "Œuf, Lait"
             },
@@ -333,16 +505,19 @@
             // PETITS +
             plus1: {
                 nom: "Pain artisanal",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800",
                 ingredients: "Farine de blé, eau, levure, sel",
                 allergenes: "Gluten"
             },
             plus2: {
                 nom: "Donuts maison",
+                image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800",
                 ingredients: "Farine, sucre, œufs, beurre, lait, levure, glaçage au sucre",
                 allergenes: "Gluten, Œuf, Lait"
             },
             plus3: {
                 nom: "Boisson fraîche",
+                image: "https://images.unsplash.com/photo-1437418747212-8d9709afab22?w=800",
                 ingredients: "Eau, sirop de fruits (selon choix), glaçons",
                 allergenes: "Aucun"
             }
@@ -354,26 +529,31 @@
             const modalBody = document.getElementById('modal-body');
             
             modalBody.innerHTML = `
-                <h2 class="modal-title">${fiche.nom}</h2>
-                
-                <div class="modal-section">
-                    <h3>📋 Ingrédients</h3>
-                    <p>${fiche.ingredients}</p>
-                </div>
-                
-                <div class="modal-section allergenes">
-                    <h3>⚠️ Allergènes</h3>
-                    <p><strong>${fiche.allergenes}</strong></p>
+                <img src="${fiche.image}" alt="${fiche.nom}" class="modal-image">
+                <div class="modal-body">
+                    <h2 class="modal-title">${fiche.nom}</h2>
+                    
+                    <div class="modal-section">
+                        <h3>📋 Ingrédients</h3>
+                        <p>${fiche.ingredients}</p>
+                    </div>
+                    
+                    <div class="modal-section allergenes">
+                        <h3>⚠️ Allergènes</h3>
+                        <p><strong>${fiche.allergenes}</strong></p>
+                    </div>
                 </div>
             `;
             
             modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(event) {
             const modal = document.getElementById('modal');
             if (!event || event.target === modal) {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         }
     </script>
