@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Cuisine de Jeanine - Menu</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,129 +14,151 @@
         }
         
         body {
-            font-family: 'Garamond', 'Georgia', serif;
-            background: #ffffff;
-            color: #2c2c2c;
+            font-family: 'Oswald', sans-serif;
+            background: #004A05;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0,0,0,0.03) 10px,
+                    rgba(0,0,0,0.03) 20px
+                ),
+                radial-gradient(circle at 20% 50%, rgba(0,90,10,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0,60,8,0.3) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
         
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
+            position: relative;
+            z-index: 1;
         }
         
         header {
-            background: linear-gradient(135deg, #004A05 0%, #005a07 100%);
             padding: 50px 40px;
             text-align: center;
-            border-bottom: 5px solid #003304;
+            position: relative;
         }
         
-        .brand {
-            color: white;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .brand-title {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: 8px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        
-        .brand-subtitle {
-            font-size: 20px;
-            letter-spacing: 3px;
-            font-weight: 300;
-            opacity: 0.95;
-            font-style: italic;
+        .logo-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1);
+            drop-shadow: 3px 3px 8px rgba(0,0,0,0.4);
         }
         
         .week-banner {
-            background: #f8f8f8;
-            padding: 25px 40px;
+            background: rgba(0,0,0,0.3);
+            padding: 20px 40px;
             text-align: center;
-            border-bottom: 2px solid #e0e0e0;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+            position: relative;
+            margin-bottom: 10px;
         }
         
         .week-text {
-            color: #004A05;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
         }
         
         .section {
-            padding: 50px 40px;
-            border-bottom: 1px solid #e8e8e8;
-        }
-        
-        .section:last-of-type {
-            border-bottom: none;
+            padding: 50px 30px;
+            position: relative;
         }
         
         .section-header {
-            text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
+            position: relative;
         }
         
         .section-title {
-            font-size: 36px;
-            color: #004A05;
-            font-weight: 400;
-            letter-spacing: 3px;
+            font-family: 'Anton', sans-serif;
+            font-size: 55px;
+            color: white;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: #004A05;
+            text-align: left;
+            padding-left: 20px;
+            border-left: 8px solid white;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            line-height: 1;
         }
         
         .menu-list {
-            max-width: 750px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         
         .menu-item {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
             display: flex;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
             transition: all 0.3s ease;
+            border-left: 6px solid #004A05;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(0,74,5,0.1);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+        
+        .menu-item:hover::before {
+            width: 100%;
         }
         
         .menu-item:hover {
-            background: #fafffe;
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-left: -15px;
-            margin-right: -15px;
-            border-radius: 8px;
-        }
-        
-        .menu-item:last-child {
-            border-bottom: none;
+            transform: translateX(10px);
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.3);
         }
         
         .item-image {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             object-fit: cover;
-            border-radius: 6px;
+            border: 4px solid #004A05;
             margin-right: 25px;
-            border: 2px solid #004A05;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
         }
         
         .item-info {
@@ -142,21 +166,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .item-name {
-            font-size: 22px;
-            color: #2c2c2c;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            color: #1a1a1a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .item-price {
-            font-size: 24px;
+            font-family: 'Anton', sans-serif;
+            font-size: 32px;
             color: #004A05;
-            font-weight: 700;
             margin-left: 30px;
             flex-shrink: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .modal {
@@ -166,7 +195,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0,0,0,0.92);
             z-index: 1000;
             overflow-y: auto;
             animation: fadeIn 0.3s ease;
@@ -178,14 +207,13 @@
         }
         
         .modal-content {
-            background: white;
-            max-width: 800px;
+            background: linear-gradient(135deg, #003a04 0%, #004A05 50%, #005a07 100%);
+            max-width: 850px;
             margin: 40px auto;
-            border-radius: 12px;
-            overflow: hidden;
             position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.7);
             animation: slideUp 0.4s ease;
+            border: 3px solid rgba(255,255,255,0.2);
         }
         
         @keyframes slideUp {
@@ -201,35 +229,36 @@
         
         .close-btn {
             position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 36px;
-            font-weight: 300;
+            top: 20px;
+            right: 20px;
+            font-size: 50px;
+            font-weight: bold;
             color: white;
             cursor: pointer;
             border: none;
             background: rgba(0,0,0,0.6);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
             transition: all 0.3s ease;
             line-height: 1;
+            font-family: Arial;
         }
         
         .close-btn:hover {
-            background: #004A05;
+            background: rgba(255,255,255,0.2);
             transform: rotate(90deg);
         }
         
         .modal-image-container {
             width: 100%;
-            height: 350px;
+            height: 380px;
             overflow: hidden;
-            background: #000;
+            position: relative;
+            border-bottom: 5px solid white;
         }
         
         .modal-image {
@@ -240,14 +269,19 @@
         
         .modal-body {
             padding: 45px 50px 50px;
+            color: white;
         }
         
         .modal-title {
-            color: #004A05;
-            font-size: 38px;
-            font-weight: 500;
+            font-family: 'Anton', sans-serif;
+            color: white;
+            font-size: 52px;
             margin-bottom: 35px;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.4);
+            border-bottom: 3px solid white;
+            padding-bottom: 15px;
         }
         
         .modal-section {
@@ -255,59 +289,68 @@
         }
         
         .modal-section h3 {
-            color: #004A05;
-            font-size: 22px;
-            font-weight: 600;
+            font-family: 'Bebas Neue', sans-serif;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .modal-section p {
-            font-size: 19px;
-            line-height: 1.8;
-            color: #444;
-            letter-spacing: 0.3px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: 0.5px;
+            font-weight: 300;
         }
         
         .allergenes-box {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            background: rgba(255,193,7,0.95);
             padding: 25px;
-            border-radius: 10px;
-            border-left: 5px solid #ff9800;
+            border-left: 6px solid #ff6f00;
             margin-top: 10px;
+            box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
         }
         
         .allergenes-box strong {
-            color: #e65100;
-            font-size: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            color: #5d4037;
+            font-size: 26px;
             display: block;
             margin-bottom: 8px;
+            letter-spacing: 1px;
         }
         
         .allergenes-box p {
-            color: #5d4037;
+            color: #3e2723;
             margin: 0;
+            font-weight: 500;
         }
         
         footer {
-            background: #004A05;
+            background: rgba(0,0,0,0.4);
             color: white;
             text-align: center;
-            padding: 30px;
-            font-size: 16px;
-            letter-spacing: 1px;
+            padding: 35px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 3px solid white;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="brand">
-                <div class="brand-title">JEANINE</div>
-                <div class="brand-subtitle">La Cuisine de</div>
+            <div class="logo-container">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 300'%3E%3Ctext x='50%25' y='30%25' font-family='Arial Black, sans-serif' font-size='80' font-weight='900' text-anchor='middle' letter-spacing='15' fill='black'%3ELA CUISINE DE%3C/text%3E%3Ctext x='50%25' y='85%25' font-family='Bodoni, serif' font-size='180' font-weight='bold' text-anchor='middle' letter-spacing='20' fill='black'%3EJEANINE%3C/text%3E%3C/svg%3E" alt="La Cuisine de Jeanine" class="logo-image">
             </div>
         </header>
         
@@ -321,7 +364,7 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-header">
-                <h2 class="section-title">Entrées</h2>
+                <h2 class="section-title">ENTRÉES</h2>
             </div>
             <div class="menu-list">
                 <div class="menu-item" onclick="openModal('entree1')">
@@ -347,7 +390,7 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-header">
-                <h2 class="section-title">Plats</h2>
+                <h2 class="section-title">PLATS</h2>
             </div>
             <div class="menu-list">
                 <div class="menu-item" onclick="openModal('plat1')">
@@ -397,7 +440,7 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-header">
-                <h2 class="section-title">Desserts</h2>
+                <h2 class="section-title">DESSERTS</h2>
             </div>
             <div class="menu-list">
                 <div class="menu-item" onclick="openModal('dessert1')">
@@ -423,7 +466,7 @@
         <!-- ========================================= -->
         <div class="section">
             <div class="section-header">
-                <h2 class="section-title">Les Petits +</h2>
+                <h2 class="section-title">SNACKING</h2>
             </div>
             <div class="menu-list">
                 <div class="menu-item" onclick="openModal('plus1')">
@@ -453,7 +496,7 @@
         </div>
 
         <footer>
-            La Cuisine de Jeanine - Traiteur de qualité
+            Parce que bien manger, ça commence par bien choisir
         </footer>
     </div>
 
