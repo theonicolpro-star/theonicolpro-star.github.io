@@ -10,7 +10,9 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Oswald',sans-serif;background:#004A05;color:white}
 .container{max-width:900px;margin:auto}
-header{text-align:center;padding:50px}
+header{text-align:center;padding:50px;position:relative}
+.sav-btn{position:absolute;top:20px;left:20px;background:#ff6b00;color:white;border:4px solid white;padding:15px 30px;font-family:'Anton';font-size:24px;letter-spacing:2px;cursor:pointer;transition:.3s;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.sav-btn:hover{transform:scale(1.05);box-shadow:0 6px 15px rgba(0,0,0,.7)}
 .logo-image{max-width:600px;width:100%;filter:brightness(0) invert(1)}
 .week-banner{background:rgba(0,0,0,.3);padding:20px;text-align:center;border-top:3px solid white;border-bottom:3px solid white}
 .week-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;text-transform:uppercase}
@@ -35,6 +37,9 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 .modal-body{padding:40px}
 .modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
 .allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
+@media(max-width:600px){
+.sav-btn{font-size:18px;padding:10px 20px}
+}
 </style>
 </head>
 
@@ -42,21 +47,12 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="container">
 
 <header>
+<button class="sav-btn" onclick="openSAVModal()">SAV</button>
 <img class="logo-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 300'%3E%3Ctext x='50%25' y='30%25' font-size='80' text-anchor='middle' letter-spacing='15'%3ELA CUISINE DE%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='180' text-anchor='middle' letter-spacing='20'%3EJEANINE%3C/text%3E%3C/svg%3E">
 </header>
 
 <div class="week-banner">
-<div class="week-text">Menu de la semaine du 05 au 11 Janvier</div>
-</div>
-
-<div class="promo-section">
-<div class="promo-box">
-<div class="promo-title">PROMOTION DU 09/01 à partir de 15h00</div>
-<div class="promo-description">
--50% sur tous les produits <br>
-⚠️ SAUF CANTAL ET SAUCISSON GRIGNOTON ⚠️
-</div>
-</div>
+<div class="week-text">Menu de la semaine du 12 au 18 Janvier</div>
 </div>
 
 <!-- ENTRÉES -->
@@ -66,16 +62,16 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-item" onclick="openModal('entree1')">
 <img class="item-image" src="https://i.imgur.com/f54auyp.jpeg">
 <div class="item-info">
-<span class="item-name">Quiche saumon poireaux</span>
-<span class="item-price">4,10€</span>
+<span class="item-name"> Pâté de campagne au porc de montagne</span>
+<span class="item-price">2.50€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('entree2')">
-<img class="item-image" src="https://i.imgur.com/IV92UkK.jpeg">
+<img class="item-image" src="https://i.imgur.com/pFShgr5.jpeg">
 <div class="item-info">
-<span class="item-name">Champignons à la grecque</span>
-<span class="item-price">3,30€</span>
+<span class="item-name">Salade de penne au surimi </span>
+<span class="item-price">2.20€</span>
 </div>
 </div>
 </div>
@@ -86,42 +82,42 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <h2 class="section-title">PLATS</h2>
 <div class="menu-list">
 <div class="menu-item" onclick="openModal('plat1')">
-<img class="item-image" src="https://i.imgur.com/gnSHhxe.jpeg">
+<img class="item-image" src="https://i.imgur.com/ezREtkc.jpeg">
 <div class="item-info">
-<span class="item-name">Noix de jambon miel & orange</span>
-<span class="item-price">7,40€</span>
+<span class="item-name">Sauté de poulet à la normande riz blanc</span>
+<span class="item-price">7.40€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat2')">
-<img class="item-image" src="https://i.imgur.com/bV0vnrP.jpeg">
+<img class="item-image" src="https://i.imgur.com/bYO1MFl.jpeg">
 <div class="item-info">
-<span class="item-name">Butter chicken riz sauvage</span>
-<span class="item-price">7,10€</span>
+<span class="item-name">Crevettes sauce piquante & nouille de riz sautée aux légumes</span>
+<span class="item-price">8.00€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat3')">
-<img class="item-image" src="https://i.imgur.com/qtigP1t.jpeg">
+<img class="item-image" src="https://i.imgur.com/Q2tuGVL.jpeg">
 <div class="item-info">
-<span class="item-name">Lasagnes ricotta chèvre épinards</span>
-<span class="item-price">7,00€</span>
+<span class="item-name">Boulettes de bœuf/ Linguine à l’Arrabiata</span>
+<span class="item-price">7.50€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat4')">
-<img class="item-image" src="https://i.imgur.com/UJyDAbG.jpeg">
+<img class="item-image" src="https://i.imgur.com/bzgFyOB.jpeg">
 <div class="item-info">
-<span class="item-name">Bun's Mexican Crunchy</span>
-<span class="item-price">6,00€</span>
+<span class="item-name">Gua bao au poulet et ses crudités (HALAL)</span>
+<span class="item-price">6.00€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat5')">
 <img class="item-image" src="https://i.imgur.com/VVgheAT.jpeg">
 <div class="item-info">
-<span class="item-name">Sandwich poulet curry (halal)</span>
-<span class="item-price">6,00€</span>
+<span class="item-name">Sandwich Jambon blanc camembert à la tartufata</span>
+<span class="item-price">6.20€</span>
 </div>
 </div>
 </div>
@@ -132,18 +128,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <h2 class="section-title">DESSERTS</h2>
 <div class="menu-list">
 <div class="menu-item" onclick="openModal('dessert1')">
-<img class="item-image" src="https://shop.sysco.fr/medias/sys_master/images/h31/h4b/9769614934046/850Wx555H_000000000000060412/850Wx555H-000000000000060412.jpg">
+<img class="item-image" src="https://i.imgur.com/Q6BQMbB.jpeg">
 <div class="item-info">
-<span class="item-name">Galette des rois</span>
-<span class="item-price">2,10€</span>
+<span class="item-name">Pasteis de nata</span>
+<span class="item-price">2.90€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('dessert2')">
 <img class="item-image" src="https://i.imgur.com/UsEpxhD.jpeg">
 <div class="item-info">
-<span class="item-name">Mousse chocolat & orange</span>
-<span class="item-price">3,60€</span>
+<span class="item-name">Liégeois chocolat coco</span>
+<span class="item-price">2.80€</span>
 </div>
 </div>
 </div>
@@ -176,6 +172,8 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <span class="item-price">1,25€</span>
 </div>
 </div>
+</div>
+</div>
 
 <footer>Parce que bien manger, ça commence par bien choisir</footer>
 </div>
@@ -190,20 +188,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 
 <script>
 const fiches={
-entree1:{nom:"Quiche saumon poireaux",image:"https://i.imgur.com/f54auyp.jpeg",ingredients:"Pâte brisée, saumon, poireaux, crème, œufs, lait, gruyère",allergenes:"Gluten, lait, œufs, sulfites"},
-entree2:{nom:"Champignons à la grecque",image:"https://i.imgur.com/IV92UkK.jpeg",ingredients:"Champignons, oignons, tomate, citron, vin blanc, herbes",allergenes:"Sulfites"},
-plat1:{nom:"Noix de jambon miel & orange",image:"https://i.imgur.com/gnSHhxe.jpeg",ingredients:"Noix de jambon, miel, orange, potatoes, sauce béarnaise",allergenes:"Lait, œuf, moutarde"},
-plat2:{nom:"Butter chicken riz sauvage",image:"https://i.imgur.com/bV0vnrP.jpeg",ingredients:"Poulet, yaourt, épices, tomates, beurre, riz sauvage",allergenes:"Fruits à coque, lait, sulfites"},
-plat3:{nom:"Lasagnes ricotta chèvre épinards",image:"https://i.imgur.com/qtigP1t.jpeg",ingredients:"Lasagnes, ricotta, chèvre, épinards, béchamel, parmesan",allergenes:"Fruits à coque, gluten, lait, œuf"},
-plat4:{nom:"Bun's Mexican Crunchy",image:"https://i.imgur.com/UJyDAbG.jpeg",ingredients:"Bun, poulet pané, cheddar, jalapeños, guacamole",allergenes:"Gluten, lait, sésame"},
-plat5:{nom:"Sandwich poulet curry",image:"https://i.imgur.com/VVgheAT.jpeg",ingredients:"Demi-baguette, poulet (halal), crudités, sauce curry",allergenes:"Fruits à coque, gluten, moutarde, œufs, sulfites"},
-dessert1:{nom:"Galette des rois",image:"https://shop.sysco.fr/medias/sys_master/images/h31/h4b/9769614934046/850Wx555H_000000000000060412/850Wx555H-000000000000060412.jpg",ingredients:"Pâte feuilletée, frangipane",allergenes:"Fruits à coque, gluten, lait, œufs"},
-dessert2:{nom:"Mousse chocolat & orange",image:"https://i.imgur.com/UsEpxhD.jpeg",ingredients:"Chocolat, œufs, crème, orange confite",allergenes:"Fruits à coque, gluten, lait, œufs"},
+entree1:{nom:"Pâté de campagne au porc de montagne",image:"https://i.imgur.com/f54auyp.jpeg",ingredients:"Pâté de campagne au porc de montagne. Sans sel nitrité Recette élaborée à base de viande de Porc de montagne. Né, élévé, abattu et transformé en zone de montagne",allergenes:"Gluten, lait, œufs"},
+entree2:{nom:"Salade de penne au surimi",image:"https://i.imgur.com/pFShgr5.jpeg",ingredients:"Salade de penne au surimi mêlant penne, surimi, tomate, poivron vert, maïs et oignon rouge, le tout lié par une mayonnaise citronnée à l’aneth.",allergenes:"Crustacés, Gluten, Moutarde, Oeufs, Poissons, Soja, Sulfites"},
+plat1:{nom:"Sauté de poulet à la normande riz blanc",image:"https://i.imgur.com/ezREtkc.jpeg",ingredients:"Sauté de poulet tendre mijoté à la normande, parfumé au calvados et à la crème, avec carottes, navets, asperge, poireaux, oignons, ail et champignons fondants, servi avec du riz blanc qui s’imprègne de la sauce.",allergenes:"Lait, Sulfites"},
+plat2:{nom:"Crevettes sauce piquante & nouille de riz sautée aux légumes",image:"https://i.imgur.com/bYO1MFl.jpeg",ingredients:"Des crevettes sautées , enrobées d’une sauce piquante maison à base d’ail, d’huile de sésame, de ketchup, de sauce soja sucrée et de piment. Le tout relevé d'oignons jaunes fondants et de cébettes croquantes, pour une touche à la fois douce et parfumée. Servies avec des nouilles de riz sautée aux légumes ( carottes, champignon, haricot mungo).",allergenes:"Crustacés, Gluten, Mollusques, Oeufs, Poissons, Sésame, Soja, Sulfites"},
+plat3:{nom:"Boulettes de bœuf/ Linguine à l’Arrabiata",image:"https://i.imgur.com/Q2tuGVL.jpeg",ingredients:"De généreuses boulettes de bœuf mijotées dans une sauce tomate à l’Arrabbiata, relevée d’ail, d’oignons, de piment et parfumée à l’origan. Servies sur un lit de linguine al dente, elles sont nappées de sauce piquante et parsemées de copeaux de parmesan fondants ainsi que d’une touche de persil frais pour la fraîcheur.",allergenes:"gluten, lait"},
+plat4:{nom:"Gua bao au poulet et ses crudités (HALAL)",image:"https://i.imgur.com/bzgFyOB.jpeg",ingredients:"Gua bao au poulet garni de filet de poulet savoureux, salade croquante, navet et carotte, relevé de sauce soja, gingembre, ail et huile de sésame, le tout servi dans un pain bao moelleux.",allergenes:"Gluten, Oeufs, Poissons, Sésame, Soja"},
+plat5:{nom:"Sandwich Jambon blanc camembert à la tartufata",image:"https://i.imgur.com/VVgheAT.jpeg",ingredients:"Sandwich en demi-baguette garni de jambon blanc, camembert au lait cru, salade croquante, tartufata savoureuse et beurre fondant.",allergenes:"Celeri, Gluten, Lait, Soja"},
+dessert1:{nom:"Pasteis de nata",image:"https://i.imgur.com/Q6BQMbB.jpeg",ingredients:"Pastéis de nata à la pâte feuilletée croustillante, garni d’une crème onctueuse aux œufs, lait et crème, parfumée à la vanille, au citron et à la cannelle.",allergenes:"gluten, lait, œufs"},
+dessert2:{nom:"Liégeois chocolat coco",image:"https://i.imgur.com/UsEpxhD.jpeg",ingredients:"Liégeois choco-coco onctueux à base de chocolat au lait, crème, lait de coco et mascarpone, garni de muesli, pépites de chocolat et noix de coco râpée.",allergenes:"Fruits à coques, Gluten, Lait, Oeufs, Sésame, Soja"},
 plus1:{nom:"Donut caramel",image:"https://www.coupdepates.fr/M%C3%A9diath%C3%A8que/Production/Photos%20produits/Coup%20de%20pates/2.%20PATISSERIE_AMERICAINE/image-thumb__29690__CDP_cover_center_1400_1400/25774.jpeg",ingredients:"Donut fourré et glaçage caramel",allergenes:"Fruits à coque, gluten, lait, œufs"},
 plus2:{nom:"Petit pain",image:"https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",ingredients:"Farine de blé, eau, levure, sel",allergenes:"Gluten"},
-plus3:{nom:"Fromage Cantal AOP",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",ingredients:"Lait pasteurisé de vache, ferments lactiques",allergenes:"Lait"},
-plus4:{nom:"Yaourts Les 2 vaches",image:"https://images.openfoodfacts.org/images/products/366/134/496/1326/front_fr.54.full.jpg",ingredients:"Lait demi-écrémé bio 91,5%, Crème de lait bio, Poudre de lait écrémé bio, Ferments lactiques",allergenes:"Lait"},
-plus5:{nom:"Crème chocolat Les 2 vaches",image:"https://www.les2vaches.com/app/uploads/2022/01/CREMEUH_CHOCO.jpg",ingredients:"Lait entier bio pasteurisé équitable 73%, Chocolat bio en poudre 12.5% (sucre 8,5% et cacao équitable en poudre 4%), Crème de lait bio équitable, Sucre de canne bio équitable 4%, Poudre de lait écrémé bio, Amidon de maïs, Citrate de sodium",allergenes:"Lait"}
+plus3:{nom:"Fromage Cantal AOP",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",ingredients:"Lait pasteurisé de vache, ferments lactiques",allergenes:"Lait"}
 };
 
 function openModal(id){
@@ -224,6 +220,30 @@ if(!e||e.target.id==="modal"){
 document.getElementById("modal").style.display="none";
 document.body.style.overflow="auto";
 }}
+
+function openSAVModal(){
+document.getElementById("modal-body").innerHTML=`
+<div class="modal-body">
+<h2 class="modal-title">SERVICE APRÈS-VENTE</h2>
+<p style="font-size:20px;line-height:1.8;margin-bottom:20px">
+En cas d'anomalies sur la machine, merci de cliquer sur l'interface du frigo après transaction pour signaler le problème sur le produit. Vous pouvez par la suite nous contacter par mail afin que notre équipe gère l'incident.
+</p>
+<p style="font-size:20px;line-height:1.8;margin-bottom:20px">
+Vous pouvez également nous contacter par mail pour toutes questions :
+</p>
+<p style="font-size:24px;font-weight:700;color:#ff6b00;margin-bottom:30px">
+contact@lacuisinedejeanine.fr
+</p>
+<p style="font-size:18px;line-height:1.6;background:rgba(255,255,255,0.1);padding:20px;border-left:4px solid #ff6b00">
+Merci de préciser :<br><br>
+• La nature du problème<br>
+• L'heure approximative de votre transaction<br>
+• Les 4 derniers chiffres de votre carte CB ou titre restaurant
+</p>
+</div>`;
+document.getElementById("modal").style.display="block";
+document.body.style.overflow="hidden";
+}
 </script>
 </body>
 </html>
