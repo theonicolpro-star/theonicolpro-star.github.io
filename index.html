@@ -30,15 +30,46 @@ header{text-align:center;padding:50px;position:relative}
 .item-name{text-transform:uppercase;font-size:24px;font-weight:600}
 .item-price{font-family:'Anton';font-size:30px;color:#004A05}
 footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Bebas Neue';letter-spacing:3px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;overflow-y:auto}
 .modal-content{max-width:850px;margin:40px auto;background:linear-gradient(135deg,#003a04,#005a07);color:white;position:relative}
-.close-btn{position:absolute;top:15px;right:15px;font-size:40px;background:black;color:white;border:none;cursor:pointer;width:50px;height:50px}
+.close-btn{position:absolute;top:15px;right:15px;font-size:40px;background:black;color:white;border:none;cursor:pointer;width:50px;height:50px;z-index:1000}
 .modal-image{width:100%;height:350px;object-fit:cover}
 .modal-body{padding:40px}
 .modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
 .allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
+
+/* Styles pour l'affiche SAV */
+.sav-container{background:white;color:#2d3748;padding:30px;max-width:100%}
+.sav-header{text-align:center;margin-bottom:30px;padding-bottom:20px;border-bottom:3px solid #004A05}
+.sav-header h1{color:#2d3748;font-size:32px;margin-bottom:10px;font-family:'Anton'}
+.sav-header p{color:#004A05;font-size:18px;font-weight:600}
+.alert-box{background:#fff3cd;border-left:5px solid #ffc107;padding:20px;margin-bottom:25px;border-radius:8px}
+.alert-box strong{color:#856404;font-size:18px;display:block;margin-bottom:10px}
+.alert-box p{color:#856404;line-height:1.6;font-size:15px}
+.sav-section{margin-bottom:25px}
+.sav-section-title{background:#004A05;color:white;padding:12px 15px;border-radius:8px;font-size:18px;font-weight:bold;margin-bottom:15px;display:flex;align-items:center}
+.sav-section-title .number{background:white;color:#004A05;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;font-size:16px}
+.step-content{background:#f7fafc;padding:18px;border-radius:8px;border-left:4px solid #004A05}
+.step-content p{color:#2d3748;line-height:1.7;font-size:15px;margin-bottom:8px}
+.step-content strong{color:#004A05}
+.step-content em{font-size:14px;color:#666}
+.info-box{background:#e6f3ff;border-left:5px solid #2196F3;padding:18px;margin:15px 0;border-radius:8px}
+.info-box h3{color:#1976D2;margin-bottom:12px;font-size:17px;font-family:'Oswald'}
+.info-list{list-style:none;padding-left:0}
+.info-list li{color:#2d3748;padding:6px 0;padding-left:25px;position:relative;line-height:1.5;font-size:15px}
+.info-list li:before{content:"✓";position:absolute;left:0;color:#2196F3;font-weight:bold;font-size:18px}
+.contact-box{background:#004A05;color:white;padding:20px;border-radius:12px;text-align:center;margin-top:25px}
+.contact-box h2{margin-bottom:12px;font-size:22px;font-family:'Anton'}
+.contact-box a{color:white;font-size:18px;font-weight:bold;text-decoration:none;background:rgba(255,255,255,0.2);padding:10px 20px;border-radius:8px;display:inline-block;margin-top:8px;transition:all 0.3s}
+.contact-box a:hover{background:rgba(255,255,255,0.3);transform:scale(1.05)}
+.contact-box p{margin-top:12px;font-size:13px;opacity:0.9}
+.highlight{background:#fef3c7;padding:2px 6px;border-radius:4px;font-weight:600;color:#2d3748}
+
 @media(max-width:600px){
 .sav-btn{font-size:18px;padding:10px 20px}
+.sav-container{padding:20px}
+.sav-header h1{font-size:24px}
+.sav-section-title{font-size:16px}
 }
 </style>
 </head>
@@ -100,7 +131,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-item" onclick="openModal('plat3')">
 <img class="item-image" src="https://i.imgur.com/Q2tuGVL.jpeg">
 <div class="item-info">
-<span class="item-name">Boulettes de bœuf/ Linguine à l’Arrabiata</span>
+<span class="item-name">Boulettes de bœuf/ Linguine à l'Arrabiata</span>
 <span class="item-price">7.50€</span>
 </div>
 </div>
@@ -189,13 +220,13 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <script>
 const fiches={
 entree1:{nom:"Pâté de campagne au porc de montagne",image:"https://i.imgur.com/MIlEmXR.jpeg",ingredients:"Pâté de campagne au porc de montagne. Sans sel nitrité Recette élaborée à base de viande de Porc de montagne. Né, élévé, abattu et transformé en zone de montagne",allergenes:"Gluten, lait, œufs, Sufites"},
-entree2:{nom:"Salade de penne au surimi",image:"https://i.imgur.com/pFShgr5.jpeg",ingredients:"Salade de penne au surimi mêlant penne, surimi, tomate, poivron vert, maïs et oignon rouge, le tout lié par une mayonnaise citronnée à l’aneth.",allergenes:"Crustacés, Gluten, Moutarde, Oeufs, Poissons, Soja, Sulfites"},
-plat1:{nom:"Sauté de poulet à la normande riz blanc",image:"https://i.imgur.com/ezREtkc.jpeg",ingredients:"Sauté de poulet tendre mijoté à la normande, parfumé au calvados et à la crème, avec carottes, navets, asperge, poireaux, oignons, ail et champignons fondants, servi avec du riz blanc qui s’imprègne de la sauce.",allergenes:"Lait, Sulfites"},
-plat2:{nom:"Crevettes sauce piquante & nouille de riz sautée aux légumes",image:"https://i.imgur.com/bYO1MFl.jpeg",ingredients:"Des crevettes sautées , enrobées d’une sauce piquante maison à base d’ail, d’huile de sésame, de ketchup, de sauce soja sucrée et de piment. Le tout relevé d'oignons jaunes fondants et de cébettes croquantes, pour une touche à la fois douce et parfumée. Servies avec des nouilles de riz sautée aux légumes ( carottes, champignon, haricot mungo).",allergenes:"Crustacés, Gluten, Mollusques, Oeufs, Poissons, Sésame, Soja, Sulfites"},
-plat3:{nom:"Boulettes de bœuf/ Linguine à l’Arrabiata",image:"https://i.imgur.com/Q2tuGVL.jpeg",ingredients:"De généreuses boulettes de bœuf mijotées dans une sauce tomate à l’Arrabbiata, relevée d’ail, d’oignons, de piment et parfumée à l’origan. Servies sur un lit de linguine al dente, elles sont nappées de sauce piquante et parsemées de copeaux de parmesan fondants ainsi que d’une touche de persil frais pour la fraîcheur.",allergenes:"gluten, lait"},
+entree2:{nom:"Salade de penne au surimi",image:"https://i.imgur.com/pFShgr5.jpeg",ingredients:"Salade de penne au surimi mêlant penne, surimi, tomate, poivron vert, maïs et oignon rouge, le tout lié par une mayonnaise citronnée à l'aneth.",allergenes:"Crustacés, Gluten, Moutarde, Oeufs, Poissons, Soja, Sulfites"},
+plat1:{nom:"Sauté de poulet à la normande riz blanc",image:"https://i.imgur.com/ezREtkc.jpeg",ingredients:"Sauté de poulet tendre mijoté à la normande, parfumé au calvados et à la crème, avec carottes, navets, asperge, poireaux, oignons, ail et champignons fondants, servi avec du riz blanc qui s'imprègne de la sauce.",allergenes:"Lait, Sulfites"},
+plat2:{nom:"Crevettes sauce piquante & nouille de riz sautée aux légumes",image:"https://i.imgur.com/bYO1MFl.jpeg",ingredients:"Des crevettes sautées , enrobées d'une sauce piquante maison à base d'ail, d'huile de sésame, de ketchup, de sauce soja sucrée et de piment. Le tout relevé d'oignons jaunes fondants et de cébettes croquantes, pour une touche à la fois douce et parfumée. Servies avec des nouilles de riz sautée aux légumes ( carottes, champignon, haricot mungo).",allergenes:"Crustacés, Gluten, Mollusques, Oeufs, Poissons, Sésame, Soja, Sulfites"},
+plat3:{nom:"Boulettes de bœuf/ Linguine à l'Arrabiata",image:"https://i.imgur.com/Q2tuGVL.jpeg",ingredients:"De généreuses boulettes de bœuf mijotées dans une sauce tomate à l'Arrabbiata, relevée d'ail, d'oignons, de piment et parfumée à l'origan. Servies sur un lit de linguine al dente, elles sont nappées de sauce piquante et parsemées de copeaux de parmesan fondants ainsi que d'une touche de persil frais pour la fraîcheur.",allergenes:"gluten, lait"},
 plat4:{nom:"Gua bao au poulet et ses crudités (HALAL)",image:"https://i.imgur.com/bzgFyOB.jpeg",ingredients:"Gua bao au poulet garni de filet de poulet savoureux, salade croquante, navet et carotte, relevé de sauce soja, gingembre, ail et huile de sésame, le tout servi dans un pain bao moelleux.",allergenes:"Gluten, Oeufs, Poissons, Sésame, Soja"},
 plat5:{nom:"Sandwich Jambon blanc camembert à la tartufata",image:"https://i.imgur.com/Kb5WXN0.jpeg",ingredients:"Sandwich en demi-baguette garni de jambon blanc, camembert au lait cru, salade croquante, tartufata savoureuse et beurre fondant.",allergenes:"Celeri, Gluten, Lait, Soja"},
-dessert1:{nom:"Pasteis de nata",image:"https://i.imgur.com/Q6BQMbB.jpeg",ingredients:"Pastéis de nata à la pâte feuilletée croustillante, garni d’une crème onctueuse aux œufs, lait et crème, parfumée à la vanille, au citron et à la cannelle.",allergenes:"gluten, lait, œufs"},
+dessert1:{nom:"Pasteis de nata",image:"https://i.imgur.com/Q6BQMbB.jpeg",ingredients:"Pastéis de nata à la pâte feuilletée croustillante, garni d'une crème onctueuse aux œufs, lait et crème, parfumée à la vanille, au citron et à la cannelle.",allergenes:"gluten, lait, œufs"},
 dessert2:{nom:"Liégeois chocolat coco",image:"https://i.imgur.com/tsuEvjg.jpeg",ingredients:"Liégeois choco-coco onctueux à base de chocolat au lait, crème, lait de coco et mascarpone, garni de muesli, pépites de chocolat et noix de coco râpée.",allergenes:"Fruits à coques, Gluten, Lait, Oeufs, Sésame, Soja"},
 plus1:{nom:"Donut caramel",image:"https://www.coupdepates.fr/M%C3%A9diath%C3%A8que/Production/Photos%20produits/Coup%20de%20pates/2.%20PATISSERIE_AMERICAINE/image-thumb__29690__CDP_cover_center_1400_1400/25774.jpeg",ingredients:"Donut fourré et glaçage caramel",allergenes:"Fruits à coque, gluten, lait, œufs"},
 plus2:{nom:"Petit pain",image:"https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",ingredients:"Farine de blé, eau, levure, sel",allergenes:"Gluten"},
@@ -223,23 +254,69 @@ document.body.style.overflow="auto";
 
 function openSAVModal(){
 document.getElementById("modal-body").innerHTML=`
-<div class="modal-body">
-<h2 class="modal-title">SERVICE APRÈS-VENTE</h2>
-<p style="font-size:20px;line-height:1.8;margin-bottom:20px">
-En cas d'anomalies sur la machine, merci de cliquer sur l'interface du frigo après transaction pour signaler le problème sur le produit. Vous pouvez par la suite nous contacter par mail afin que notre équipe gère l'incident.
-</p>
-<p style="font-size:20px;line-height:1.8;margin-bottom:20px">
-Vous pouvez également nous contacter par mail pour toutes questions :
-</p>
-<p style="font-size:24px;font-weight:700;color:#ff6b00;margin-bottom:30px">
-contact@lacuisinedejeanine.fr
-</p>
-<p style="font-size:18px;line-height:1.6;background:rgba(255,255,255,0.1);padding:20px;border-left:4px solid #ff6b00">
-Merci de préciser :<br><br>
-• La nature du problème<br>
-• L'heure approximative de votre transaction<br>
-• Les 4 derniers chiffres de votre carte CB ou titre restaurant
-</p>
+<div class="sav-container">
+<div class="sav-header">
+<h1>🛠️ Service Après-Vente</h1>
+<p>La Cuisine de Jeanine</p>
+</div>
+
+<div class="alert-box">
+<strong>⚠️ Un problème avec votre achat ?</strong>
+<p>Suivez les étapes ci-dessous pour signaler une anomalie et obtenir une résolution rapide.</p>
+</div>
+
+<div class="sav-section">
+<div class="sav-section-title">
+<span class="number">1</span>
+Contester un produit sur l'écran
+</div>
+<div class="step-content">
+<p><strong>Juste après la fermeture de la porte du frigo :</strong></p>
+<p>→ Un écran de validation s'affiche pour confirmer votre paiement</p>
+<p>→ Cliquez sur le bouton <span class="highlight">"Contester un produit"</span></p>
+<p>→ Sélectionnez le produit concerné pour marquer la transaction</p>
+<p><em>Cette étape permet de tracer automatiquement votre achat dans notre système.</em></p>
+</div>
+</div>
+
+<div class="sav-section">
+<div class="sav-section-title">
+<span class="number">2</span>
+Contacter notre équipe SAV
+</div>
+<div class="step-content">
+<p>Envoyez-nous un email avec les informations suivantes :</p>
+</div>
+
+<div class="info-box">
+<h3>📋 Informations à fournir</h3>
+<ul class="info-list">
+<li><strong>Nature du problème</strong> (sur-facturation, sous-facturation, produit défectueux, etc.)</li>
+<li><strong>Heure approximative</strong> de votre transaction</li>
+<li><strong>Produits concernés</strong></li>
+<li><strong>Les 4 derniers chiffres</strong> de votre carte bancaire ou titre restaurant</li>
+</ul>
+</div>
+</div>
+
+<div class="sav-section">
+<div class="sav-section-title">
+<span class="number">3</span>
+Résolution et remboursement
+</div>
+<div class="step-content">
+<p>Notre équipe SAV prendra contact avec vous dans les plus brefs délais pour :</p>
+<p>→ Vérifier et tracer votre transaction dans notre système</p>
+<p>→ Résoudre le problème</p>
+<p>→ Procéder au remboursement si nécessaire</p>
+</div>
+</div>
+
+<div class="contact-box">
+<h2>📧 Nous contacter</h2>
+<a href="mailto:contact@lacuisinedejeanine.fr">contact@lacuisinedejeanine.fr</a>
+<p>Notre équipe vous répondra rapidement pour régler votre incident</p>
+</div>
 </div>`;
 document.getElementById("modal").style.display="block";
 document.body.style.overflow="hidden";
