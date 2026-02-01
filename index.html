@@ -16,19 +16,10 @@ header{text-align:center;padding:50px;position:relative}
 .logo-image{max-width:600px;width:100%;filter:brightness(0) invert(1)}
 .week-banner{background:rgba(0,0,0,.3);padding:20px;text-align:center;border-top:3px solid white;border-bottom:3px solid white}
 .week-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;text-transform:uppercase}
-
-/* STYLES PROMOTION */
-.promo-section{padding:50px 30px;background:rgba(0,0,0,.2);position:relative}
-.promo-box{max-width:850px;margin:auto;background:#ff6b00;border:15px solid white;outline:8px solid #004A05;box-shadow:0 15px 50px rgba(0,0,0,.8);padding:60px;text-align:center;position:relative;overflow:hidden}
-.promo-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,0.05) 10px,rgba(255,255,255,0.05) 20px);animation:shine 20s linear infinite;z-index:0}
-@keyframes shine{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
-.promo-tag{font-family:'Bebas Neue';font-size:32px;letter-spacing:4px;color:white;text-shadow:2px 2px 4px rgba(0,0,0,.3);margin-bottom:15px;position:relative;z-index:1}
-.flash-icon{display:inline-block;animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}}
-.promo-title{font-family:'Anton';font-size:120px;color:white;text-shadow:6px 6px 12px rgba(0,0,0,.5);margin:20px 0;letter-spacing:8px;line-height:1;position:relative;z-index:1}
-.promo-divider{width:60%;height:6px;background:white;margin:25px auto;box-shadow:0 3px 6px rgba(0,0,0,.3);position:relative;z-index:1}
-.promo-description{font-family:'Oswald';font-size:36px;color:white;line-height:1.6;font-weight:700;text-shadow:2px 2px 4px rgba(0,0,0,.4);position:relative;z-index:1}
-
+.promo-section{padding:50px 30px;background:rgba(0,0,0,.2)}
+.promo-box{max-width:850px;margin:auto;background:#ff6b00;border:15px solid white;outline:8px solid #004A05;box-shadow:0 15px 50px rgba(0,0,0,.8);padding:60px;text-align:center}
+.promo-title{font-family:'Anton';font-size:80px;color:white;text-shadow:5px 5px 10px rgba(0,0,0,.7);margin-bottom:30px;letter-spacing:6px;border-bottom:6px solid white;padding-bottom:20px}
+.promo-description{font-family:'Oswald';font-size:42px;color:white;line-height:1.8;font-weight:700;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
 .section{padding:50px 30px}
 .section-title{font-family:'Anton';font-size:50px;border-left:8px solid white;padding-left:20px;margin-bottom:30px}
 .menu-list{display:flex;flex-direction:column;gap:15px}
@@ -74,20 +65,11 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 .contact-box p{margin-top:12px;font-size:13px;opacity:0.9}
 .highlight{background:#fef3c7;padding:2px 6px;border-radius:4px;font-weight:600;color:#2d3748}
 
-@media(max-width:768px){
-.promo-title{font-size:80px}
-.promo-description{font-size:28px}
-.promo-tag{font-size:24px}
-}
-
 @media(max-width:600px){
 .sav-btn{font-size:18px;padding:10px 20px}
 .sav-container{padding:20px}
 .sav-header h1{font-size:24px}
 .sav-section-title{font-size:16px}
-.promo-title{font-size:60px}
-.promo-description{font-size:22px}
-.promo-box{padding:35px 25px;border-width:10px;outline-width:5px}
 }
 </style>
 </head>
@@ -101,38 +83,27 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 </header>
 
 <div class="week-banner">
-<div class="week-text">Menu de la semaine du 26 Janvier au 1er Février</div>
+<div class="week-text">Menu de la semaine du 2 au 8 Février</div>
 </div>
 
-<!-- BANNIÈRE PROMOTION -->
-<div class="promo-section">
-<div class="promo-box">
-<div class="promo-tag">
-<span class="flash-icon">⚡</span> PROMOTION DU VENDREDI <span class="flash-icon">⚡</span>
-</div>
-<div class="promo-title">-50%</div>
-<div class="promo-divider"></div>
-<div class="promo-description">SUR TOUS LES PRODUITS SAUF YAOURTS ET SAUCISSON<br>À PARTIR DE 15H00</div>
-</div>
-</div>
 
 <!-- ENTRÉES -->
 <div class="section">
 <h2 class="section-title">ENTRÉES</h2>
 <div class="menu-list">
 <div class="menu-item" onclick="openModal('entree1')">
-<img class="item-image" src="https://i.imgur.com/guWZUXS.jpeg">
+<img class="item-image" src="https://i.imgur.com/r2AlHVj.jpeg">
 <div class="item-info">
-<span class="item-name">Mini pizza savoyarde</span>
-<span class="item-price">4.30€</span>
+<span class="item-name">Salade piémontaise</span>
+<span class="item-price">2.40€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('entree2')">
-<img class="item-image" src="https://i.imgur.com/JsaApcT.jpeg">
+<img class="item-image" src="https://i.imgur.com/dJDkPj8.jpeg">
 <div class="item-info">
-<span class="item-name">Salade de fusilli au thon</span>
-<span class="item-price">3.00€</span>
+<span class="item-name">Quiche asperges vertes, chèvre & miel</span>
+<span class="item-price">3.25€</span>
 </div>
 </div>
 </div>
@@ -143,42 +114,42 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <h2 class="section-title">PLATS</h2>
 <div class="menu-list">
 <div class="menu-item" onclick="openModal('plat1')">
-<img class="item-image" src="https://i.imgur.com/EsdXAhP.jpeg">
+<img class="item-image" src="https://i.imgur.com/ELbwPdI.jpeg">
 <div class="item-info">
-<span class="item-name">Piccata de poulet / riz aux légumes du soleil (HALAL)</span>
-<span class="item-price">7.00€</span>
+<span class="item-name">Poulet aux épices de Ceylan & riz blanc</span>
+<span class="item-price">7.80€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat2')">
-<img class="item-image" src="https://i.imgur.com/ij76MGJ.jpeg">
+<img class="item-image" src="https://i.imgur.com/nhWrxmg.jpeg">
 <div class="item-info">
-<span class="item-name">Risotto crémeux à la truffe, champignons et jambon grillé</span>
-<span class="item-price">7.50€</span>
+<span class="item-name">Enchiladas au bœuf</span>
+<span class="item-price">8.20€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat3')">
-<img class="item-image" src="https://i.imgur.com/dMjkZpm.jpeg">
+<img class="item-image" src="https://i.imgur.com/TPwWanE.jpeg">
 <div class="item-info">
-<span class="item-name">Naan au poulet tandoori (HALAL)</span>
-<span class="item-price">7.10€</span>
+<span class="item-name">Rigatoni crémeux à la saucisse de Montbéliard IGP</span>
+<span class="item-price">6.85€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat4')">
-<img class="item-image" src="https://i.imgur.com/DwTsIYM.jpeg">
+<img class="item-image" src="https://i.imgur.com/DfrKWL5.jpeg">
 <div class="item-info">
-<span class="item-name">Linguine thaï au saumon laqué</span>
-<span class="item-price">8.55€</span>
+<span class="item-name">Sandwich Banh Mi au poulet mariné (HALAL)</span>
+<span class="item-price">7.00€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat5')">
-<img class="item-image" src="https://i.imgur.com/5BCYYvl.jpeg">
+<img class="item-image" src="https://via.placeholder.com/90?text=Bun">
 <div class="item-info">
-<span class="item-name">Sandwich canard Crunch</span>
-<span class="item-price">6.80€</span>
+<span class="item-name">Bun's le basque</span>
+<span class="item-price">6.00€</span>
 </div>
 </div>
 </div>
@@ -189,18 +160,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <h2 class="section-title">DESSERTS</h2>
 <div class="menu-list">
 <div class="menu-item" onclick="openModal('dessert1')">
-<img class="item-image" src="https://i.imgur.com/DG2WHSA.jpeg">
+<img class="item-image" src="https://i.imgur.com/4mwOgYk.jpeg">
 <div class="item-info">
-<span class="item-name">Cookie amande & fleur d'oranger</span>
-<span class="item-price">1.85€</span>
+<span class="item-name">Brookie</span>
+<span class="item-price">2.75€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('dessert2')">
-<img class="item-image" src="https://i.imgur.com/ClAVC8s.jpeg">
+<img class="item-image" src="https://via.placeholder.com/90?text=Mousse">
 <div class="item-info">
-<span class="item-name">Tiramisu Nocciolata & spéculoos</span>
-<span class="item-price">3.70€</span>
+<span class="item-name">Mousse citron façon mojito</span>
+<span class="item-price">3.20€</span>
 </div>
 </div>
 </div>
@@ -214,7 +185,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <img class="item-image" src="https://i.imgur.com/lHZOqdI.jpeg">
 <div class="item-info">
 <span class="item-name">Donut cheesecake</span>
-<span class="item-price">1,85€</span>
+<span class="item-price">1.85€</span>
 </div>
 </div>
 
@@ -222,39 +193,39 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <img class="item-image" src="https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png">
 <div class="item-info">
 <span class="item-name">Petit pain</span>
-<span class="item-price">0,50€</span>
+<span class="item-price">0.50€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plus3')">
 <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s">
 <div class="item-info">
-<span class="item-name">Fromage Cantal AOP</span>
-<span class="item-price">1,25€</span>
+<span class="item-name">Fromage Cantal jeune AOP</span>
+<span class="item-price">1.25€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plus4')">
-<img class="item-image" src="https://i.imgur.com/GuivBAI.jpeg">
+<img class="item-image" src="https://i.imgur.com/Fj7orlb.jpeg">
 <div class="item-info">
-<span class="item-name">Yaourt nova sucré</span>
-<span class="item-price">1€</span>
+<span class="item-name">Mini Saucisson grignotons</span>
+<span class="item-price">3.60€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plus5')">
-<img class="item-image" src="https://i.imgur.com/lDS8LQd.jpeg">
+<img class="item-image" src="https://i.imgur.com/GuivBAI.jpeg">
 <div class="item-info">
-<span class="item-name">Yaourt nova fruits</span>
-<span class="item-price">1,10€</span>
+<span class="item-name">Yaourt nova sucré</span>
+<span class="item-price">1.00€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plus6')">
-<img class="item-image" src="https://i.imgur.com/Fj7orlb.jpeg">
+<img class="item-image" src="https://i.imgur.com/lDS8LQd.jpeg">
 <div class="item-info">
-<span class="item-name">Saucisson Grignoton</span>
-<span class="item-price">2,50€</span>
+<span class="item-name">Yaourt nova fruits</span>
+<span class="item-price">1.10€</span>
 </div>
 </div>
 </div>
@@ -273,21 +244,21 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 
 <script>
 const fiches={
-entree1:{nom:"Mini pizza savoyarde",image:"https://i.imgur.com/guWZUXS.jpeg",ingredients:"Mini pizza fromages",allergenes:"Gluten, Lait"},
-entree2:{nom:"Salade de fusilli au thon",image:"https://i.imgur.com/JsaApcT.jpeg",ingredients:"Fusilli mélangés à du thon, concombre, tomate, radis et oignon rouge, le tout assaisonné de mayonnaise et parsemé de persil frisé frais.",allergenes:"Gluten, Moutarde, Oeufs, Poissons"},
-plat1:{nom:"Piccata de poulet / riz aux légumes du soleil (HALAL)",image:"https://i.imgur.com/EsdXAhP.jpeg",ingredients:"Des escalopes de poulet délicatement dorées et nappées d'une sauce citronnée au vin blanc, façon piccata, aux notes fraîches et acidulées. Servies avec un riz parfumé accompagné de légumes du soleil : aubergines, courgettes et poivrons.",allergenes:"Celeri, Soja, Gluten, Oeufs, Sulfites, Lait"},
-plat2:{nom:"Risotto crémeux à la truffe, champignons et jambon grillé",image:"https://i.imgur.com/ij76MGJ.jpeg",ingredients:"Risotto crémeux au parmesan, délicatement parfumé à l'arôme de truffe, aux champignons, échalotes et ail, relevé d'une touche de vin blanc et accompagné de jambon grillé au four.",allergenes:"Celeri, Soja, Gluten, Oeufs, Sulfites, Lait"},
-plat3:{nom:"Naan au poulet tandoori (HALAL)",image:"https://i.imgur.com/dMjkZpm.jpeg",ingredients:"Naan garni de poulet tandoori mariné au yaourt, aux épices et au gingembre, relevé d'ail et de citron, accompagné de salade croquante, tomate, oignon rouge et coriandre fraîche.",allergenes:"Fruits à coque, Lupin, Lait, Sulfites"},
-plat4:{nom:"Linguine thaï au saumon laqué",image:"https://i.imgur.com/DwTsIYM.jpeg",ingredients:"Linguine nappées d'une sauce thaï au lait de coco et curry rouge, accompagnées de filet de saumon laqué à la sauce huître, relevées d'ail et d'échalote, puis parsemées de persil plat et de chapelure panko croustillante.",allergenes:"Gluten, Soja"},
-plat5:{nom:"Sandwich canard Crunch",image:"https://i.imgur.com/5BCYYvl.jpeg",ingredients:"Un canard confit effiloché, fondant et savoureux, servi dans une demi-baguette croustillante, avec une garniture fraîche et parfumée : chou blanc croquant, concombre en lamelles, oignon cébette, et une touche de coriandre fraîche. Le tout est relevé par une sauce hoisin onctueuse et légèrement sucrée.",allergenes:"Gluten, Lait, Oeufs, Soja, Moutarde, Sésame"},
-dessert1:{nom:"Cookie amande & fleur d'oranger",image:"https://i.imgur.com/DG2WHSA.jpeg",ingredients:"Cookie moelleux à la poudre et aux amandes hachées, parfumé à la fleur d'oranger, pépite de chocolat, réalisé avec beurre, œufs, sucre roux et farine.",allergenes:"Fruits à coque, Gluten, Oeufs"},
-dessert2:{nom:"Tiramisu Nocciolata & spéculoos",image:"https://i.imgur.com/ClAVC8s.jpeg",ingredients:"Tiramisu gourmand au mascarpone et à la vanille, alternant crème onctueuse, spéculoos imbibés de lait, cœur fondant de Nocciolata, le tout saupoudré de cacao en poudre.",allergenes:"Fruits à coque, Gluten, Oeufs, Lait, Soja"},
-plus1:{nom:"Donut cheesecake",image:"https://i.imgur.com/lHZOqdI.jpeg",ingredients:"Laissez-vous tenter par cette recette ultra gourmande, inspirée du cheesecake. Son glaçage blanc onctueux et ses brisures de fruits rouges apportent une touche élégante et irrésistible.",allergenes:"Fruits à coque, Gluten, Lait, Oeufs"},
+entree1:{nom:"Salade piémontaise",image:"https://i.imgur.com/r2AlHVj.jpeg",ingredients:"Une salade généreuse et colorée où les pommes de terre fondantes se mêlent aux dés de jambon savoureux, aux œufs durs et aux tomates fraîches. Les cornichons apportent une touche acidulée, l'oignon rouge un peu de piquant, et le persil de la fraîcheur. Le tout est délicatement lié par une mayonnaise onctueuse.",allergenes:"Moutarde, Œufs, Sulfites"},
+entree2:{nom:"Quiche asperges vertes, chèvre & miel",image:"https://i.imgur.com/dJDkPj8.jpeg",ingredients:"Quiche aux asperges vertes, garnie de bûche de chèvre, crème, œufs et miel, parfumée à la muscade, sur pâte brisée.",allergenes:"Fruits à coque, Gluten, Lait, Œufs"},
+plat1:{nom:"Poulet aux épices de Ceylan & riz blanc",image:"https://i.imgur.com/ELbwPdI.jpeg",ingredients:"Un poulet aux épices de Ceylan mijoté au lait de coco avec oignons, ail, gingembre, curry, curcuma et piment, accompagné de carottes, tomates, riz blanc et coriandre fraîche.",allergenes:"Céleri, Gluten, Lait, Œufs, Soja"},
+plat2:{nom:"Enchiladas au bœuf",image:"https://i.imgur.com/nhWrxmg.jpeg",ingredients:"Des enchiladas au bœuf savoureuses, garnies de viande hachée fraîche, d'oignons rouges, de salsa roja, de crème épaisse et de coriandre, roulées dans des tortillas et gratinées au cheddar.",allergenes:"Lait, Sulfites"},
+plat3:{nom:"Rigatoni crémeux à la saucisse de Montbéliard IGP",image:"https://i.imgur.com/TPwWanE.jpeg",ingredients:"Des rigatoni nappés d'une sauce crémeuse au vin blanc et à la moutarde à l'ancienne, préparée avec saucisse de Montbéliard IGP, oignons, ail, crème épaisse et ciboulette.",allergenes:"Gluten, Lait, Moutarde, Sulfites"},
+plat4:{nom:"Sandwich Banh Mi au poulet mariné (HALAL)",image:"https://i.imgur.com/DfrKWL5.jpeg",ingredients:"Un Banh Mi au poulet dans une demi-baguette croustillante, garni de poulet sauté à l'ail et laqué aux sauces hoisin, huître et soja sucrée, accompagné de betterave chioggia, carotte, concombre et coriandre fraîche.",allergenes:"Fruits à coque, Gluten, Poissons, Sésame, Sulfites"},
+plat5:{nom:"Bun's le basque",image:"https://via.placeholder.com/90?text=Bun",ingredients:"Un bun moelleux garni d'un poulet pané croustillant, relevé par la douceur des piquillos grillés et une sauce barbecue légèrement fumée. Le tout est sublimé par de la tomme de brebis fondante et des éclats de bacon fumé, pour une explosion de saveurs typiquement basques entre douceur, caractère et gourmandise.",allergenes:"Gluten, Lait"},
+dessert1:{nom:"Brookie",image:"https://i.imgur.com/4mwOgYk.jpeg",ingredients:"Un brookie ultra fondant, alliance parfaite entre le moelleux d'un brownie au chocolat et le croustillant d'un cookie doré. Sous sa croûte légèrement croquante se cache un cœur riche en chocolat, adouci par la texture biscuitée et réconfortante de la pâte à cookie.",allergenes:"Fruits à coque, Gluten, Lait"},
+dessert2:{nom:"Mousse citron façon mojito",image:"https://via.placeholder.com/90?text=Mousse",ingredients:"Mousse citron façon mojito, à base de mascarpone, crème, œufs et citron, accompagnée d'un biscuit sablé au beurre et relevée de menthe fraîche.",allergenes:"Gluten, Lait, Œufs"},
+plus1:{nom:"Donut cheesecake",image:"https://via.placeholder.com/90?text=Donut",ingredients:"Donut moelleux garni d'une crème cheesecake onctueuse.",allergenes:"Fruits à coque, Gluten, Lait, Œufs"},
 plus2:{nom:"Petit pain",image:"https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",ingredients:"Farine de blé, eau, levure, sel",allergenes:"Gluten"},
-plus3:{nom:"Fromage Cantal AOP",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",ingredients:"Lait pasteurisé de vache, ferments lactiques",allergenes:"Lait"},
-plus4:{nom:"Yaourt nova sucré",image:"https://i.imgur.com/GuivBAI.jpeg",ingredients:"Yaourt sucré",allergenes:"Lait"},
-plus5:{nom:"Yaourt nova fruits",image:"https://i.imgur.com/lDS8LQd.jpeg",ingredients:"Yaourt aux fruits",allergenes:"Lait"},
-plus6:{nom:"Saucisson Grignoton",image:"https://i.imgur.com/Fj7orlb.jpeg",ingredients:"Viande de porc française",allergenes:"Aucun"}
+plus3:{nom:"Fromage Cantal jeune AOP",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",ingredients:"Lait pasteurisé de vache, sel, présure, ferments lactiques",allergenes:"Lait"},
+plus4:{nom:"Mini Saucisson grignotons",image:"https://via.placeholder.com/90?text=Saucisson",ingredients:"Mini saucisson sec",allergenes:""},
+plus5:{nom:"Yaourt nova sucré",image:"https://i.imgur.com/GuivBAI.jpeg",ingredients:"Yaourt sucré",allergenes:"Lait"},
+plus6:{nom:"Yaourt nova fruits",image:"https://i.imgur.com/lDS8LQd.jpeg",ingredients:"Yaourt aux fruits",allergenes:"Lait"}
 };
 
 function openModal(id){
@@ -297,7 +268,7 @@ document.getElementById("modal-body").innerHTML=`
 <div class="modal-body">
 <h2 class="modal-title">${f.nom}</h2>
 <p>${f.ingredients}</p>
-<div class="allergenes-box"><strong>Allergènes :</strong><p>${f.allergenes}</p></div>
+${f.allergenes ? `<div class="allergenes-box"><strong>Allergènes :</strong><p>${f.allergenes}</p></div>` : ''}
 </div>`;
 document.getElementById("modal").style.display="block";
 document.body.style.overflow="hidden";
