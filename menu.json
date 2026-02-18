@@ -1,1 +1,158 @@
-
+{
+  "settings": {
+    "siteTitle": "La Cuisine de Jeanine - Menu",
+    "brandName": "La Cuisine de Jeanine",
+    "weekText": "Menu de la semaine",
+    "promoVisible": true,
+    "promoTitle": "PROMOTION DU 18/02 à partir de 15h00 jusqu'à 23h59",
+    "promoDescription": "-50% sur les produits en date courte (DLC du 18/02)<br>⚠️ SEULEMENT SUR LES PRODUITS DLC au 18/02 ⚠️",
+    "footerText": "Parce que bien manger, ça commence par bien choisir",
+    "savEmail": "contact@lacuisinedejeanine.fr"
+  },
+  "sections": [
+    {
+      "id": "entrees",
+      "title": "ENTRÉES",
+      "products": [
+        {
+          "id": "entree1",
+          "name": "Coleslaw",
+          "price": "1.90€",
+          "image": "https://i.imgur.com/CQ9rPb3.jpeg",
+          "ingredients": "Coleslaw croquant à base de chou blanc et carottes râpées, lié d'une sauce au fromage blanc, mayonnaise et vinaigre de cidre, relevé de ciboulette fraîche.",
+          "allergens": "Lait, Moutarde, Œufs, Sulfites"
+        },
+        {
+          "id": "entree2",
+          "name": "Crêpe aux fromages",
+          "price": "2.65€",
+          "image": "https://i.imgur.com/aWxZJdN.jpeg",
+          "ingredients": "Une crêpe dorée et moelleuse, garnie d'un mélange de fromages fondants qui allie douceur et caractère.",
+          "allergens": "Fruits à coque, Gluten, Lait, Œufs"
+        }
+      ]
+    },
+    {
+      "id": "plats",
+      "title": "PLATS",
+      "products": [
+        {
+          "id": "plat1",
+          "name": "Poulet mariné à l'ail noir, sauce reblochon & grenailles (HALAL)",
+          "price": "8.95€",
+          "image": "https://i.imgur.com/AOKG6Rk.jpeg",
+          "ingredients": "Filet de poulet mariné à l'ail noir, nappé d'une sauce crémeuse au reblochon et à la crème fraîche, accompagné de pommes de terre grenaille rôties aux oignons et relevé de ciboulette fraîche.",
+          "allergens": "Lait"
+        },
+        {
+          "id": "plat2",
+          "name": "Porc au caramel / nouille sautée aux légumes",
+          "price": "7.30€",
+          "image": "https://i.imgur.com/6WyXhTA.jpeg",
+          "ingredients": "Porc fondant caramélisé à la sauce soja et au gingembre, servi avec des nouilles sautées aux carottes, poivrons, petits pois, haricots mungo, oignons et ail, pour un équilibre sucré-salé gourmand.",
+          "allergens": "Gluten, Lait, Lupin, Moutarde, Œufs, Poissons, Sésame, Soja, Sulfites"
+        },
+        {
+          "id": "plat3",
+          "name": "Bagel le suédois",
+          "price": "6.80€",
+          "image": "https://i.imgur.com/WYfH1Ac.jpeg",
+          "ingredients": "Bagel garni de saumon fumé, fromage frais, concombre et tomate, relevé d'échalote et d'oignons rouges pour une touche fraîche et légèrement piquante.",
+          "allergens": "Gluten, Lait, Œufs, Poissons, Sésame, Soja, Sulfites"
+        },
+        {
+          "id": "plat4",
+          "name": "Penne aux merguez grillées",
+          "price": "7.00€",
+          "image": "https://i.imgur.com/wcFK737.jpeg",
+          "ingredients": "Des penne al dente, mélangées à des merguez grillées savamment épicées, pour un plat simple mais plein de caractère. Les saveurs riches de la viande, combinées à une sauce légèrement relevée.",
+          "allergens": "Gluten, Lait"
+        },
+        {
+          "id": "plat5",
+          "name": "Sandwich jambon cru provola tomate séchée",
+          "price": "5.90€",
+          "image": "https://i.imgur.com/Byy8b4S.jpeg",
+          "ingredients": "Un sandwich savoureux composé de jambon cru, de provola fumée fondante, de tomates séchées, de tapenade de poivron relevée, et de salade croquante, le tout entre deux tranches de pain frais.",
+          "allergens": "Lait"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": "DESSERTS",
+      "products": [
+        {
+          "id": "dessert1",
+          "name": "Crumble aux pommes",
+          "price": "2.10€",
+          "image": "https://i.imgur.com/rfHz6Da.jpeg",
+          "ingredients": "Crumble aux pommes fondantes parfumées à la cannelle et au sucre vanillé, recouvert d'une pâte croustillante au beurre et à la cassonade.",
+          "allergens": "Gluten"
+        },
+        {
+          "id": "dessert2",
+          "name": "Gâteau Nantais",
+          "price": "2.90€",
+          "image": "https://i.imgur.com/yaCPyBs.jpeg",
+          "ingredients": "Gâteau Nantais moelleux à la poudre d'amande, parfumé au rhum et à la vanille, préparé avec beurre demi-sel, œufs, sucre et farine.",
+          "allergens": "Fruits à coque, Gluten, Œufs"
+        }
+      ]
+    },
+    {
+      "id": "petits-plus",
+      "title": "LES PETITS +",
+      "products": [
+        {
+          "id": "plus1",
+          "name": "Donut pistache",
+          "price": "1.95€",
+          "image": "https://i.imgur.com/doPteRY.jpeg",
+          "ingredients": "Ce donut est composé d'un fourrage pistache, nappé d'un glaçage vert avec des rayures de cacao et parsemé d'éclats d'amandes colorées.",
+          "allergens": "Fruits à coque, Gluten, Lait, Œufs"
+        },
+        {
+          "id": "plus2",
+          "name": "Petit pain",
+          "price": "0.50€",
+          "image": "https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",
+          "ingredients": "Farine de blé, eau, levure, sel",
+          "allergens": "Gluten"
+        },
+        {
+          "id": "plus3",
+          "name": "Fromage Saint-Nectaire",
+          "price": "1.25€",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",
+          "ingredients": "Fromage Saint-Nectaire au lait de vache",
+          "allergens": "Lait"
+        },
+        {
+          "id": "plus4",
+          "name": "Mini Saucisson grignotons parmesan",
+          "price": "3.60€",
+          "image": "https://i.imgur.com/Fj7orlb.jpeg",
+          "ingredients": "Mini saucisson sec au parmesan",
+          "allergens": ""
+        },
+        {
+          "id": "plus5",
+          "name": "Yaourt nova sucré",
+          "price": "1.00€",
+          "image": "https://i.imgur.com/GuivBAI.jpeg",
+          "ingredients": "Yaourt sucré",
+          "allergens": "Lait"
+        },
+        {
+          "id": "plus6",
+          "name": "Yaourt nova fruits",
+          "price": "1.10€",
+          "image": "https://i.imgur.com/lDS8LQd.jpeg",
+          "ingredients": "Yaourt aux fruits",
+          "allergens": "Lait"
+        }
+      ]
+    }
+  ]
+}
