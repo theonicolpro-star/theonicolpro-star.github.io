@@ -4,8 +4,8 @@
     "brandName": "La Cuisine de Jeanine",
     "weekText": "Menu de la semaine",
     "promoVisible": true,
-    "promoTitle": "PROMOTION DU 18/02 à partir de 15h00 jusqu'à 23h59",
-    "promoDescription": "-50% sur les produits en date courte (DLC du 18/02)<br>⚠️ SEULEMENT SUR LES PRODUITS DLC au 18/02 ⚠️",
+    "promoTitle": "PROMOTION DU VENDREDI à partir de 15h00 jusqu'à 23h59",
+    "promoDescription": "-50% sur les produits <br>⚠️ SAUF YAOURTS, SAUCISSON, FROMAGE ⚠️",
     "footerText": "Parce que bien manger, ça commence par bien choisir",
     "savEmail": "contact@lacuisinedejeanine.fr"
   },
