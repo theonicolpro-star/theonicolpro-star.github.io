@@ -1,724 +1,326 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Cuisine de Jeanine - Menu</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Oswald', sans-serif;
-            background: #004A05;
-            color: white;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(0,0,0,0.03) 10px,
-                    rgba(0,0,0,0.03) 20px
-                ),
-                radial-gradient(circle at 20% 50%, rgba(0,90,10,0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0,60,8,0.3) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        header {
-            padding: 50px 40px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .logo-image {
-            max-width: 600px;
-            width: 100%;
-            height: auto;
-            filter: brightness(0) invert(1);
-            drop-shadow: 3px 3px 8px rgba(0,0,0,0.4);
-        }
-        
-        .week-banner {
-            background: rgba(0,0,0,0.3);
-            padding: 20px 40px;
-            text-align: center;
-            border-top: 3px solid white;
-            border-bottom: 3px solid white;
-            position: relative;
-            margin-bottom: 10px;
-        }
-        
-        .week-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 26px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: white;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Cuisine de Jeanine - Menu</title>
 
-        .promo-section {
-            padding: 25px 30px 0;
-        }
-
-        .promo-box {
-            background: #ffc107;
-            color: #3e2723;
-            padding: 18px;
-            border-left: 6px solid #ff6f00;
-        }
-
-        .promo-title {
-            font-family: 'Anton', sans-serif;
-            font-size: 26px;
-            margin-bottom: 8px;
-        }
-
-        .promo-description {
-            font-size: 18px;
-            line-height: 1.4;
-        }
-        
-        .section {
-            padding: 50px 30px;
-            position: relative;
-        }
-        
-        .section-header {
-            margin-bottom: 35px;
-            position: relative;
-        }
-        
-        .section-title {
-            font-family: 'Anton', sans-serif;
-            font-size: 55px;
-            color: white;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-align: left;
-            padding-left: 20px;
-            border-left: 8px solid white;
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-            line-height: 1;
-        }
-        
-        .menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .menu-item {
-            background: rgba(255,255,255,0.95);
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-left: 6px solid #004A05;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(0,74,5,0.1);
-            transition: width 0.3s ease;
-            z-index: 0;
-        }
-        
-        .menu-item:hover::before {
-            width: 100%;
-        }
-        
-        .menu-item:hover {
-            transform: translateX(10px);
-            box-shadow: -5px 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        .item-image {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border: 4px solid #004A05;
-            margin-right: 25px;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .item-info {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .item-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 26px;
-            color: #1a1a1a;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .item-price {
-            font-family: 'Anton', sans-serif;
-            font-size: 32px;
-            color: #004A05;
-            margin-left: 30px;
-            flex-shrink: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.92);
-            z-index: 1000;
-            overflow-y: auto;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, #003a04 0%, #004A05 50%, #005a07 100%);
-            max-width: 850px;
-            margin: 40px auto;
-            position: relative;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.7);
-            animation: slideUp 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
-        }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(60px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 50px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            border: none;
-            background: rgba(0,0,0,0.6);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.3s ease;
-            line-height: 1;
-            font-family: Arial;
-        }
-        
-        .close-btn:hover {
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
-        }
-        
-        .modal-image-container {
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 5px solid white;
-        }
-        
-        .modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .modal-body {
-            padding: 45px 50px 50px;
-            color: white;
-        }
-        
-        .modal-title {
-            font-family: 'Anton', sans-serif;
-            color: white;
-            font-size: 52px;
-            margin-bottom: 35px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.4);
-            border-bottom: 3px solid white;
-            padding-bottom: 15px;
-        }
-        
-        .modal-section {
-            margin-bottom: 30px;
-        }
-        
-        .modal-section h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            color: white;
-            font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .modal-section p {
-            font-family: 'Oswald', sans-serif;
-            font-size: 20px;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.95);
-            letter-spacing: 0.5px;
-            font-weight: 300;
-        }
-        
-        .allergenes-box {
-            background: rgba(255,193,7,0.95);
-            padding: 25px;
-            border-left: 6px solid #ff6f00;
-            margin-top: 10px;
-            box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
-        }
-        
-        .allergenes-box strong {
-            font-family: 'Bebas Neue', sans-serif;
-            color: #5d4037;
-            font-size: 26px;
-            display: block;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-        
-        .allergenes-box p {
-            color: #3e2723;
-            margin: 0;
-            font-weight: 500;
-        }
-        
-        footer {
-            background: rgba(0,0,0,0.4);
-            color: white;
-            text-align: center;
-            padding: 35px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-top: 3px solid white;
-        }
-    </style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Oswald',sans-serif;background:#004A05;color:white}
+.container{max-width:900px;margin:auto}
+header{text-align:center;padding:50px}
+.logo-image{max-width:600px;width:100%;filter:brightness(0) invert(1)}
+.week-banner{background:rgba(0,0,0,.3);padding:20px;text-align:center;border-top:3px solid white;border-bottom:3px solid white}
+.week-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;text-transform:uppercase}
+.section{padding:50px 30px}
+.section-title{font-family:'Anton';font-size:50px;border-left:8px solid white;padding-left:20px;margin-bottom:30px}
+.menu-list{display:flex;flex-direction:column;gap:15px}
+.menu-item{background:white;color:black;padding:15px;display:flex;align-items:center;cursor:pointer;border-left:6px solid #004A05;transition:.3s}
+.menu-item:hover{transform:translateX(8px);box-shadow:-5px 5px 15px rgba(0,0,0,.3)}
+.item-image{width:90px;height:90px;object-fit:cover;margin-right:20px;border:4px solid #004A05}
+.item-info{display:flex;justify-content:space-between;width:100%;align-items:center}
+.item-name{text-transform:uppercase;font-size:24px;font-weight:600}
+.item-price{font-family:'Anton';font-size:30px;color:#004A05}
+footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Bebas Neue';letter-spacing:3px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;overflow-y:auto}
+.modal-content{max-width:850px;margin:40px auto;background:linear-gradient(135deg,#003a04,#005a07);color:white;position:relative}
+.close-btn{position:absolute;top:15px;right:15px;font-size:40px;background:black;color:white;border:none;cursor:pointer;width:50px;height:50px}
+.modal-image{width:100%;height:350px;object-fit:cover}
+.modal-body{padding:40px}
+.modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
+.allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 300'%3E%3Ctext x='50%25' y='30%25' font-family='Arial Black, sans-serif' font-size='80' font-weight='900' text-anchor='middle' letter-spacing='15' fill='black'%3ELA CUISINE DE%3C/text%3E%3Ctext x='50%25' y='85%25' font-family='Bodoni, serif' font-size='180' font-weight='bold' text-anchor='middle' letter-spacing='20' fill='black'%3EJEANINE%3C/text%3E%3C/svg%3E" alt="La Cuisine de Jeanine" class="logo-image">
-            </div>
-        </header>
-        
-        <!-- ⬇️ MODIFIER ICI LA DATE DE LA SEMAINE ⬇️ -->
-        <div class="week-banner">
-            <div class="week-text">Menu de la semaine</div>
-        </div>
+<div class="container">
 
-        <!-- PROMO : retirer les balises de commentaire pour afficher -->
-        <!--
-        <div class="promo-section">
-            <div class="promo-box">
-                <div class="promo-title">PROMOTION DU 20/01 à partir de 15h00</div>
-                <div class="promo-description">
-                    -50% sur les produits en date courte <br>
-                    ⚠️ SEULEMENT SUR LES PRODUITS DLC au 20/01 ⚠️
-                </div>
-            </div>
-        </div>
-        -->
+<header>
+<img class="logo-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 300'%3E%3Ctext x='50%25' y='30%25' font-size='80' text-anchor='middle' letter-spacing='15' fill='white'%3ELA CUISINE DE%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='180' text-anchor='middle' letter-spacing='20' fill='white'%3EJEANINE%3C/text%3E%3C/svg%3E">
+</header>
 
-        <!-- PROMO -->
-        <div class="promo-section">
-            <div class="promo-box">
-                <div class="promo-title">🔥 PROMO DU VENDREDI</div>
-                <div class="promo-description">
-                    -50% sur tous les produits !<br>
-                    <strong>SAUF</strong> saucissons, fromages et yaourts<br>
-                    excepté yaourts sucrés (DLC 21/02) ⚠️
-                </div>
-            </div>
-        </div>
+<div class="week-banner">
+  <div class="week-text">Menu de la semaine du 23 Février au 01 Mars</div>
+</div>
 
-        <!-- ========================================= -->
-        <!-- ENTRÉES -->
-        <!-- ========================================= -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">ENTRÉES</h2>
-            </div>
-            <div class="menu-list">
+<!-- ENTRÉES -->
+<div class="section">
+<h2 class="section-title">ENTRÉES</h2>
+<div class="menu-list">
 
-                <div class="menu-item" onclick="openModal('entree1')">
-                    <img src="https://i.imgur.com/CQ9rPb3.jpeg" alt="Coleslaw" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Coleslaw</span>
-                        <span class="item-price">1.90€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('entree1')">
+<img class="item-image" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300'">
+<div class="item-info">
+<span class="item-name">Mini Pizza Normande</span>
+<span class="item-price">4€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('entree2')">
-                    <img src="https://i.imgur.com/aWxZJdN.jpeg" alt="Crêpe aux fromages" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Crêpe aux fromages</span>
-                        <span class="item-price">2.65€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('entree2')">
+<img class="item-image" src="https://i.imgur.com/Dzst5Cp.jpeg">
+<div class="item-info">
+<span class="item-name">Salade de pomme de terre hareng fumé</span>
+<span class="item-price">3,70€</span>
+</div>
+</div>
 
-            </div>
-        </div>
+</div>
+</div>
 
-        <!-- ========================================= -->
-        <!-- PLATS -->
-        <!-- ========================================= -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">PLATS</h2>
-            </div>
-            <div class="menu-list">
+<!-- PLATS -->
+<div class="section">
+<h2 class="section-title">PLATS</h2>
+<div class="menu-list">
 
-                <div class="menu-item" onclick="openModal('plat1')">
-                    <img src="https://i.imgur.com/AOKG6Rk.jpeg" alt="Poulet mariné à l'ail noir" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Poulet mariné à l'ail noir, sauce reblochon & grenailles (HALAL)</span>
-                        <span class="item-price">8.95€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plat1')">
+<img class="item-image" src="https://i.imgur.com/QkyfAwk.jpeg">
+<div class="item-info">
+<span class="item-name">Filet mignon sauce au cidre purée</span>
+<span class="item-price">8€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plat2')">
-                    <img src="https://i.imgur.com/6WyXhTA.jpeg" alt="Porc au caramel" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Porc au caramel / nouille sautée aux légumes</span>
-                        <span class="item-price">7.30€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plat2')">
+<img class="item-image" src="https://i.imgur.com/LjwBTrX.jpeg">
+<div class="item-info">
+<span class="item-name">Nouilles Udon sautées au poulet HALAL</span>
+<span class="item-price">7€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plat3')">
-                    <img src="https://i.imgur.com/WYfH1Ac.jpeg" alt="Bagel le suédois" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Bagel le suédois</span>
-                        <span class="item-price">6.80€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plat3')">
+<img class="item-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300">
+<div class="item-info">
+<span class="item-name">Cheeseburger HALAL</span>
+<span class="item-price">7,25€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plat4')">
-                    <img src="https://i.imgur.com/wcFK737.jpeg" alt="Penne aux merguez grillées" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Penne aux merguez grillées</span>
-                        <span class="item-price">7.00€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plat4')">
+<img class="item-image" src="https://i.imgur.com/RNtOIvm.jpeg">
+<div class="item-info">
+<span class="item-name">Risotto crémeux au comté & poulet HALAL</span>
+<span class="item-price">7,90€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plat5')">
-                    <img src="https://i.imgur.com/Byy8b4S.jpeg" alt="Sandwich jambon cru provola tomate séchée" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Sandwich jambon cru provola tomate séchée</span>
-                        <span class="item-price">5.90€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plat5')">
+<img class="item-image" src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=300">
+<div class="item-info">
+<span class="item-name">Sandwich au thon mayonnaise</span>
+<span class="item-price">5,80€</span>
+</div>
+</div>
 
-            </div>
-        </div>
+</div>
+</div>
 
-        <!-- ========================================= -->
-        <!-- DESSERTS -->
-        <!-- ========================================= -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">DESSERTS</h2>
-            </div>
-            <div class="menu-list">
+<!-- DESSERTS -->
+<div class="section">
+<h2 class="section-title">DESSERTS</h2>
+<div class="menu-list">
 
-                <div class="menu-item" onclick="openModal('dessert1')">
-                    <img src="https://i.imgur.com/rfHz6Da.jpeg" alt="Crumble aux pommes" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Crumble aux pommes</span>
-                        <span class="item-price">2.10€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('dessert1')">
+<img class="item-image" src="https://i.imgur.com/x0Ek51G.jpeg">
+<div class="item-info">
+<span class="item-name">Cookie cacahuète caramel beurre salé</span>
+<span class="item-price">2€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('dessert2')">
-                    <img src="https://i.imgur.com/yaCPyBs.jpeg" alt="Gâteau Nantais" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Gâteau Nantais</span>
-                        <span class="item-price">2.90€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('dessert2')">
+<img class="item-image" src="https://i.imgur.com/g9tOgiP.jpeg">
+<div class="item-info">
+<span class="item-name">Mousse exotique</span>
+<span class="item-price">2€</span>
+</div>
+</div>
 
-            </div>
-        </div>
+</div>
+</div>
 
-        <!-- ========================================= -->
-        <!-- LES PETITS + -->
-        <!-- ========================================= -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">LES PETITS +</h2>
-            </div>
-            <div class="menu-list">
+<!-- PETITS + -->
+<div class="section">
+<h2 class="section-title">LES PETITS +</h2>
+<div class="menu-list">
 
-                <div class="menu-item" onclick="openModal('plus1')">
-                    <img src="https://i.imgur.com/doPteRY.jpeg" alt="Donut pistache" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Donut pistache</span>
-                        <span class="item-price">1.95€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus1')">
+<img class="item-image" src="https://i.imgur.com/doPteRY.jpeg">
+<div class="item-info">
+<span class="item-name">Donut pistache</span>
+<span class="item-price">1,95€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plus2')">
-                    <img src="https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png" alt="Petit pain" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Petit pain</span>
-                        <span class="item-price">0.50€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus2')">
+<img class="item-image" src="https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png">
+<div class="item-info">
+<span class="item-name">Petit pain</span>
+<span class="item-price">0,50€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plus3')">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s" alt="Fromage Saint-Nectaire" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Fromage Saint-Nectaire</span>
-                        <span class="item-price">1.25€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus3')">
+<img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s">
+<div class="item-info">
+<span class="item-name">Fromage Saint-Nectaire</span>
+<span class="item-price">1,25€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plus4')">
-                    <img src="https://i.imgur.com/Fj7orlb.jpeg" alt="Mini Saucisson grignotons parmesan" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Mini Saucisson grignotons parmesan</span>
-                        <span class="item-price">3.60€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus4')">
+<img class="item-image" src="https://i.imgur.com/Fj7orlb.jpeg">
+<div class="item-info">
+<span class="item-name">Mini Saucisson grignotons parmesan</span>
+<span class="item-price">3,60€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plus5')">
-                    <img src="https://i.imgur.com/GuivBAI.jpeg" alt="Yaourt nova sucré" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Yaourt nova sucré</span>
-                        <span class="item-price">1.00€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus5')">
+<img class="item-image" src="https://i.imgur.com/GuivBAI.jpeg">
+<div class="item-info">
+<span class="item-name">Yaourt nova sucré</span>
+<span class="item-price">1,00€</span>
+</div>
+</div>
 
-                <div class="menu-item" onclick="openModal('plus6')">
-                    <img src="https://i.imgur.com/lDS8LQd.jpeg" alt="Yaourt nova fruits" class="item-image">
-                    <div class="item-info">
-                        <span class="item-name">Yaourt nova fruits</span>
-                        <span class="item-price">1.10€</span>
-                    </div>
-                </div>
+<div class="menu-item" onclick="openModal('plus6')">
+<img class="item-image" src="https://i.imgur.com/lDS8LQd.jpeg">
+<div class="item-info">
+<span class="item-name">Yaourt nova fruits</span>
+<span class="item-price">1,10€</span>
+</div>
+</div>
 
-            </div>
-        </div>
+</div>
+</div>
 
-        <footer>
-            Parce que bien manger, ça commence par bien choisir
-        </footer>
-    </div>
+<footer>Parce que bien manger, ça commence par bien choisir</footer>
+</div>
 
-    <!-- MODAL POPUP -->
-    <div id="modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal()">×</button>
-            <div id="modal-body"></div>
-        </div>
-    </div>
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<button class="close-btn" onclick="closeModal()">×</button>
+<div id="modal-body"></div>
+</div>
+</div>
 
-    <script>
-        const fiches = {
-            entree1: {
-                nom: "Coleslaw",
-                image: "https://i.imgur.com/CQ9rPb3.jpeg",
-                ingredients: "Coleslaw croquant à base de chou blanc et carottes râpées, lié d'une sauce au fromage blanc, mayonnaise et vinaigre de cidre, relevé de ciboulette fraîche.",
-                allergenes: "Lait, Moutarde, Œufs, Sulfites"
-            },
-            entree2: {
-                nom: "Crêpe aux fromages",
-                image: "https://i.imgur.com/aWxZJdN.jpeg",
-                ingredients: "Une crêpe dorée et moelleuse, garnie d'un mélange de fromages fondants qui allie douceur et caractère.",
-                allergenes: "Fruits à coque, Gluten, Lait, Œufs"
-            },
-            plat1: {
-                nom: "Poulet mariné à l'ail noir, sauce reblochon & grenailles (HALAL)",
-                image: "https://i.imgur.com/AOKG6Rk.jpeg",
-                ingredients: "Filet de poulet mariné à l'ail noir, nappé d'une sauce crémeuse au reblochon et à la crème fraîche, accompagné de pommes de terre grenaille rôties aux oignons et relevé de ciboulette fraîche.",
-                allergenes: "Lait"
-            },
-            plat2: {
-                nom: "Porc au caramel / nouille sautée aux légumes",
-                image: "https://i.imgur.com/6WyXhTA.jpeg",
-                ingredients: "Porc fondant caramélisé à la sauce soja et au gingembre, servi avec des nouilles sautées aux carottes, poivrons, petits pois, haricots mungo, oignons et ail, pour un équilibre sucré-salé gourmand.",
-                allergenes: "Gluten, Lait, Lupin, Moutarde, Œufs, Poissons, Sésame, Soja, Sulfites"
-            },
-            plat3: {
-                nom: "Bagel le suédois",
-                image: "https://i.imgur.com/WYfH1Ac.jpeg",
-                ingredients: "Bagel garni de saumon fumé, fromage frais, concombre et tomate, relevé d'échalote et d'oignons rouges pour une touche fraîche et légèrement piquante.",
-                allergenes: "Gluten, Lait, Œufs, Poissons, Sésame, Soja, Sulfites"
-            },
-            plat4: {
-                nom: "Penne aux merguez grillées",
-                image: "https://i.imgur.com/wcFK737.jpeg",
-                ingredients: "Des penne al dente, mélangées à des merguez grillées savamment épicées, pour un plat simple mais plein de caractère. Les saveurs riches de la viande, combinées à une sauce légèrement relevée.",
-                allergenes: "Gluten, Lait"
-            },
-            plat5: {
-                nom: "Sandwich jambon cru provola tomate séchée",
-                image: "https://i.imgur.com/Byy8b4S.jpeg",
-                ingredients: "Un sandwich savoureux composé de jambon cru, de provola fumée fondante, de tomates séchées, de tapenade de poivron relevée, et de salade croquante, le tout entre deux tranches de pain frais.",
-                allergenes: "Lait"
-            },
-            dessert1: {
-                nom: "Crumble aux pommes",
-                image: "https://i.imgur.com/rfHz6Da.jpeg",
-                ingredients: "Crumble aux pommes fondantes parfumées à la cannelle et au sucre vanillé, recouvert d'une pâte croustillante au beurre et à la cassonade.",
-                allergenes: "Gluten"
-            },
-            dessert2: {
-                nom: "Gâteau Nantais",
-                image: "https://i.imgur.com/yaCPyBs.jpeg",
-                ingredients: "Gâteau Nantais moelleux à la poudre d'amande, parfumé au rhum et à la vanille, préparé avec beurre demi-sel, œufs, sucre et farine.",
-                allergenes: "Fruits à coque, Gluten, Œufs"
-            },
-            plus1: {
-                nom: "Donut pistache",
-                image: "https://i.imgur.com/doPteRY.jpeg",
-                ingredients: "Ce donut est composé d'un fourrage pistache, nappé d'un glaçage vert avec des rayures de cacao et parsemé d'éclats d'amandes colorées.",
-                allergenes: "Fruits à coque, Gluten, Lait, Œufs"
-            },
-            plus2: {
-                nom: "Petit pain",
-                image: "https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",
-                ingredients: "Farine de blé, eau, levure, sel",
-                allergenes: "Gluten"
-            },
-            plus3: {
-                nom: "Fromage Saint-Nectaire",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",
-                ingredients: "Fromage Saint-Nectaire au lait de vache",
-                allergenes: "Lait"
-            },
-            plus4: {
-                nom: "Mini Saucisson grignotons parmesan",
-                image: "https://i.imgur.com/Fj7orlb.jpeg",
-                ingredients: "Mini saucisson sec au parmesan",
-                allergenes: ""
-            },
-            plus5: {
-                nom: "Yaourt nova sucré",
-                image: "https://i.imgur.com/GuivBAI.jpeg",
-                ingredients: "Yaourt sucré",
-                allergenes: "Lait"
-            },
-            plus6: {
-                nom: "Yaourt nova fruits",
-                image: "https://i.imgur.com/lDS8LQd.jpeg",
-                ingredients: "Yaourt aux fruits",
-                allergenes: "Lait"
-            }
-        };
+<script>
+const fiches = {
+  entree1: {
+    nom: "Mini Pizza Normande",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+    ingredients: "Mini pizza normande garnie de camembert fondant, crème épaisse, dés de jambon, oignons et pommes de terre, parfumée d'une pointe de vin blanc pour une touche authentique et gourmande.",
+    allergenes: "Gluten, sulfites, lait"
+  },
+  entree2: {
+    nom: "Salade de pomme de terre hareng fumé",
+    image: "https://i.imgur.com/Dzst5Cp.jpeg",
+    ingredients: "Salade fraîche de pommes de terre et hareng fumé, mêlée d'oignon rouge, tomates et persil, le tout assaisonné d'une vinaigrette.",
+    allergenes: "Poissons, sulfites, moutarde"
+  },
+  plat1: {
+    nom: "Filet mignon sauce au cidre purée",
+    image: "https://i.imgur.com/QkyfAwk.jpeg",
+    ingredients: "Un filet mignon tendre nappé d'une sauce onctueuse au cidre et aux échalotes, accompagné de purée.",
+    allergenes: "Gluten, œufs, soja, céleri, sulfites, lait"
+  },
+  plat2: {
+    nom: "Nouilles Udon sautées au poulet HALAL",
+    image: "https://i.imgur.com/LjwBTrX.jpeg",
+    ingredients: "Nouilles udon sautées au poulet, garnies de brocolis croquants, carottes, champignons noirs et haricots mungo, relevées d'ail, gingembre et oignons, le tout nappé d'une sauce soja parfumée.",
+    allergenes: "Gluten, sulfites, soja"
+  },
+  plat3: {
+    nom: "Cheeseburger HALAL",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
+    ingredients: "Cheeseburger gourmand avec steak haché juteux et cheddar fondant, garni d'oignons et cornichons, relevé de ketchup, mayonnaise, moutarde et une touche de paprika, le tout dans un pain burger moelleux.",
+    allergenes: "Gluten, œufs, moutarde, sulfites, lait, céleri"
+  },
+  plat4: {
+    nom: "Risotto crémeux au comté & poulet HALAL",
+    image: "https://i.imgur.com/RNtOIvm.jpeg",
+    ingredients: "Risotto crémeux au comté et poulet, parfumé au vin blanc et relevé d'une touche d'oignons et de carotte.",
+    allergenes: "Céleri, sulfites, lait, gluten, œufs, soja"
+  },
+  plat5: {
+    nom: "Sandwich au thon mayonnaise",
+    image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800",
+    ingredients: "Un délicieux sandwich garni de thon émietté mélangé à une onctueuse mayonnaise, accompagné de crudités fraîches : rondelles de tomate juteuse, fines tranches de concombre croquant, oignons rouges légèrement piquants, feuilles de salade croquante et œufs durs tranchés.",
+    allergenes: "Gluten, œufs, poissons, moutarde"
+  },
+  dessert1: {
+    nom: "Cookie cacahuète caramel beurre salé",
+    image: "https://i.imgur.com/x0Ek51G.jpeg",
+    ingredients: "Cookie aux cacahuètes moelleux, nappé d'un caramel au beurre salé.",
+    allergenes: "Crustacés, œufs, arachides, lait, gluten, fruits à coques"
+  },
+  dessert2: {
+    nom: "Mousse exotique",
+    image: "https://i.imgur.com/g9tOgiP.jpeg",
+    ingredients: "Mousse exotique légère à la crème liquide et purée de fruits (mangue, banane, fruit de la passion), relevée d'une touche de citron vert pour une fraîcheur acidulée et parfumée.",
+    allergenes: "Lait, œufs"
+  },
+  plus1: {
+    nom: "Donut pistache",
+    image: "https://i.imgur.com/doPteRY.jpeg",
+    ingredients: "Donut à la pistache",
+    allergenes: "Fruits à coques, gluten, lait, œufs"
+  },
+  plus2: {
+    nom: "Petit pain",
+    image: "https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png",
+    ingredients: "Farine de blé, eau, levure, sel",
+    allergenes: "Gluten"
+  },
+  plus3: {
+    nom: "Fromage Saint-Nectaire",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s",
+    ingredients: "Lait pasteurisé de vache, ferments lactiques",
+    allergenes: "Lait"
+  },
+  plus4: {
+    nom: "Mini Saucisson grignotons parmesan",
+    image: "https://i.imgur.com/Fj7orlb.jpeg",
+    ingredients: "Mini saucisson au parmesan",
+    allergenes: "Lait, sulfites"
+  },
+  plus5: {
+    nom: "Yaourt nova sucré",
+    image: "https://i.imgur.com/GuivBAI.jpeg",
+    ingredients: "Yaourt sucré",
+    allergenes: "Lait"
+  },
+  plus6: {
+    nom: "Yaourt nova fruits",
+    image: "https://i.imgur.com/lDS8LQd.jpeg",
+    ingredients: "Yaourt aux fruits",
+    allergenes: "Lait"
+  }
+};
 
-        function openModal(id) {
-            const fiche = fiches[id];
-            const modal = document.getElementById('modal');
-            const modalBody = document.getElementById('modal-body');
-            
-            modalBody.innerHTML = `
-                <div class="modal-image-container">
-                    <img src="${fiche.image}" alt="${fiche.nom}" class="modal-image">
-                </div>
-                <div class="modal-body">
-                    <h2 class="modal-title">${fiche.nom}</h2>
-                    
-                    <div class="modal-section">
-                        <h3>📋 Ingrédients</h3>
-                        <p>${fiche.ingredients}</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>⚠️ Allergènes</h3>
-                        <div class="allergenes-box">
-                            <strong>Attention :</strong>
-                            <p>${fiche.allergenes || 'Aucun allergène déclaré'}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+function openModal(id){
+  const f = fiches[id];
+  document.getElementById("modal-body").innerHTML = `
+    <img class="modal-image" src="${f.image}">
+    <div class="modal-body">
+      <h2 class="modal-title">${f.nom}</h2>
+      <p>${f.ingredients}</p>
+      <div class="allergenes-box"><strong>Allergènes :</strong><p>${f.allergenes}</p></div>
+    </div>`;
+  document.getElementById("modal").style.display = "block";
+  document.body.style.overflow = "hidden";
+}
 
-        function closeModal(event) {
-            const modal = document.getElementById('modal');
-            if (!event || event.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-    </script>
+function closeModal(e){
+  if(!e || e.target.id === "modal"){
+    document.getElementById("modal").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+</script>
 </body>
 </html>
