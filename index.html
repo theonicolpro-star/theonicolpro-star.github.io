@@ -14,89 +14,6 @@ header{text-align:center;padding:50px}
 .logo-image{max-width:600px;width:100%;filter:brightness(0) invert(1)}
 .week-banner{background:rgba(0,0,0,.3);padding:20px;text-align:center;border-top:3px solid white;border-bottom:3px solid white}
 .week-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;text-transform:uppercase}
-
-/* BANNIÈRE PROMO */
-.promo-banner {
-  background: #FF0000;
-  padding: 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  border-top: 4px solid #FFD700;
-  border-bottom: 4px solid #FFD700;
-}
-.promo-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 12px,
-    rgba(0,0,0,0.08) 12px,
-    rgba(0,0,0,0.08) 24px
-  );
-}
-.promo-inner {
-  position: relative;
-  z-index: 1;
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-.promo-tag {
-  display: inline-block;
-  background: #FFD700;
-  color: #000;
-  font-family: 'Anton';
-  font-size: 14px;
-  letter-spacing: 4px;
-  padding: 4px 16px;
-  text-transform: uppercase;
-  clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
-}
-.promo-main {
-  font-family: 'Anton';
-  font-size: 34px;
-  letter-spacing: 3px;
-  color: #FFD700;
-  text-transform: uppercase;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.4);
-  line-height: 1;
-}
-.promo-sub {
-  font-family: 'Bebas Neue';
-  font-size: 18px;
-  letter-spacing: 3px;
-  color: white;
-  text-transform: uppercase;
-}
-.promo-horaire {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(0,0,0,0.35);
-  border: 2px solid #FFD700;
-  color: #FFD700;
-  font-family: 'Bebas Neue';
-  font-size: 22px;
-  letter-spacing: 3px;
-  padding: 6px 22px;
-  margin-top: 4px;
-}
-.promo-horaire span.icon {
-  font-size: 18px;
-}
-@keyframes pulse-border {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
-  50% { box-shadow: 0 0 0 6px rgba(255,215,0,0); }
-}
-.promo-banner {
-  animation: pulse-border 2.5s ease-in-out infinite;
-}
-
 .section{padding:50px 30px}
 .section-title{font-family:'Anton';font-size:50px;border-left:8px solid white;padding-left:20px;margin-bottom:30px}
 .menu-list{display:flex;flex-direction:column;gap:15px}
@@ -114,6 +31,51 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 .modal-body{padding:40px}
 .modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
 .allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
+  .promo-banner {
+  background: linear-gradient(135deg, #FFD700, #FF8C00);
+  padding: 25px 30px;
+  text-align: center;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  margin: 10px 0;
+}
+
+.promo-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.promo-main {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  color: #1a1a1a;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.promo-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: #3a1a00;
+  letter-spacing: 2px;
+}
+
+.promo-horaire {
+  background: rgba(0,0,0,0.15);
+  padding: 8px 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.icon {
+  margin-right: 6px;
+}
 </style>
 </head>
 
@@ -125,28 +87,40 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 </header>
 
 <div class="week-banner">
-  <div class="week-text">Menu de la semaine du 02 au 08 Mars</div>
+  <div class="week-text">Menu de la semaine du 23 Février au 01 Mars</div>
 </div>
 
+  <!-- BANNIÈRE PROMO -->
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-main">PROMOTION DU VENDREDI</div>
+    <div class="promo-sub">-50% sur tous les produits — Sauf Yaourts et saucissons</div>
+    <div class="promo-horaire">
+      <span class="icon">🕒</span>
+      À PARTIR DE 15H00 JUSQU'À 23H59
+    </div>
+  </div>
+</div>
 
+  
 <!-- ENTRÉES -->
 <div class="section">
 <h2 class="section-title">ENTRÉES</h2>
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('entree1')">
-<img class="item-image" src="https://i.imgur.com/KtOGFgo.jpeg">
+<img class="item-image" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300'">
 <div class="item-info">
-<span class="item-name">Quiche périgourdine</span>
-<span class="item-price">4,00€</span>
+<span class="item-name">Mini Pizza Normande</span>
+<span class="item-price">4€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('entree2')">
-<img class="item-image" src="https://i.imgur.com/VDrS6mI.jpeg">
+<img class="item-image" src="https://i.imgur.com/Dzst5Cp.jpeg">
 <div class="item-info">
-<span class="item-name">Salade parisienne</span>
-<span class="item-price">4,00€</span>
+<span class="item-name">Salade de pomme de terre hareng fumé</span>
+<span class="item-price">3,70€</span>
 </div>
 </div>
 
@@ -159,42 +133,42 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('plat1')">
-<img class="item-image" src="https://i.imgur.com/M13FqDx.jpeg">
+<img class="item-image" src="https://i.imgur.com/QkyfAwk.jpeg">
 <div class="item-info">
-<span class="item-name">Farfalle crémeuse au poulet fines herbes</span>
-<span class="item-price">7,00€</span>
+<span class="item-name">Filet mignon sauce au cidre purée</span>
+<span class="item-price">8€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat2')">
-<img class="item-image" src="https://i.imgur.com/R3FEqdG.jpeg">
+<img class="item-image" src="https://i.imgur.com/LjwBTrX.jpeg">
 <div class="item-info">
-<span class="item-name">Hachis parmentier</span>
-<span class="item-price">7,50€</span>
+<span class="item-name">Nouilles Udon sautées au poulet HALAL</span>
+<span class="item-price">7€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat3')">
-<img class="item-image" src="https://i.imgur.com/Jc4eext.jpeg">
+<img class="item-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300">
 <div class="item-info">
-<span class="item-name">Pita taille panée sauce curry mango</span>
-<span class="item-price">7,50€</span>
+<span class="item-name">Cheeseburger HALAL</span>
+<span class="item-price">7,25€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat4')">
-<img class="item-image" src="https://i.imgur.com/mvXv4SH.jpeg">
+<img class="item-image" src="https://i.imgur.com/RNtOIvm.jpeg">
 <div class="item-info">
-<span class="item-name">Sandwich jambon beurre emmental</span>
-<span class="item-price">5,80€</span>
+<span class="item-name">Risotto crémeux au comté & poulet HALAL</span>
+<span class="item-price">7,90€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat5')">
-<img class="item-image" src="https://i.imgur.com/vpZW8R8.jpeg">
+<img class="item-image" src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=300">
 <div class="item-info">
-<span class="item-name">Butter chicken</span>
-<span class="item-price">7,80€</span>
+<span class="item-name">Sandwich au thon mayonnaise</span>
+<span class="item-price">5,80€</span>
 </div>
 </div>
 
@@ -207,18 +181,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('dessert1')">
-<img class="item-image" src="https://i.imgur.com/RWmLgjs.jpeg">
+<img class="item-image" src="https://i.imgur.com/x0Ek51G.jpeg">
 <div class="item-info">
-<span class="item-name">Tartelette citron meringuée</span>
-<span class="item-price">2,70€</span>
+<span class="item-name">Cookie cacahuète caramel beurre salé</span>
+<span class="item-price">2€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('dessert2')">
-<img class="item-image" src="https://i.imgur.com/USpGmoO.jpeg">
+<img class="item-image" src="https://i.imgur.com/g9tOgiP.jpeg">
 <div class="item-info">
-<span class="item-name">Banane chocolat cacahuète caramélisée</span>
-<span class="item-price">2,95€</span>
+<span class="item-name">Mousse exotique</span>
+<span class="item-price">2€</span>
 </div>
 </div>
 
@@ -231,9 +205,9 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('plus1')">
-<img class="item-image" src="https://i.imgur.com/nbb88iQ.jpeg">
+<img class="item-image" src="https://i.imgur.com/doPteRY.jpeg">
 <div class="item-info">
-<span class="item-name">Donut Chocolat zébré</span>
+<span class="item-name">Donut pistache</span>
 <span class="item-price">1,95€</span>
 </div>
 </div>
@@ -295,64 +269,64 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <script>
 const fiches = {
   entree1: {
-    nom: "Quiche périgourdine",
-    image: "https://i.imgur.com/KtOGFgo.jpeg",
-    ingredients: "Une pâte brisée croustillante garnie d'un appareil à flan onctueux de magret de canard fumé, de tartufata parfumée, le tout gratiné de gruyère râpé.",
-    allergenes: "Fruits à coque, céleri, lait, gluten, œufs, soja"
+    nom: "Mini Pizza Normande",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+    ingredients: "Mini pizza normande garnie de camembert fondant, crème épaisse, dés de jambon, oignons et pommes de terre, parfumée d'une pointe de vin blanc pour une touche authentique et gourmande.",
+    allergenes: "Gluten, sulfites, lait"
   },
   entree2: {
-    nom: "Salade parisienne",
-    image: "https://i.imgur.com/VDrS6mI.jpeg",
-    ingredients: "Une salade fraîche et savoureuse qui allie simplicité et plaisir, mélange de jeunes feuilles croquantes, champignons émincés, tomates, œufs durs et dés de jambon, le tout parsemé de croûtons et de copeaux d'émental avec sa vinaigrette.",
-    allergenes: "Moutarde, sulfite, lait, gluten, œufs"
+    nom: "Salade de pomme de terre hareng fumé",
+    image: "https://i.imgur.com/Dzst5Cp.jpeg",
+    ingredients: "Salade fraîche de pommes de terre et hareng fumé, mêlée d'oignon rouge, tomates et persil, le tout assaisonné d'une vinaigrette.",
+    allergenes: "Poissons, sulfites, moutarde"
   },
   plat1: {
-    nom: "Farfalle crémeuse au poulet fines herbes",
-    image: "https://i.imgur.com/M13FqDx.jpeg",
-    ingredients: "Farfalle nappées d'une sauce onctueuse à la crème et à l'échalote, mêlée de jeunes épinards et de filets de poulet tendre relevés d'une touche de tartare aux fines herbes.",
-    allergenes: "Moutarde, gluten, soja"
+    nom: "Filet mignon sauce au cidre purée",
+    image: "https://i.imgur.com/QkyfAwk.jpeg",
+    ingredients: "Un filet mignon tendre nappé d'une sauce onctueuse au cidre et aux échalotes, accompagné de purée.",
+    allergenes: "Gluten, œufs, soja, céleri, sulfites, lait"
   },
   plat2: {
-    nom: "Hachis parmentier",
-    image: "https://i.imgur.com/R3FEqdG.jpeg",
-    ingredients: "Un grand classique familial composé d'une savoureuse couche de viande hachée mijotée avec carottes, tomates et échalotes, ail et oignons, recouverte d'une purée de pommes de terre onctueuse au lait parfumée à la muscade, puis gratinée au gruyère râpé.",
-    allergenes: "Fruits à coque, céleri, moutarde, lait, gluten, œufs, soja"
+    nom: "Nouilles Udon sautées au poulet HALAL",
+    image: "https://i.imgur.com/LjwBTrX.jpeg",
+    ingredients: "Nouilles udon sautées au poulet, garnies de brocolis croquants, carottes, champignons noirs et haricots mungo, relevées d'ail, gingembre et oignons, le tout nappé d'une sauce soja parfumée.",
+    allergenes: "Gluten, sulfites, soja"
   },
   plat3: {
-    nom: "Pita taille panée sauce curry mango",
-    image: "https://i.imgur.com/Jc4eext.jpeg",
-    ingredients: "Une pita garnie de poulet pané croustillant, accompagnée d'une salade de carottes et chou rouge marinée à la sauce soja et niam, relevée d'oignons nouveaux et cacahuètes croquantes, le tout nappé d'une savoureuse sauce curry mango.",
-    allergenes: "Céleri, sésame, moutarde, sulfite, lait, fruits à coque, gluten, crustacé, poisson, arachide, soja"
+    nom: "Cheeseburger HALAL",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
+    ingredients: "Cheeseburger gourmand avec steak haché juteux et cheddar fondant, garni d'oignons et cornichons, relevé de ketchup, mayonnaise, moutarde et une touche de paprika, le tout dans un pain burger moelleux.",
+    allergenes: "Gluten, œufs, moutarde, sulfites, lait, céleri"
   },
   plat4: {
-    nom: "Sandwich jambon beurre emmental",
-    image: "https://i.imgur.com/mvXv4SH.jpeg",
-    ingredients: "Un sandwich classique et généreux garni de fines tranches de jambon, de beurre, de lamelle d'émental et de salade, le tout dans un pain frais moelleux.",
-    allergenes: "Lait, gluten"
+    nom: "Risotto crémeux au comté & poulet HALAL",
+    image: "https://i.imgur.com/RNtOIvm.jpeg",
+    ingredients: "Risotto crémeux au comté et poulet, parfumé au vin blanc et relevé d'une touche d'oignons et de carotte.",
+    allergenes: "Céleri, sulfites, lait, gluten, œufs, soja"
   },
   plat5: {
-    nom: "Butter chicken",
-    image: "https://i.imgur.com/vpZW8R8.jpeg",
-    ingredients: "Poulet mariné au yaourt, citron, ail, gingembre et épices indiennes (cumin, curcuma, garam masala), mijoté avec oignons, tomates, beurre, paprika et piment dans une sauce onctueuse, servi avec du riz sauvage parfumé et relevé de coriandre fraîche.",
-    allergenes: "Lait, fruits à coques, sulfites"
+    nom: "Sandwich au thon mayonnaise",
+    image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800",
+    ingredients: "Un délicieux sandwich garni de thon émietté mélangé à une onctueuse mayonnaise, accompagné de crudités fraîches : rondelles de tomate juteuse, fines tranches de concombre croquant, oignons rouges légèrement piquants, feuilles de salade croquante et œufs durs tranchés.",
+    allergenes: "Gluten, œufs, poissons, moutarde"
   },
   dessert1: {
-    nom: "Tartelette citron meringuée",
-    image: "https://i.imgur.com/RWmLgjs.jpeg",
-    ingredients: "Une pâte sucrée croustillante garnie d'une crème citron acidulée surmontée d'une meringue à la fois fraîche et gourmande.",
-    allergenes: "Gluten, œufs"
+    nom: "Cookie cacahuète caramel beurre salé",
+    image: "https://i.imgur.com/x0Ek51G.jpeg",
+    ingredients: "Cookie aux cacahuètes moelleux, nappé d'un caramel au beurre salé.",
+    allergenes: "Crustacés, œufs, arachides, lait, gluten, fruits à coques"
   },
   dessert2: {
-    nom: "Banane chocolat cacahuète caramélisée",
-    image: "https://i.imgur.com/USpGmoO.jpeg",
-    ingredients: "Banane caramélisée et flambée au rhum, nappée d'une crème au deux chocolats et parsemée de cacahuètes caramélisées.",
-    allergenes: "Lait, fruits à coque, arachide, soja"
+    nom: "Mousse exotique",
+    image: "https://i.imgur.com/g9tOgiP.jpeg",
+    ingredients: "Mousse exotique légère à la crème liquide et purée de fruits (mangue, banane, fruit de la passion), relevée d'une touche de citron vert pour une fraîcheur acidulée et parfumée.",
+    allergenes: "Lait, œufs"
   },
   plus1: {
-    nom: "Donut Chocolat zébré",
-    image: "https://i.imgur.com/nbb88iQ.jpeg",
-    ingredients: "Un donut moelleux garni d'un fourrage cacao noisette et recouvert d'un glaçage gourmand au chocolat, garni généreusement d'éclats de noisettes.",
-    allergenes: "Lait, gluten"
+    nom: "Donut pistache",
+    image: "https://i.imgur.com/doPteRY.jpeg",
+    ingredients: "Donut à la pistache",
+    allergenes: "Fruits à coques, gluten, lait, œufs"
   },
   plus2: {
     nom: "Petit pain",
