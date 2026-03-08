@@ -31,10 +31,92 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 .modal-body{padding:40px}
 .modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
 .allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
+.sav-btn{position:fixed;top:20px;left:20px;z-index:998;background:#ff6f00;border:3px solid white;color:white;border-radius:50px;padding:14px 24px;cursor:pointer;font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 4px rgba(255,111,0,.4);transition:.3s;animation:pulse 2s infinite}
+.sav-btn:hover{background:#e65100;transform:scale(1.08)}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 4px rgba(255,111,0,.4)}50%{box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 10px rgba(255,111,0,.1)}}
+.sav-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;overflow-y:auto}
+.sav-content{max-width:650px;margin:40px auto;background:linear-gradient(135deg,#003a04,#005a07);color:white;border-radius:8px;overflow:hidden;position:relative}
+.sav-header{background:#004A05;padding:30px;text-align:center;border-bottom:3px solid white}
+.sav-header h2{font-family:'Anton';font-size:36px;letter-spacing:3px}
+.sav-header p{font-size:16px;margin-top:8px;opacity:.9}
+.sav-body{padding:30px}
+.sav-step{background:rgba(255,255,255,.08);border-left:5px solid white;padding:20px;margin-bottom:20px;border-radius:0 6px 6px 0}
+.sav-step-num{background:white;color:#004A05;font-family:'Anton';font-size:20px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;margin-bottom:10px}
+.sav-step h3{font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;margin-bottom:10px}
+.sav-step p,.sav-step li{font-size:15px;line-height:1.6;opacity:.9}
+.sav-step ul{list-style:none;padding:0;margin-top:10px}
+.sav-step ul li::before{content:"✓ ";color:#ffc107;font-weight:bold}
+.sav-step ul li{margin-bottom:6px}
+.sav-contact{background:#ffc107;color:#3e2723;padding:25px;text-align:center;border-radius:6px;margin-top:10px}
+.sav-contact p{font-size:15px;margin-bottom:10px}
+.sav-email{background:#004A05;color:white;padding:12px 24px;border-radius:4px;font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;display:inline-block;margin:10px 0}
+.sav-close{position:absolute;top:15px;right:15px;font-size:36px;background:black;color:white;border:none;cursor:pointer;width:46px;height:46px;line-height:1}
 </style>
 </head>
 
 <body>
+
+<!-- BOUTON SAV -->
+<button class="sav-btn" onclick="document.getElementById('sav-modal').style.display='block'">
+  🛠 SAV
+</button>
+
+<!-- MODAL SAV -->
+<div id="sav-modal" class="sav-modal" onclick="if(event.target===this)this.style.display='none'">
+<div class="sav-content">
+  <button class="sav-close" onclick="document.getElementById('sav-modal').style.display='none'">×</button>
+  <div class="sav-header">
+    <h2>🛠 SERVICE APRÈS-VENTE</h2>
+    <p>La Cuisine de Jeanine</p>
+    <p>⚠️ Un problème avec votre achat ? Suivez les étapes ci-dessous.</p>
+  </div>
+  <div class="sav-body">
+
+    <div class="sav-step">
+      <div class="sav-step-num">1</div>
+      <h3>Contester un produit sur l'écran</h3>
+      <p>Juste après la fermeture de la porte du frigo :</p>
+      <ul>
+        <li>Un écran de validation s'affiche pour confirmer votre paiement</li>
+        <li>Cliquez sur le bouton <strong>"Contester un produit"</strong></li>
+        <li>Sélectionnez le produit concerné pour marquer la transaction</li>
+      </ul>
+      <p style="margin-top:10px;font-style:italic;opacity:.75">Cette étape permet de tracer automatiquement votre achat dans notre système.</p>
+    </div>
+
+    <div class="sav-step">
+      <div class="sav-step-num">2</div>
+      <h3>Contacter notre équipe SAV</h3>
+      <p>Envoyez-nous un email avec les informations suivantes :</p>
+      <ul>
+        <li>Nature du problème (sur-facturation, sous-facturation, produit défectueux…)</li>
+        <li>Heure approximative de votre transaction</li>
+        <li>Produits concernés</li>
+        <li>Les 4 derniers chiffres de votre carte bancaire ou titre restaurant</li>
+      </ul>
+    </div>
+
+    <div class="sav-step">
+      <div class="sav-step-num">3</div>
+      <h3>Résolution et remboursement</h3>
+      <p>Notre équipe SAV prendra contact avec vous dans les plus brefs délais pour :</p>
+      <ul>
+        <li>Vérifier et tracer votre transaction dans notre système</li>
+        <li>Résoudre le problème</li>
+        <li>Procéder au remboursement si nécessaire</li>
+      </ul>
+    </div>
+
+    <div class="sav-contact">
+      <p>📧 Nous contacter</p>
+      <div class="sav-email">contact@lacuisinedejeanine.fr</div>
+      <p>Notre équipe vous répondra rapidement pour régler votre incident</p>
+    </div>
+
+  </div>
+</div>
+</div>
+
 <div class="container">
 
 <header>
