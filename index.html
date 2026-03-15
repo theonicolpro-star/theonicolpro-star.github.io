@@ -14,69 +14,6 @@ header{text-align:center;padding:50px}
 .logo-image{max-width:600px;width:100%;filter:brightness(0) invert(1)}
 .week-banner{background:rgba(0,0,0,.3);padding:20px;text-align:center;border-top:3px solid white;border-bottom:3px solid white}
 .week-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;text-transform:uppercase}
-
-/* ── BANNIÈRE PROMO ── */
-.promo-banner{
-  position:relative;
-  background:linear-gradient(135deg,#B71C1C,#E53935,#B71C1C);
-  padding:28px 30px;
-  text-align:center;
-  border-top:4px solid white;
-  border-bottom:4px solid white;
-  overflow:hidden;
-}
-.promo-banner::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(0,0,0,0.07) 10px,
-    rgba(0,0,0,0.07) 20px
-  );
-}
-.promo-inner{position:relative;display:flex;flex-direction:column;gap:10px;align-items:center}
-.promo-date-tag{
-  background:white;
-  color:#B71C1C;
-  font-family:'Anton',sans-serif;
-  font-size:15px;
-  letter-spacing:3px;
-  padding:4px 16px;
-  display:inline-block;
-  margin-bottom:4px;
-}
-.promo-main{
-  font-family:'Anton',sans-serif;
-  font-size:42px;
-  color:white;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  text-shadow:2px 2px 8px rgba(0,0,0,0.4);
-  line-height:1;
-}
-.promo-highlight{
-  background:#FFD700;
-  color:#1a1a1a;
-  font-family:'Anton',sans-serif;
-  font-size:52px;
-  letter-spacing:2px;
-  padding:4px 20px;
-  display:inline-block;
-  transform:skewX(-4deg);
-  box-shadow:4px 4px 0 rgba(0,0,0,0.3);
-}
-.promo-sub{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:20px;
-  color:rgba(255,255,255,0.92);
-  letter-spacing:2px;
-  margin-top:4px;
-}
-
-/* ── SECTIONS ── */
 .section{padding:50px 30px}
 .section-title{font-family:'Anton';font-size:50px;border-left:8px solid white;padding-left:20px;margin-bottom:30px}
 .menu-list{display:flex;flex-direction:column;gap:15px}
@@ -87,8 +24,6 @@ header{text-align:center;padding:50px}
 .item-name{text-transform:uppercase;font-size:24px;font-weight:600}
 .item-price{font-family:'Anton';font-size:30px;color:#004A05}
 footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Bebas Neue';letter-spacing:3px}
-
-/* ── MODAL ── */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;overflow-y:auto}
 .modal-content{max-width:850px;margin:40px auto;background:linear-gradient(135deg,#003a04,#005a07);color:white;position:relative}
 .close-btn{position:absolute;top:15px;right:15px;font-size:40px;background:black;color:white;border:none;cursor:pointer;width:50px;height:50px}
@@ -96,8 +31,6 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 .modal-body{padding:40px}
 .modal-title{font-family:'Anton';font-size:48px;margin-bottom:25px;border-bottom:3px solid white;padding-bottom:10px}
 .allergenes-box{background:#ffc107;color:#3e2723;padding:20px;margin-top:20px;border-left:6px solid #ff6f00}
-
-/* ── SAV ── */
 .sav-btn{position:fixed;top:20px;left:20px;z-index:998;background:#ff6f00;border:3px solid white;color:white;border-radius:50px;padding:14px 24px;cursor:pointer;font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 4px rgba(255,111,0,.4);transition:.3s;animation:pulse 2s infinite}
 .sav-btn:hover{background:#e65100;transform:scale(1.08)}
 @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 4px rgba(255,111,0,.4)}50%{box-shadow:0 4px 20px rgba(0,0,0,.6),0 0 0 10px rgba(255,111,0,.1)}}
@@ -138,6 +71,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
     <p>⚠️ Un problème avec votre achat ? Suivez les étapes ci-dessous.</p>
   </div>
   <div class="sav-body">
+
     <div class="sav-step">
       <div class="sav-step-num">1</div>
       <h3>Contester un produit sur l'écran</h3>
@@ -149,6 +83,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
       </ul>
       <p style="margin-top:10px;font-style:italic;opacity:.75">Cette étape permet de tracer automatiquement votre achat dans notre système.</p>
     </div>
+
     <div class="sav-step">
       <div class="sav-step-num">2</div>
       <h3>Contacter notre équipe SAV</h3>
@@ -160,6 +95,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
         <li>Les 4 derniers chiffres de votre carte bancaire ou titre restaurant</li>
       </ul>
     </div>
+
     <div class="sav-step">
       <div class="sav-step-num">3</div>
       <h3>Résolution et remboursement</h3>
@@ -170,11 +106,13 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
         <li>Procéder au remboursement si nécessaire</li>
       </ul>
     </div>
+
     <div class="sav-contact">
       <p>📧 Nous contacter</p>
-      <div class="sav-email">contact@lacuisinedejeanine.fr</div>
+      <div class="sav-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f794989983969483b79b9694829e849e999293929d9296999e9992d99185">[email&#160;protected]</a></div>
       <p>Notre équipe vous répondra rapidement pour régler votre incident</p>
     </div>
+
   </div>
 </div>
 </div>
@@ -186,17 +124,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 </header>
 
 <div class="week-banner">
-  <div class="week-text">Menu de la semaine du 09 au 15 Mars</div>
-</div>
-
-<!-- BANNIÈRE PROMO -->
-<div class="promo-banner">
-  <div class="promo-inner">
-    <div class="promo-date-tag">PROMOTIONS DU VENDREDI</div>
-    <div class="promo-highlight">-50%</div>
-    <div class="promo-main">Sur tous les produits !</div>
-    <div class="promo-sub">Sauf YAOURTS, FROMAGES, SAUCISSONS</div>
-  </div>
+  <div class="week-text">🍀 Menu de la semaine du 16 au 22 Mars 🍀</div>
 </div>
 
 <!-- ENTRÉES -->
@@ -205,18 +133,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('entree1')">
-<img class="item-image" src="https://i.imgur.com/TEQewX0.jpeg">
+<img class="item-image" src="https://i.imgur.com/vr2Rlr5.jpeg">
 <div class="item-info">
-<span class="item-name">Farfalle au pesto rosso, jambon sec & burrata</span>
-<span class="item-price">4,10€</span>
+<span class="item-name">Salade de pommes de terre feta</span>
+<span class="item-price">3€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('entree2')">
-<img class="item-image" src="https://i.imgur.com/9LI2VD4.jpeg">
+<img class="item-image" src="https://i.imgur.com/HXtgLxC.jpeg">
 <div class="item-info">
-<span class="item-name">Falafels, houmous au citron confit & légumes rôtis</span>
-<span class="item-price">4,30€</span>
+<span class="item-name">Cake au chorizo mozzarella basilic</span>
+<span class="item-price">1,80€</span>
 </div>
 </div>
 
@@ -229,42 +157,42 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('plat1')">
-<img class="item-image" src="https://i.imgur.com/GBGFBlI.jpeg">
+<img class="item-image" src="https://i.imgur.com/GvAQQ4f.jpeg">
 <div class="item-info">
-<span class="item-name">Suprême de volaille rôti, pommes de terre gratinées & mayonnaise</span>
-<span class="item-price">8€</span>
+<span class="item-name">Irish Stew au poulet façon Guinness</span>
+<span class="item-price">6,80€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat2')">
-<img class="item-image" src="https://i.imgur.com/NLv38w9.jpeg">
+<img class="item-image" src="https://i.imgur.com/XQ3z5PF.jpeg">
 <div class="item-info">
-<span class="item-name">Tajine citron confit & olives vertes, boulgour aux légumes rôtis</span>
-<span class="item-price">7,40€</span>
+<span class="item-name">Poulet sauce satay riz sauvage</span>
+<span class="item-price">7,50€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat3')">
-<img class="item-image" src="https://i.imgur.com/rwUrzjb.jpeg">
+<img class="item-image" src="https://i.imgur.com/jz8Ya1p.png">
 <div class="item-info">
-<span class="item-name">Wraps raclette</span>
-<span class="item-price">5,90€</span>
+<span class="item-name">Bun's Fish and chips</span>
+<span class="item-price">6,20€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat4')">
-<img class="item-image" src="https://i.imgur.com/3BMoaeR.jpeg">
+<img class="item-image" src="https://i.imgur.com/DIaOGJd.jpeg">
 <div class="item-info">
-<span class="item-name">Spaghetti au saumon fumé & citron</span>
-<span class="item-price">6,80€</span>
+<span class="item-name">Ravioli 4 fromages sauce gorgonzola</span>
+<span class="item-price">6€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('plat5')">
-<img class="item-image" src="https://i.imgur.com/56A92MZ.jpeg">
+<img class="item-image" src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=300">
 <div class="item-info">
-<span class="item-name">Sandwich poulet, bacon fumé & cheddar</span>
-<span class="item-price">6,80€</span>
+<span class="item-name">Sandwich rosette de Lyon</span>
+<span class="item-price">5€</span>
 </div>
 </div>
 
@@ -277,18 +205,18 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 <div class="menu-list">
 
 <div class="menu-item" onclick="openModal('dessert1')">
-<img class="item-image" src="https://i.imgur.com/a2pgAtJ.jpeg">
+<img class="item-image" src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300">
 <div class="item-info">
-<span class="item-name">Crêpes Nocciolata</span>
-<span class="item-price">1,70€</span>
+<span class="item-name">Cheesecake au Baileys brisure de Daim</span>
+<span class="item-price">3,90€</span>
 </div>
 </div>
 
 <div class="menu-item" onclick="openModal('dessert2')">
-<img class="item-image" src="https://i.imgur.com/q311Jgz.jpeg">
+<img class="item-image" src="https://i.imgur.com/TJe2Jf0.jpeg">
 <div class="item-info">
-<span class="item-name">Île flottante aux amandes effilées</span>
-<span class="item-price">2,20€</span>
+<span class="item-name">Millefeuille</span>
+<span class="item-price">2,50€</span>
 </div>
 </div>
 
@@ -362,61 +290,61 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const fiches = {
   entree1: {
-    nom: "Farfalle au pesto rosso, jambon sec & burrata",
-    image: "https://i.imgur.com/TEQewX0.jpeg",
-    ingredients: "Farfalle au pesto rosso, accompagnées de jambon sec italien, basilic frais et d'une mini burrata crémeuse.",
-    allergenes: "Fruits à coques, gluten, lait, moutarde, soja"
-  },
-  entree2: {
-    nom: "Falafels, houmous au citron confit & légumes rôtis",
-    image: "https://i.imgur.com/9LI2VD4.jpeg",
-    ingredients: "Falafels croustillants servis avec un houmous au citron confit, des légumes rôtis méditerranéens (aubergine, courgette, poivron, oignon rouge) et une pita grillée, accompagnés d'une sauce yaourt à la menthe et à l'ail.",
-    allergenes: "Gluten, lait"
-  },
-  plat1: {
-    nom: "Suprême de volaille rôti, pommes de terre gratinées & mayonnaise",
-    image: "https://i.imgur.com/GBGFBlI.jpeg",
-    ingredients: "Suprême de volaille rôti au four, accompagné de pommes de terre gratinées aux oignons, à l'ail et aux herbes de Provence. Servi avec une mayonnaise.",
-    allergenes: "Céleri, gluten, lait, moutarde, œufs, soja"
-  },
-  plat2: {
-    nom: "Tajine citron confit & olives vertes, boulgour aux légumes rôtis",
-    image: "https://i.imgur.com/NLv38w9.jpeg",
-    ingredients: "Tajine parfumé au citron confit et aux olives vertes, relevé de cumin, curcuma, coriandre, paprika et gingembre. Servi avec un boulgour aux légumes rôtis : aubergine, courgette, oignon rouge et poivrons.",
-    allergenes: "Céleri, gluten, lait, œufs, sésame, soja"
-  },
-  plat3: {
-    nom: "Wraps raclette",
-    image: "https://i.imgur.com/rwUrzjb.jpeg",
-    ingredients: "Wrap garni de coppa, pommes de terre, fromage à raclette fondant et cornichons croquants.",
+    nom: "Salade de pommes de terre feta",
+    image: "https://i.imgur.com/vr2Rlr5.jpeg",
+    ingredients: "Salade de pomme de terre et feta, agrémentée de concombre, tomate, oignon rouge et basilic frais, le tout relevé d'une vinaigrette légère.",
     allergenes: "Lait, moutarde, sulfites"
   },
+  entree2: {
+    nom: "Cake au chorizo mozzarella basilic",
+    image: "https://i.imgur.com/HXtgLxC.jpeg",
+    ingredients: "Un cake moelleux et parfumé, garni de dés de chorizo relevés, de mozzarella fondante et de basilic frais. Une alliance gourmande qui mêle douceur, fraîcheur et notes épicées.",
+    allergenes: "Gluten, lait, œufs"
+  },
+  plat1: {
+    nom: "Irish Stew au poulet façon Guinness",
+    image: "https://i.imgur.com/GvAQQ4f.jpeg",
+    ingredients: "Sauté de poulet mijoté au beurre et à la bière Guinness, avec carotte, poireau, pomme de terre, oignon, parfumé au laurier, thym et paprika.",
+    allergenes: "Gluten"
+  },
+  plat2: {
+    nom: "Poulet sauce satay riz sauvage",
+    image: "https://i.imgur.com/XQ3z5PF.jpeg",
+    ingredients: "Des morceaux de poulet tendres mijotés dans une sauce satay onctueuse au beurre de cacahuète, relevée d'ail, gingembre, miel, sauce soja et lait de coco. Accompagné de carottes fondantes, céleri et d'une touche fraîche de coriandre, le tout servi avec du riz sauvage parfumé.",
+    allergenes: "Fruits à coques, gluten, soja, sulfites, crustacés, arachides"
+  },
+  plat3: {
+    nom: "Bun's Fish and chips",
+    image: "https://i.imgur.com/jz8Ya1p.png",
+    ingredients: "Filet de colin croustillant dans un pain burger, garni de pommes de terre râpées, tomates fraîches et nappé de sauce tartare.",
+    allergenes: "Gluten, lait, moutarde, œufs, poissons, sulfites"
+  },
   plat4: {
-    nom: "Spaghetti au saumon fumé, asperges & citron",
-    image: "https://i.imgur.com/3BMoaeR.jpeg",
-    ingredients: "Spaghetti crémeux au saumon fumé, parfumés au zeste de citron, avec échalote et ail. Le tout est relevé de copeaux de parmesan.",
-    allergenes: "Gluten, lait, œufs, poisson"
+    nom: "Ravioli 4 fromages sauce gorgonzola",
+    image: "https://i.imgur.com/DIaOGJd.jpeg",
+    ingredients: "Raviolis garnis de ricotta, edam, emmental et mozzarella, nappés d'une onctueuse sauce gorgonzola.",
+    allergenes: "Gluten, lait, œufs"
   },
   plat5: {
-    nom: "Sandwich poulet, bacon fumé & cheddar",
-    image: "https://i.imgur.com/56A92MZ.jpeg",
-    ingredients: "Sandwich garni de filet de poulet, bacon fumé croustillant et cheddar fondant, avec de la salade et une sauce au poivre.",
-    allergenes: "Gluten, lait, moutarde, œufs"
+    nom: "Sandwich rosette de Lyon",
+    image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800",
+    ingredients: "Demi-baguette garnie de salade, beurre à la ciboulette, cornichons croquants et fines tranches de rosette de Lyon.",
+    allergenes: "Gluten, lait, moutarde, sulfites"
   },
   dessert1: {
-    nom: "Crêpes Nocciolata",
-    image: "https://i.imgur.com/a2pgAtJ.jpeg",
-    ingredients: "Crêpes traditionnelles au nocciolata.",
-    allergenes: "Fruits à coques, lait, œufs, gluten, soja"
+    nom: "Cheesecake au Baileys brisure de Daim",
+    image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800",
+    ingredients: "Cheesecake onctueux aux brisures de Daim et à la liqueur Baileys, surmonté d'un généreux nappage chocolat.",
+    allergenes: "Lactose, sulfites, gluten, fruits à coques"
   },
   dessert2: {
-    nom: "Île flottante aux amandes effilées",
-    image: "https://i.imgur.com/q311Jgz.jpeg",
-    ingredients: "Blancs d'œufs légers et aériens posés sur une crème anglaise onctueuse à la vanille, le tout garni d'amandes effilées légèrement toastées.",
-    allergenes: "Fruits à coques, lait, œufs"
+    nom: "Millefeuille",
+    image: "https://i.imgur.com/TJe2Jf0.jpeg",
+    ingredients: "Un millefeuille délicat aux pâtes feuilletées croustillantes, alternant des couches généreuses de crème pâtissière onctueuse, pour un mariage parfait de texture légère et fondante à chaque bouchée.",
+    allergenes: "Gluten, lait, œufs"
   },
   plus1: {
     nom: "Donut caramel",
@@ -466,15 +394,4 @@ function openModal(id){
       <div class="allergenes-box"><strong>Allergènes :</strong><p>${f.allergenes}</p></div>
     </div>`;
   document.getElementById("modal").style.display = "block";
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal(e){
-  if(!e || e.target.id === "modal"){
-    document.getElementById("modal").style.display = "none";
-    document.body.style.overflow = "auto";
-  }
-}
-</script>
-</body>
-</html>
+  d
