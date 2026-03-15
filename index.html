@@ -109,7 +109,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 
     <div class="sav-contact">
       <p>📧 Nous contacter</p>
-      <div class="sav-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f794989983969483b79b9694829e849e999293929d9296999e9992d99185">[email&#160;protected]</a></div>
+      <div class="sav-email" id="sav-email-display"></div>
       <p>Notre équipe vous répondra rapidement pour régler votre incident</p>
     </div>
 
@@ -290,7 +290,7 @@ footer{background:rgba(0,0,0,.4);text-align:center;padding:30px;font-family:'Beb
 </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const fiches = {
   entree1: {
     nom: "Salade de pommes de terre feta",
@@ -383,6 +383,14 @@ const fiches = {
     allergenes: "Lait"
   }
 };
+
+// Build email as plain text to avoid Cloudflare obfuscation
+(function(){
+  var parts=['contact','lacuisinedejeanine','.fr'];
+  var email=parts[0]+'\u0040'+parts[1]+parts[2];
+  var el=document.getElementById('sav-email-display');
+  if(el){el.textContent=email;}
+})();
 
 function openModal(id){
   const f = fiches[id];
