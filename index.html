@@ -384,14 +384,6 @@ const fiches = {
   }
 };
 
-// Build email as plain text to avoid Cloudflare obfuscation
-(function(){
-  var parts=['contact','lacuisinedejeanine','.fr'];
-  var email=parts[0]+'\u0040'+parts[1]+parts[2];
-  var el=document.getElementById('sav-email-display');
-  if(el){el.textContent=email;}
-})();
-
 function openModal(id){
   const f = fiches[id];
   document.getElementById("modal-body").innerHTML = `
@@ -402,4 +394,20 @@ function openModal(id){
       <div class="allergenes-box"><strong>Allergènes :</strong><p>${f.allergenes}</p></div>
     </div>`;
   document.getElementById("modal").style.display = "block";
-  d
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(e){
+  if(!e || e.target.id === "modal"){
+    document.getElementById("modal").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+// Build email - runs after DOM ready
+window.addEventListener('DOMContentLoaded', function(){
+  var el=document.getElementById('sav-email-display');
+  if(el){el.textContent='contact'+'@'+'lacuisinedejeanine.fr';}
+});
+</script>
+</body>
+</html>
