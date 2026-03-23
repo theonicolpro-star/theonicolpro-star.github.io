@@ -23,6 +23,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .week-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:0.5px;white-space:nowrap;}
 .sav-btn{background:var(--accent);color:white;border:none;padding:12px 24px;border-radius:24px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(255,111,0,0.5);transition:.2s;letter-spacing:.5px;}
 .sav-btn:hover{background:#e65100;transform:scale(1.04);}
+.update-banner{background:#fff;color:var(--green-dark);text-align:center;padding:14px 20px;font-size:15px;font-weight:700;letter-spacing:.5px;flex-shrink:0;border-bottom:3px solid var(--green);display:flex;align-items:center;justify-content:center;gap:10px;}
+.update-banner span{background:var(--green);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
 .promo-banner{background:var(--accent2);padding:14px 28px;display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;border-bottom:3px solid var(--accent);}
 .promo-title{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5d3a00;}
 .promo-percent{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#b71c1c;line-height:1;}
@@ -136,6 +138,11 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
     </div>
   </div>
 
+  <div class="update-banner">
+    
+    Menu de la semaine mis à jour — Merci pour votre patience !
+  </div>
+
   <div class="promo-banner" id="promo-banner" style="display:none">
     <span class="promo-title" id="promo-title-el"></span>
     <span class="promo-percent" id="promo-percent-el"></span>
@@ -219,7 +226,7 @@ var DEFAULT_DATA = {
   week:'23 au 29 Mars',
   promo:{active:false,title:'🕒 À partir de 15h00',percent:'-50%',sub:'Sur les produits en DLC du 18/03/2026'},
   entrees:[
-    {id:'entree1',nom:'Mousse de canard',prix:'3,80€',image:'',desc:"Mousse de canard au porto et ses navettes briochées.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'entree1',nom:'Mousse de canard',prix:'3,80€',image:'https://i.imgur.com/Jb4xpOB.jpeg',desc:"Mousse de canard au porto et ses navettes briochées.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
     {id:'entree2',nom:'Salade de lentilles, carottes et cumin',prix:'2,80€',image:'https://i.imgur.com/TrmwfEb.jpeg',desc:"Salade de lentilles vertes et carotte, parfumée au cumin et à la coriandre, agrémentée d'oignon rouge et assaisonnée d'une vinaigrette légère.",allergenes:'Moutarde, sulfites',halal:false,spicy:false,vege:true,isNew:false}
   ],
   plats:[
@@ -236,7 +243,7 @@ var DEFAULT_DATA = {
   plus:[
     {id:'plus1',nom:'Donut chocolat noisette',prix:'1,95€',image:'https://i.imgur.com/nbb88iQ.jpeg',desc:'Donut moelleux au chocolat et noisette.',allergenes:'Fruits à coques, gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
     {id:'plus2',nom:'Petit pain',prix:'0,50€',image:'https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png',desc:'Farine de blé, eau, levure, sel.',allergenes:'Gluten',halal:false,spicy:false,vege:true,isNew:false},
-    {id:'plus3',nom:'Fromage Saint Nectaire',prix:'1,25€',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s',desc:'Lait pasteurisé de vache, ferments lactiques.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
+    {id:'plus3',nom:'Fromage Saint Paulin',prix:'1,25€',image:'https://www.sodiaalprofessionnel.com/app/uploads/2020/02/pack-3d-bio-stpaulin-50x125-1.png',desc:'Lait pasteurisé de vache, ferments lactiques.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
     {id:'plus4',nom:'Mini Saucisson grignotons parmesan',prix:'3,60€',image:'https://i.imgur.com/Fj7orlb.jpeg',desc:'Mini saucisson au parmesan.',allergenes:'Lait, sulfites',halal:false,spicy:false,vege:false,isNew:false},
     {id:'plus5',nom:'Yaourt nova sucré',prix:'1,00€',image:'https://i.imgur.com/GuivBAI.jpeg',desc:'Yaourt sucré.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
     {id:'plus6',nom:'Yaourt nova fruits',prix:'1,10€',image:'https://i.imgur.com/lDS8LQd.jpeg',desc:'Yaourt aux fruits.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false}
@@ -251,9 +258,6 @@ function getData(){
 function badgesHtml(item){
   var b='';
   if(item.halal) b+='<span class="badge badge-halal">HALAL</span>';
-  if(item.spicy) b+='<span class="badge badge-spicy">🌶 Épicé</span>';
-  if(item.vege)  b+='<span class="badge badge-vege">🌿 Végé</span>';
-  if(item.isNew) b+='<span class="badge badge-new">✨ Nouveau</span>';
   return b;
 }
 
