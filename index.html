@@ -216,27 +216,27 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
 <script>
 var DEFAULT_DATA = {
-  week:'16 au 22 Mars',
-  promo:{active:true,title:'🕒 À partir de 15h00',percent:'-50%',sub:'Sur les produits en DLC du 18/03/2026'},
+  week:'23 au 29 Mars',
+  promo:{active:false,title:'🕒 À partir de 15h00',percent:'-50%',sub:'Sur les produits en DLC du 18/03/2026'},
   entrees:[
-    {id:'entree1',nom:'Salade de pommes de terre feta',prix:'3€',image:'https://i.imgur.com/vr2Rlr5.jpeg',desc:"Salade de pomme de terre et feta, agrémentée de concombre, tomate, oignon rouge et basilic frais, le tout relevé d'une vinaigrette légère.",allergenes:'Lait, moutarde, sulfites',halal:false,spicy:false,vege:false,isNew:false},
-    {id:'entree2',nom:'Cake au chorizo mozzarella basilic',prix:'1,80€',image:'https://i.imgur.com/HXtgLxC.jpeg',desc:"Un cake moelleux et parfumé, garni de dés de chorizo relevés, de mozzarella fondante et de basilic frais.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false}
+    {id:'entree1',nom:'Mousse de canard',prix:'3,80€',image:'',desc:"Mousse de canard au porto et ses navettes briochées.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'entree2',nom:'Salade de lentilles, carottes et cumin',prix:'2,80€',image:'https://i.imgur.com/TrmwfEb.jpeg',desc:"Salade de lentilles vertes et carotte, parfumée au cumin et à la coriandre, agrémentée d'oignon rouge et assaisonnée d'une vinaigrette légère.",allergenes:'Moutarde, sulfites',halal:false,spicy:false,vege:true,isNew:false}
   ],
   plats:[
-    {id:'plat1',nom:'Irish Stew au poulet façon Guinness',prix:'6,80€',image:'https://i.imgur.com/GvAQQ4f.jpeg',desc:"Sauté de poulet mijoté au beurre et à la bière Guinness, avec carotte, poireau, pomme de terre, oignon, parfumé au laurier, thym et paprika.",allergenes:'Gluten',halal:false,spicy:false,vege:false,isNew:false},
-    {id:'plat2',nom:'Poulet sauce satay riz sauvage',prix:'7,50€',image:'https://i.imgur.com/XQ3z5PF.jpeg',desc:"Des morceaux de poulet tendres mijotés dans une sauce satay au beurre de cacahuète, ail, gingembre, miel, sauce soja et lait de coco.",allergenes:'Fruits à coques, gluten, soja, sulfites, crustacés, arachides',halal:false,spicy:true,vege:false,isNew:false},
-    {id:'plat3',nom:"Bun's Fish and chips",prix:'6,20€',image:'https://i.imgur.com/UJEQoBC.jpeg',desc:"Filet de colin croustillant dans un pain burger, garni de pommes de terre râpées, tomates fraîches et nappé de sauce tartare.",allergenes:'Gluten, lait, moutarde, œufs, poissons, sulfites',halal:false,spicy:false,vege:false,isNew:false},
-    {id:'plat4',nom:'Ravioli 4 fromages sauce gorgonzola',prix:'6€',image:'https://i.imgur.com/DIaOGJd.jpeg',desc:"Raviolis garnis de ricotta, edam, emmental et mozzarella, nappés d'une onctueuse sauce gorgonzola.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:true,isNew:false},
-    {id:'plat5',nom:'Sandwich rosette de Lyon',prix:'5€',image:'https://i.imgur.com/v5efu4s.jpeg',desc:"Demi-baguette garnie de salade, beurre à la ciboulette, cornichons croquants et fines tranches de rosette de Lyon.",allergenes:'Gluten, lait, moutarde, sulfites',halal:false,spicy:false,vege:false,isNew:false}
+    {id:'plat1',nom:'Cacio e pepe',prix:'6,50€',image:'https://i.imgur.com/F8J8Ekj.jpeg',desc:"Des spaghetti al dente enrobés d'une sauce onctueuse à base de pecorino romano râpé, d'huile d'olive et de poivre noir fraîchement moulu, dans la plus pure tradition romaine. Le tout est sublimé par du jambon de Parme, apportant une touche salée et fondante.",allergenes:'Lait, gluten',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'plat2',nom:'Poulet basquaise',prix:'6,80€',image:'https://i.imgur.com/SgDsgm3.jpeg',desc:"Plat traditionnel du Pays basque : poulet mijoté avec poivrons, tomates, ail et oignons, relevé d'un trait de vin blanc et de piment d'Espelette, servi avec du riz blanc moelleux.",allergenes:'Céleri, gluten, lait, œufs, soja, sulfites',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'plat3',nom:'Poulet saté',prix:'7,50€',image:'https://i.imgur.com/rH9VDDC.jpeg',desc:"Des nouilles de riz souples et parfumées, sautées au wok avec du filet de poulet tendre, relevées d'ail, de cébette et d'oignon. Les poivrons apportent croquant et couleur, tandis que l'huile de sésame et la sauce soja enveloppent le tout d'arômes intenses. Le saté vient parfaire le plat avec ses notes épicées et légèrement grillées.",allergenes:'Fruits à coques, gluten, sésame, soja, sulfites, arachides',halal:false,spicy:true,vege:false,isNew:false},
+    {id:'plat4',nom:'Bagel indien',prix:'6,20€',image:'https://i.imgur.com/sYaaTLW.jpeg',desc:"Un bagel brioché moelleux garni d'un filet de poulet mariné au garam masala, cumin, curcuma, ail et gingembre, accompagné d'oignons rouges croquants, de concombre frais et d'une sauce raïta maison à base de fromage blanc, citron, coriandre et menthe.",allergenes:'Fruits à coques, lait, gluten, œufs, sésame, soja, sulfites',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'plat5',nom:'Sandwich montagnard',prix:'6,30€',image:'https://i.imgur.com/cAIDYXK.jpeg',desc:"Un sandwich généreux aux saveurs de terroir, garni de pommes de terre fondantes et de jambon de pays savoureux. Le tout est nappé d'une crème épaisse onctueuse au reblochon et à l'ail, puis accompagné de salade fraîche.",allergenes:'Gluten, lait',halal:false,spicy:false,vege:false,isNew:false}
   ],
   desserts:[
-    {id:'dessert1',nom:'Cheesecake au Baileys brisure de Daim',prix:'3,90€',image:'https://i.imgur.com/Wlr3oS8.jpeg',desc:"Cheesecake onctueux aux brisures de Daim et à la liqueur Baileys, surmonté d'un généreux nappage chocolat.",allergenes:'Lactose, sulfites, gluten, fruits à coques',halal:false,spicy:false,vege:false,isNew:false},
-    {id:'dessert2',nom:'Millefeuille',prix:'2,50€',image:'https://i.imgur.com/TJe2Jf0.jpeg',desc:"Un millefeuille délicat aux pâtes feuilletées croustillantes, alternant des couches généreuses de crème pâtissière onctueuse.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false}
+    {id:'dessert1',nom:'Chunky brownie',prix:'3€',image:'https://i.imgur.com/Y6bJWIM.jpeg',desc:"Un gâteau fondant au chocolat intense, terriblement décadent, surmonté d'un topping généreux : filet de coulis de caramel, éclats croquants de noix de pécan et morceaux de brownie moelleux.",allergenes:'Fruits à coques, gluten, lait, soja, œufs',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'dessert2',nom:'Flan praliné',prix:'2,50€',image:'https://i.imgur.com/E3Rr6Zw.jpeg',desc:"Flan praliné d'amandes/noisettes, sur une pâte d'éclats de noisettes caramélisées et de noisettes grillées.",allergenes:'Fruits à coques, gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false}
   ],
   plus:[
-    {id:'plus1',nom:'Donut caramel',prix:'1,95€',image:'https://i.imgur.com/U0WzRXe.jpeg',desc:'Donut fourré parfum caramel.',allergenes:'Lait, gluten',halal:false,spicy:false,vege:false,isNew:false},
+    {id:'plus1',nom:'Donut chocolat noisette',prix:'1,95€',image:'https://i.imgur.com/nbb88iQ.jpeg',desc:'Donut moelleux au chocolat et noisette.',allergenes:'Fruits à coques, gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
     {id:'plus2',nom:'Petit pain',prix:'0,50€',image:'https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png',desc:'Farine de blé, eau, levure, sel.',allergenes:'Gluten',halal:false,spicy:false,vege:true,isNew:false},
-    {id:'plus3',nom:'Fromage Saint Paulin',prix:'1,25€',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s',desc:'Lait pasteurisé de vache, ferments lactiques.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
+    {id:'plus3',nom:'Fromage Saint Nectaire',prix:'1,25€',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s',desc:'Lait pasteurisé de vache, ferments lactiques.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
     {id:'plus4',nom:'Mini Saucisson grignotons parmesan',prix:'3,60€',image:'https://i.imgur.com/Fj7orlb.jpeg',desc:'Mini saucisson au parmesan.',allergenes:'Lait, sulfites',halal:false,spicy:false,vege:false,isNew:false},
     {id:'plus5',nom:'Yaourt nova sucré',prix:'1,00€',image:'https://i.imgur.com/GuivBAI.jpeg',desc:'Yaourt sucré.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false},
     {id:'plus6',nom:'Yaourt nova fruits',prix:'1,10€',image:'https://i.imgur.com/lDS8LQd.jpeg',desc:'Yaourt aux fruits.',allergenes:'Lait',halal:false,spicy:false,vege:true,isNew:false}
@@ -443,9 +443,9 @@ window.addEventListener('storage',function(e){
   <div class="ss-overlay"></div>
   <div class="ss-content">
     <div class="ss-logo-area">
-  <div class="ss-tagline">Bienvenue chez</div>
-  <div style="color:white;font-family:'Playfair Display',serif;font-size:42px;font-weight:900;text-align:center;letter-spacing:2px;text-shadow:0 2px 20px rgba(0,0,0,0.4);line-height:1.1;">La Cuisine<br>de Jeanine</div>
-</div>
+      <div class="ss-tagline">Bienvenue chez</div>
+      <div style="color:white;font-family:'Playfair Display',serif;font-size:42px;font-weight:900;text-align:center;letter-spacing:2px;text-shadow:0 2px 20px rgba(0,0,0,0.4);line-height:1.1;">La Cuisine<br>de Jeanine</div>
+    </div>
     <div class="ss-promo-text" id="ss-promo-text"></div>
     <div class="ss-cta">
       <div class="ss-dots" id="ss-dots"></div>
