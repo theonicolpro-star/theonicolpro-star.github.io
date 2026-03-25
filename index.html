@@ -23,8 +23,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .week-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:0.5px;white-space:nowrap;}
 .sav-btn{background:var(--accent);color:white;border:none;padding:12px 24px;border-radius:24px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(255,111,0,0.5);transition:.2s;letter-spacing:.5px;}
 .sav-btn:hover{background:#e65100;transform:scale(1.04);}
-.update-banner{background:#fff;color:var(--green-dark);text-align:center;padding:14px 20px;font-size:15px;font-weight:700;letter-spacing:.5px;flex-shrink:0;border-bottom:3px solid var(--green);display:flex;align-items:center;justify-content:center;gap:10px;}
-.update-banner span{background:var(--green);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+
 .promo-banner{background:var(--accent2);padding:14px 28px;display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;border-bottom:3px solid var(--accent);}
 .promo-title{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5d3a00;}
 .promo-percent{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#b71c1c;line-height:1;}
@@ -138,11 +137,6 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
     </div>
   </div>
 
-  <div class="update-banner">
-    
-    Menu de la semaine mis à jour — Merci pour votre patience !
-  </div>
-
   <div class="promo-banner" id="promo-banner" style="display:none">
     <span class="promo-title" id="promo-title-el"></span>
     <span class="promo-percent" id="promo-percent-el"></span>
@@ -224,7 +218,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 <script>
 var DEFAULT_DATA = {
   week:'23 au 29 Mars',
-  promo:{active:false,title:'🕒 À partir de 15h00',percent:'-50%',sub:'Sur les produits en DLC du 18/03/2026'},
+  promo:{active:true,title:'🕒 Dès 12h00',percent:'-50%',sub:'Sur les yaourts sucrés'},
   entrees:[
     {id:'entree1',nom:'Mousse de canard',prix:'3,80€',image:'https://i.imgur.com/Jb4xpOB.jpeg',desc:"Mousse de canard au porto et ses navettes briochées.",allergenes:'Gluten, lait, œufs',halal:false,spicy:false,vege:false,isNew:false},
     {id:'entree2',nom:'Salade de lentilles, carottes et cumin',prix:'2,80€',image:'https://i.imgur.com/TrmwfEb.jpeg',desc:"Salade de lentilles vertes et carotte, parfumée au cumin et à la coriandre, agrémentée d'oignon rouge et assaisonnée d'une vinaigrette légère.",allergenes:'Moutarde, sulfites',halal:false,spicy:false,vege:true,isNew:false}
