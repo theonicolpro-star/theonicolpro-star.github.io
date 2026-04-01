@@ -136,12 +136,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <div class="week-pill" id="week-pill">–</div>
     </div>
   </div>
-
-  <div class="promo-banner" id="promo-banner" style="display:none">
-    <span class="promo-title" id="promo-title-el"></span>
-    <span class="promo-percent" id="promo-percent-el"></span>
-    <span class="promo-sub" id="promo-sub-el"></span>
-  </div>
+  
+<div class="promo-banner" id="promo-banner">
+  <span class="promo-title" id="promo-title-el">A partir de 15h00</span>
+  <span class="promo-percent" id="promo-percent-el">-50%</span>
+  <span class="promo-sub" id="promo-sub-el">Sur les produits en DLC du 01/04/2026</span>
+</div>
 
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="goTo('entrees',this)">Entrées</button>
@@ -218,7 +218,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 <script>
 var DEFAULT_DATA = {
   week:'30 Mars au 05 Avril',
-  promo:{active:false,title:'🕒 Dès 15h00',percent:'-50%',sub:'Sur les produits en DLC du 25/03'},
+ promo:{
+  active:true,
+  title:'🕒 Dès 15h00',
+  percent:'-50%',
+  sub:'Sur les produits en DLC du 01/04/2026'
+},
   entrees:[
     {id:'entree1',nom:'Mini Pizza Orientale',prix:'4€',image:'https://i.imgur.com/MBtd3oN.jpeg',desc:"Mini pizza garnie de merguez, mozzarella, oignons, poivrons rouges et verts et tomate sur pâte à pizza dorée.",allergenes:'Gluten, lait',halal:false,spicy:false,vege:false,isNew:false},
     {id:'entree2',nom:'Salade au magret fumé et Fourme d\'Ambert',prix:'4€',image:'https://i.imgur.com/rdyB5qY.jpeg',desc:"Mélange de salade fraîche et de fusilli, accompagné de magret de canard fumé, de Fourme d\'Ambert fondante, de noix croquantes et de tomate cerise. Le tout relevé d\'une vinaigrette balsamique.",allergenes:'Fruits à coques, gluten, sulfites, arachides, sésame',halal:false,spicy:false,vege:false,isNew:false}
