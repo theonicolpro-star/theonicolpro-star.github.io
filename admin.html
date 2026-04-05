@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — La Cuisine de Jeanine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#004A05; --green-dark:#002d03; --green-light:#e8f5e9;
+  --accent:#ff6f00; --accent2:#ffc107;
+  --white:#fff; --off:#f8f6f1; --text:#1a1a1a; --muted:#6b6b6b; --border:#e0ddd6;
+  --red:#c62828; --danger:#ffebee;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--text);min-height:100vh;}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--green);}
+.login-box{background:white;border-radius:24px;padding:36px 24px;width:min(360px,90vw);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.login-logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:4px;}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:32px;letter-spacing:1px;text-transform:uppercase;}
+.login-box input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:3px;text-align:center;outline:none;transition:.2s;margin-bottom:16px;}
+.login-box input:focus{border-color:var(--green);}
+.login-btn{width:100%;padding:14px;background:var(--green);color:white;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:.2s;}
+.login-btn:hover{background:var(--green-dark);}
+.login-error{color:var(--red);font-size:13px;margin-top:12px;display:none;}
+
+/* ADMIN LAYOUT */
+#admin-screen{display:none;}
+.admin-header{background:var(--green);padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:10px;}
+.admin-header-logo{font-family:'Playfair Display',serif;color:white;font-size:17px;flex-shrink:0;}
+.admin-header-logo span{font-size:10px;display:block;font-family:'DM Sans',sans-serif;opacity:.7;letter-spacing:2px;text-transform:uppercase;}
+.header-actions{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.btn{padding:9px 20px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:.2s;}
+.btn-white{background:white;color:var(--green);}
+.btn-white:hover{background:var(--green-light);}
+.btn-accent{background:var(--accent);color:white;}
+.btn-accent:hover{background:#e65100;}
+.btn-green{background:var(--green-light);color:var(--green);border:1.5px solid rgba(0,74,5,0.2);}
+.btn-green:hover{background:#c8e6c9;}
+.btn-danger{background:var(--danger);color:var(--red);border:1.5px solid rgba(198,40,40,0.2);}
+.btn-danger:hover{background:#ffcdd2;}
+.btn-save-main{background:var(--accent);color:white;font-size:13px;padding:10px 18px;border-radius:12px;white-space:nowrap;}
+.btn-save-main:hover{background:#e65100;}
+
+.admin-body{max-width:960px;margin:0 auto;padding:20px 12px 100px;}
+
+/* TABS */
+.admin-tabs{display:flex;gap:4px;margin-bottom:20px;background:white;padding:5px;border-radius:14px;border:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;}
+.admin-tabs::-webkit-scrollbar{display:none;}
+.admin-tab{flex-shrink:0;padding:9px 12px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);cursor:pointer;border-radius:10px;transition:.2s;border:none;background:none;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.admin-tab.active{background:var(--green);color:white;}
+.admin-tab:hover:not(.active){background:var(--green-light);color:var(--green);}
+
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* PROMO SECTION */
+.promo-card{background:white;border-radius:16px;padding:16px;border:1px solid var(--border);margin-bottom:20px;}
+.promo-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--green-dark);margin-bottom:20px;}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);}
+.toggle-row:last-of-type{border-bottom:none;}
+.toggle-label{font-size:14px;font-weight:600;}
+.toggle-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.toggle{position:relative;width:52px;height:28px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:28px;cursor:pointer;transition:.3s;}
+.toggle-slider:before{content:'';position:absolute;width:22px;height:22px;left:3px;bottom:3px;background:white;border-radius:50%;transition:.3s;}
+.toggle input:checked + .toggle-slider{background:var(--green);}
+.toggle input:checked + .toggle-slider:before{transform:translateX(24px);}
+.field-group{margin-top:16px;}
+.field-group label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.field-group input,.field-group select,.field-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:.2s;background:var(--off);}
+.field-group input:focus,.field-group select:focus,.field-group textarea:focus{border-color:var(--green);background:white;}
+.field-group textarea{resize:vertical;min-height:70px;}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:500px){.fields-row{grid-template-columns:1fr;}}
+
+/* ITEMS LIST */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.section-header h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--green-dark);}
+.items-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.item-card{background:white;border-radius:14px;border:1px solid var(--border);overflow:hidden;}
+.item-card-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;user-select:none;}
+.item-card-header:hover{background:#fafafa;}
+.item-thumb{width:56px;height:56px;object-fit:cover;border-radius:8px;border:2px solid var(--border);flex-shrink:0;}
+.item-card-info{flex:1;}
+.item-card-name{font-size:14px;font-weight:600;}
+.item-card-price{font-size:13px;color:var(--muted);}
+.item-badges{display:flex;gap:6px;margin-top:4px;}
+.badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.5px;}
+.badge-halal{background:#e8f5e9;color:var(--green);}
+.badge-spicy{background:#fff3e0;color:var(--accent);}
+.badge-vege{background:#f3e5f5;color:#6a1b9a;}
+.badge-new{background:#e3f2fd;color:#1565c0;}
+.item-expand-btn{color:var(--muted);font-size:18px;transition:.2s;flex-shrink:0;}
+.item-card.open .item-expand-btn{transform:rotate(180deg);}
+.item-card-body{display:none;padding:0 12px 14px;border-top:1px solid var(--border);}
+.item-card.open .item-card-body{display:block;padding-top:14px;}
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;}
+.badge-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer;}
+.badge-check input{width:16px;height:16px;accent-color:var(--green);}
+.item-actions{display:flex;gap:8px;margin-top:16px;}
+.img-preview{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px;display:none;}
+
+/* WEEK BANNER */
+.week-card{background:white;border-radius:16px;padding:16px;border:1px solid var(--border);}
+.week-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--green-dark);margin-bottom:16px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--green);color:white;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,74,5,0.3);z-index:9999;transform:translateY(80px);opacity:0;transition:.3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.error{background:var(--red);}
+
+/* SAVE BAR */
+.save-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:200;box-shadow:0 -4px 20px rgba(0,0,0,0.08);}
+.save-bar p{font-size:12px;color:var(--muted);display:none;}
+@media(min-width:600px){.save-bar p{display:block;}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Jeanine</div>
+    <div class="login-sub">Back Office</div>
+    <input type="password" id="pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPwd()">
+    <button class="login-btn" onclick="checkPwd()">Connexion</button>
+    <div class="login-error" id="login-error">Mot de passe incorrect</div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen">
+  <div class="admin-header">
+    <div class="admin-header-logo">
+      <span>Back Office</span>
+      La Cuisine de Jeanine
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-white" onclick="logout()">Déconnexion</button>
+      <button class="btn btn-accent btn-save-main" onclick="saveAll()">💾 Sauvegarder</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('semaine',event)">🗓 Semaine</button>
+      <button class="admin-tab" onclick="switchTab('entrees',event)">🥗 Entrées</button>
+      <button class="admin-tab" onclick="switchTab('plats',event)">🍽 Plats</button>
+      <button class="admin-tab" onclick="switchTab('desserts',event)">🍰 Desserts</button>
+      <button class="admin-tab" onclick="switchTab('plus',event)">➕ Petits +</button>
+      <button class="admin-tab" onclick="switchTab('promo',event)">📢 Promo</button>
+    </div>
+
+    <!-- SEMAINE -->
+    <div class="tab-content active" id="tab-semaine">
+      <div class="week-card">
+        <h3>Informations de la semaine</h3>
+        <div class="field-group">
+          <label>Texte affiché dans le menu</label>
+          <input type="text" id="week-text" placeholder="Ex: 🍀 16 – 22 Mars">
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRÉES -->
+    <div class="tab-content" id="tab-entrees">
+      <div class="section-header">
+        <h3>Entrées</h3>
+        <button class="btn btn-green" onclick="addItem('entrees')">+ Ajouter</button>
+      </div>
+      <div class="items-list" id="list-entrees"></div>
+    </div>
+
+    <!-- PLATS -->
+    <div class="tab-content" id="tab-plats">
+      <div class="section-header">
+        <h3>Plats</h3>
+        <button class="btn btn-green" onclick="addItem('plats')">+ Ajouter</button>
+      </div>
+      <div class="items-list" id="list-plats"></div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="tab-content" id="tab-desserts">
+      <div class="section-header">
+        <h3>Desserts</h3>
+        <button class="btn btn-green" onclick="addItem('desserts')">+ Ajouter</button>
+      </div>
+      <div class="items-list" id="list-desserts"></div>
+    </div>
+
+    <!-- PETITS + -->
+    <div class="tab-content" id="tab-plus">
+      <div class="section-header">
+        <h3>Les Petits +</h3>
+        <button class="btn btn-green" onclick="addItem('plus')">+ Ajouter</button>
+      </div>
+      <div class="items-list" id="list-plus"></div>
+    </div>
+
+    <!-- PROMO -->
+    <div class="tab-content" id="tab-promo">
+      <div class="promo-card">
+        <h3>Bannière promotionnelle</h3>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Afficher la bannière</div>
+            <div class="toggle-sub">Active / désactive la bannière sur le menu</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="promo-active">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="field-group">
+          <label>Titre (ligne 1)</label>
+          <input type="text" id="promo-title" placeholder="Ex: 🕒 À partir de 15h00">
+        </div>
+        <div class="field-group">
+          <label>Pourcentage (ligne 2)</label>
+          <input type="text" id="promo-percent" placeholder="Ex: -50%">
+        </div>
+        <div class="field-group">
+          <label>Sous-titre (ligne 3)</label>
+          <input type="text" id="promo-sub" placeholder="Ex: Sur les produits en DLC du 18/03/2026">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="save-bar">
+    <p>Les modifications sont sauvegardées sur Firebase et appliquées en temps réel sur tous les écrans.</p>
+    <button class="btn btn-accent btn-save-main" onclick="saveAll()">💾 Sauvegarder</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCd6uWcaGJDZbWIyzsmfEWlzd9llkwgQx8",
+  authDomain: "lcdjinteractif.firebaseapp.com",
+  projectId: "lcdjinteractif",
+  storageBucket: "lcdjinteractif.firebasestorage.app",
+  messagingSenderId: "155886757647",
+  appId: "1:155886757647:web:67ed0c7555f768e487407a"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const menuRef = doc(db, 'menu', 'data');
+
+const PASSWORD = 'jeanine2026';
+
+const DEFAULT_DATA = {
+  week: '🍀 16 – 22 Mars',
+  promo: { active: true, title: '🕒 À partir de 15h00', percent: '-50%', sub: 'Sur les produits en DLC du 18/03/2026' },
+  entrees: [
+    { id:'entree1', nom:'Salade de pommes de terre feta', prix:'3€', image:'https://i.imgur.com/vr2Rlr5.jpeg', desc:"Salade de pomme de terre et feta, agrémentée de concombre, tomate, oignon rouge et basilic frais, le tout relevé d'une vinaigrette légère.", allergenes:'Lait, moutarde, sulfites', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'entree2', nom:'Cake au chorizo mozzarella basilic', prix:'1,80€', image:'https://i.imgur.com/HXtgLxC.jpeg', desc:'Un cake moelleux et parfumé, garni de dés de chorizo relevés, de mozzarella fondante et de basilic frais.', allergenes:'Gluten, lait, œufs', halal:false, spicy:false, vege:false, isNew:false }
+  ],
+  plats: [
+    { id:'plat1', nom:'Irish Stew au poulet façon Guinness', prix:'6,80€', image:'https://i.imgur.com/GvAQQ4f.jpeg', desc:"Sauté de poulet mijoté au beurre et à la bière Guinness, avec carotte, poireau, pomme de terre, oignon, parfumé au laurier, thym et paprika.", allergenes:'Gluten', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'plat2', nom:'Poulet sauce satay riz sauvage', prix:'7,50€', image:'https://i.imgur.com/XQ3z5PF.jpeg', desc:"Des morceaux de poulet tendres mijotés dans une sauce satay onctueuse au beurre de cacahuète, relevée d'ail, gingembre, miel, sauce soja et lait de coco.", allergenes:'Fruits à coques, gluten, soja, sulfites, crustacés, arachides', halal:false, spicy:true, vege:false, isNew:false },
+    { id:'plat3', nom:"Bun's Fish and chips", prix:'6,20€', image:'https://i.imgur.com/UJEQoBC.jpeg', desc:'Filet de colin croustillant dans un pain burger, garni de pommes de terre râpées, tomates fraîches et nappé de sauce tartare.', allergenes:'Gluten, lait, moutarde, œufs, poissons, sulfites', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'plat4', nom:'Ravioli 4 fromages sauce gorgonzola', prix:'6€', image:'https://i.imgur.com/DIaOGJd.jpeg', desc:"Raviolis garnis de ricotta, edam, emmental et mozzarella, nappés d'une onctueuse sauce gorgonzola.", allergenes:'Gluten, lait, œufs', halal:false, spicy:false, vege:true, isNew:false },
+    { id:'plat5', nom:'Sandwich rosette de Lyon', prix:'5€', image:'https://i.imgur.com/v5efu4s.jpeg', desc:'Demi-baguette garnie de salade, beurre à la ciboulette, cornichons croquants et fines tranches de rosette de Lyon.', allergenes:'Gluten, lait, moutarde, sulfites', halal:false, spicy:false, vege:false, isNew:false }
+  ],
+  desserts: [
+    { id:'dessert1', nom:'Cheesecake au Baileys brisure de Daim', prix:'3,90€', image:'https://i.imgur.com/Wlr3oS8.jpeg', desc:"Cheesecake onctueux aux brisures de Daim et à la liqueur Baileys, surmonté d'un généreux nappage chocolat.", allergenes:'Lactose, sulfites, gluten, fruits à coques', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'dessert2', nom:'Millefeuille', prix:'2,50€', image:'https://i.imgur.com/TJe2Jf0.jpeg', desc:"Un millefeuille délicat aux pâtes feuilletées croustillantes, alternant des couches généreuses de crème pâtissière onctueuse.", allergenes:'Gluten, lait, œufs', halal:false, spicy:false, vege:false, isNew:false }
+  ],
+  plus: [
+    { id:'plus1', nom:'Donut caramel', prix:'1,95€', image:'https://i.imgur.com/U0WzRXe.jpeg', desc:'Donut fourré parfum caramel.', allergenes:'Lait, gluten', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'plus2', nom:'Petit pain', prix:'0,50€', image:'https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png', desc:'Farine de blé, eau, levure, sel.', allergenes:'Gluten', halal:false, spicy:false, vege:true, isNew:false },
+    { id:'plus3', nom:'Fromage Saint Paulin', prix:'1,25€', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s', desc:'Lait pasteurisé de vache, ferments lactiques.', allergenes:'Lait', halal:false, spicy:false, vege:true, isNew:false },
+    { id:'plus4', nom:'Mini Saucisson grignotons parmesan', prix:'3,60€', image:'https://i.imgur.com/Fj7orlb.jpeg', desc:'Mini saucisson au parmesan.', allergenes:'Lait, sulfites', halal:false, spicy:false, vege:false, isNew:false },
+    { id:'plus5', nom:'Yaourt nova sucré', prix:'1,00€', image:'https://i.imgur.com/GuivBAI.jpeg', desc:'Yaourt sucré.', allergenes:'Lait', halal:false, spicy:false, vege:true, isNew:false },
+    { id:'plus6', nom:'Yaourt nova fruits', prix:'1,10€', image:'https://i.imgur.com/lDS8LQd.jpeg', desc:'Yaourt aux fruits.', allergenes:'Lait', halal:false, spicy:false, vege:true, isNew:false }
+  ]
+};
+
+let data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+
+// ── AUTH ──
+window.checkPwd = function() {
+  const val = document.getElementById('pwd-input').value;
+  if(val === PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    loadData();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pwd-input').value = '';
+  }
+};
+
+window.logout = function() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('pwd-input').value = '';
+};
+
+// ── CHARGEMENT DEPUIS FIREBASE ──
+async function loadData() {
+  try {
+    const snap = await getDoc(menuRef);
+    if(snap.exists()) {
+      data = snap.data();
+    } else {
+      data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+    }
+  } catch(e) {
+    console.warn('Firebase non disponible, données par défaut.', e);
+    data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  }
+  // Remplir les champs
+  document.getElementById('week-text').value = data.week || '';
+  document.getElementById('promo-active').checked = !!(data.promo && data.promo.active);
+  document.getElementById('promo-title').value = (data.promo && data.promo.title) || '';
+  document.getElementById('promo-percent').value = (data.promo && data.promo.percent) || '';
+  document.getElementById('promo-sub').value = (data.promo && data.promo.sub) || '';
+  renderAll();
+}
+
+// ── COLLECTE DES DONNÉES ──
+function collectData() {
+  data.week = document.getElementById('week-text').value;
+  if(!data.promo) data.promo = {};
+  data.promo.active = document.getElementById('promo-active').checked;
+  data.promo.title = document.getElementById('promo-title').value;
+  data.promo.percent = document.getElementById('promo-percent').value;
+  data.promo.sub = document.getElementById('promo-sub').value;
+
+  ['entrees','plats','desserts','plus'].forEach(function(cat) {
+    var cards = document.querySelectorAll('#list-'+cat+' .item-card');
+    data[cat] = [];
+    cards.forEach(function(card) {
+      var id = card.dataset.id;
+      data[cat].push({
+        id: id,
+        nom: card.querySelector('[data-field="nom"]').value,
+        prix: card.querySelector('[data-field="prix"]').value,
+        image: card.querySelector('[data-field="image"]').value,
+        desc: card.querySelector('[data-field="desc"]').value,
+        allergenes: card.querySelector('[data-field="allergenes"]').value,
+        halal: card.querySelector('[data-badge="halal"]').checked,
+        spicy: card.querySelector('[data-badge="spicy"]').checked,
+        vege: card.querySelector('[data-badge="vege"]').checked,
+        isNew: card.querySelector('[data-badge="isNew"]').checked
+      });
+    });
+  });
+}
+
+// ── SAUVEGARDE DANS FIREBASE ──
+window.saveAll = async function() {
+  collectData();
+  try {
+    await setDoc(menuRef, data);
+    showToast('✅ Sauvegardé sur Firebase ! Menu mis à jour en temps réel.');
+  } catch(e) {
+    console.error('Erreur sauvegarde Firebase:', e);
+    showToast('❌ Erreur de sauvegarde : ' + e.message, true);
+  }
+};
+
+// ── RENDER ──
+function renderAll() {
+  ['entrees','plats','desserts','plus'].forEach(renderList);
+}
+
+function renderList(cat) {
+  var container = document.getElementById('list-'+cat);
+  container.innerHTML = '';
+  (data[cat] || []).forEach(function(item, idx) {
+    container.appendChild(buildItemCard(cat, item, idx));
+  });
+}
+
+function buildItemCard(cat, item, idx) {
+  var div = document.createElement('div');
+  div.className = 'item-card';
+  div.dataset.id = item.id || (cat+idx);
+  var badges = '';
+  if(item.halal) badges += '<span class="badge badge-halal">HALAL</span>';
+  if(item.spicy) badges += '<span class="badge badge-spicy">🌶 ÉPICÉ</span>';
+  if(item.vege)  badges += '<span class="badge badge-vege">🌿 VÉGÉ</span>';
+  if(item.isNew) badges += '<span class="badge badge-new">✨ NOUVEAU</span>';
+  div.innerHTML =
+    '<div class="item-card-header" onclick="toggleCard(this)">' +
+      '<img class="item-thumb" src="'+item.image+'" onerror="this.style.background=\'#eee\'">' +
+      '<div class="item-card-info">' +
+        '<div class="item-card-name">'+item.nom+'</div>' +
+        '<div class="item-card-price">'+item.prix+'</div>' +
+        '<div class="item-badges">'+badges+'</div>' +
+      '</div>' +
+      '<span class="item-expand-btn">▾</span>' +
+    '</div>' +
+    '<div class="item-card-body">' +
+      '<div class="fields-row">' +
+        '<div class="field-group"><label>Nom</label><input type="text" data-field="nom" value="'+esc(item.nom)+'" oninput="refreshCardHeader(this)"></div>' +
+        '<div class="field-group"><label>Prix</label><input type="text" data-field="prix" value="'+esc(item.prix)+'"></div>' +
+      '</div>' +
+      '<div class="field-group" style="margin-top:12px"><label>URL Image</label><input type="text" data-field="image" value="'+esc(item.image)+'" oninput="refreshThumb(this)"></div>' +
+      '<div class="field-group" style="margin-top:12px"><label>Description</label><textarea data-field="desc">'+esc(item.desc)+'</textarea></div>' +
+      '<div class="field-group" style="margin-top:12px"><label>Allergènes</label><input type="text" data-field="allergenes" value="'+esc(item.allergenes)+'"></div>' +
+      '<div class="field-group" style="margin-top:12px"><label>Badges affichés sur la carte</label>' +
+        '<div class="badge-row">' +
+          '<label class="badge-check"><input type="checkbox" data-badge="halal" '+(item.halal?'checked':'')+' onchange="refreshBadges(this)"> <span class="badge badge-halal">HALAL</span></label>' +
+          '<label class="badge-check"><input type="checkbox" data-badge="spicy" '+(item.spicy?'checked':'')+' onchange="refreshBadges(this)"> <span class="badge badge-spicy">🌶 Épicé</span></label>' +
+          '<label class="badge-check"><input type="checkbox" data-badge="vege" '+(item.vege?'checked':'')+' onchange="refreshBadges(this)"> <span class="badge badge-vege">🌿 Végé</span></label>' +
+          '<label class="badge-check"><input type="checkbox" data-badge="isNew" '+(item.isNew?'checked':'')+' onchange="refreshBadges(this)"> <span class="badge badge-new">✨ Nouveau</span></label>' +
+        '</div>' +
+      '</div>' +
+      '<div class="item-actions">' +
+        '<button class="btn btn-danger" onclick="deleteItem(this)">🗑 Supprimer</button>' +
+      '</div>' +
+    '</div>';
+  return div;
+}
+
+window.esc = function(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+window.toggleCard = function(header) {
+  var card = header.parentElement;
+  card.classList.toggle('open');
+};
+
+window.refreshThumb = function(input) {
+  var card = input.closest('.item-card');
+  card.querySelector('.item-thumb').src = input.value;
+};
+
+window.refreshCardHeader = function(input) {
+  var card = input.closest('.item-card');
+  card.querySelector('.item-card-name').textContent = input.value;
+};
+
+window.refreshBadges = function(input) {
+  var card = input.closest('.item-card');
+  var badges = '';
+  if(card.querySelector('[data-badge="halal"]').checked) badges += '<span class="badge badge-halal">HALAL</span>';
+  if(card.querySelector('[data-badge="spicy"]').checked) badges += '<span class="badge badge-spicy">🌶 ÉPICÉ</span>';
+  if(card.querySelector('[data-badge="vege"]').checked)  badges += '<span class="badge badge-vege">🌿 VÉGÉ</span>';
+  if(card.querySelector('[data-badge="isNew"]').checked) badges += '<span class="badge badge-new">✨ NOUVEAU</span>';
+  card.querySelector('.item-badges').innerHTML = badges;
+};
+
+window.deleteItem = function(btn) {
+  if(confirm('Supprimer cet article ?')) btn.closest('.item-card').remove();
+};
+
+window.addItem = function(cat) {
+  var newItem = { id: cat+'_'+Date.now(), nom:'Nouvel article', prix:'0€', image:'', desc:'', allergenes:'', halal:false, spicy:false, vege:false, isNew:true };
+  var container = document.getElementById('list-'+cat);
+  var card = buildItemCard(cat, newItem, container.children.length);
+  card.classList.add('open');
+  container.appendChild(card);
+  card.scrollIntoView({ behavior:'smooth', block:'center' });
+};
+
+// ── TABS ──
+window.switchTab = function(name, event) {
+  document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.admin-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('tab-'+name).classList.add('active');
+  if(event && event.currentTarget) event.currentTarget.classList.add('active');
+};
+
+// ── TOAST ──
+window.showToast = function(msg, isError) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('show', 'error');
+  if(isError) t.classList.add('error');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+};
+</script>
+</body>
+</html>
