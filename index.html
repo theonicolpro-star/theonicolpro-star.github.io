@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>La Cuisine de Jeanine</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/mona-sans@5/index.min.css">
+<style>
+  /* Police titres = Brother 1816 (à héberger si licence), repli Playfair */
+  /* Police corps = Mona Sans, repli DM Sans */
+</style>
+<style>
+:root{
+  --green:#005A04; --green-dark:#003d03; --green-light:#dde8d6;
+  --accent:#972D29; --accent-dark:#7a231f; --accent-soft:#fbd5b0;
+  --cream:#efe8d9; --cream-deep:#e6dcc7; --card:#fbf6ec;
+  --ink:#422118; --ink-soft:#8a7363; --line:#ddd0bc;
+  --font-title:'Brother 1816','Playfair Display',Georgia,serif;
+  --font-body:'Mona Sans','DM Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font-body);background:var(--cream);color:var(--ink);}
+.page-wrapper{display:flex;flex-direction:column;height:100vh;overflow:hidden;background:var(--cream);}
+.hero{background:var(--cream);padding:28px 24px 18px;text-align:center;flex-shrink:0;position:relative;}
+.hero-script{font-family:'Caveat',cursive;font-size:30px;color:var(--green);line-height:1;margin-bottom:4px;}
+.hero-title{font-family:var(--font-title);font-size:40px;font-weight:900;line-height:1.02;letter-spacing:-0.5px;text-transform:uppercase;color:var(--green);}
+.hero-title .accent{color:inherit;}
+.hero-week{margin-top:14px;display:inline-block;background:rgba(0,90,4,0.10);color:var(--green);padding:7px 18px;border-radius:30px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.sav-pill{position:absolute;top:20px;right:18px;background:var(--green);border:none;color:var(--cream);padding:9px 18px;border-radius:30px;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:.2s;font-family:var(--font-body);}
+.sav-pill:active{transform:scale(.94);}
+
+.info-banner{margin:6px 18px 0;background:var(--accent);color:var(--cream);border:none;border-radius:16px;padding:15px 20px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:.2s;font-family:var(--font-body);box-shadow:0 6px 18px rgba(151,45,41,0.22);flex-shrink:0;}
+.info-banner:active{transform:scale(.985);}
+.info-banner-icon{font-size:22px;}
+.info-banner-text{font-size:16px;font-weight:700;letter-spacing:.2px;text-align:left;line-height:1.2;}
+.info-banner-arrow{font-size:20px;margin-left:auto;opacity:.9;}
+.nav-tabs{display:flex;gap:8px;padding:16px 18px 8px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{flex-shrink:0;padding:10px 20px;font-size:14px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);cursor:pointer;border:none;background:rgba(0,90,4,0.10);border-radius:30px;transition:.2s;font-family:var(--font-body);}
+.nav-tab.active{background:var(--green);color:var(--cream);box-shadow:0 4px 12px rgba(0,90,4,0.25);}
+.content{flex:1;overflow-y:auto;overflow-x:hidden;padding:14px 18px 40px;scroll-behavior:smooth;}
+.content::-webkit-scrollbar{width:0;}
+.section{margin-bottom:34px;}
+.section-label{margin-bottom:16px;}
+.section-label h2{font-family:var(--font-title);font-size:26px;font-weight:800;color:var(--green-dark);}
+.section-label .rule{height:3px;width:48px;background:var(--green);border-radius:3px;margin-top:7px;}
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(66,33,24,0.08);cursor:pointer;transition:transform .22s ease,box-shadow .22s ease;border:1px solid var(--line);display:flex;flex-direction:column;}
+.card:active{transform:scale(.97);}
+.card-img-wrap{aspect-ratio:1/1;overflow:hidden;background:var(--cream-deep);}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease;}
+.card:active .card-img{transform:scale(1.04);}
+.card-body{padding:13px 15px 15px;display:flex;flex-direction:column;flex:1;}
+.card-name{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:auto;}
+.card-foot{display:flex;align-items:baseline;justify-content:space-between;margin-top:12px;gap:6px;}
+.card-price{font-family:var(--font-title);font-size:21px;font-weight:800;color:var(--green);}
+.card-cta{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--green);}
+.plus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.plus-card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(51,41,31,0.06);cursor:pointer;transition:transform .2s;border:1px solid var(--line);}
+.plus-card:active{transform:scale(.96);}
+.plus-card-img-wrap{aspect-ratio:1/1;overflow:hidden;background:var(--cream-deep);}
+.plus-card-img{width:100%;height:100%;object-fit:cover;}
+.plus-card-body{padding:9px 11px 11px;}
+.plus-card-name{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.25;}
+.plus-card-price{font-family:var(--font-title);font-size:15px;font-weight:800;color:var(--green);}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(51,41,31,0.6);z-index:999;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--card);border-radius:28px 28px 0 0;overflow:hidden;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 -10px 40px rgba(0,0,0,0.3);animation:slideUp .3s ease;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.modal-grip{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:rgba(255,255,255,.7);border-radius:3px;z-index:3;}
+.modal-img{width:100%;height:300px;object-fit:cover;display:block;background:var(--cream-deep);}
+.modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;background:rgba(51,41,31,0.55);color:white;border:none;border-radius:50%;font-size:18px;cursor:pointer;backdrop-filter:blur(4px);z-index:3;}
+.modal-info{padding:24px 26px 32px;}
+.modal-name{font-family:var(--font-title);font-size:28px;font-weight:800;color:var(--green-dark);margin-bottom:6px;line-height:1.15;}
+.modal-price{font-family:var(--font-title);font-size:24px;font-weight:800;color:var(--green);margin-bottom:18px;}
+.modal-desc{font-size:15px;color:var(--ink-soft);line-height:1.65;margin-bottom:20px;}
+.modal-allergens{background:var(--accent-soft);border-radius:14px;padding:15px 18px;}
+.modal-allergens-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dark);margin-bottom:5px;}
+.modal-allergens-text{font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.4;}
+.sav-overlay{display:none;position:fixed;inset:0;background:rgba(51,41,31,0.7);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.sav-overlay.open{display:flex;}
+.sav-box{background:var(--card);border-radius:24px;overflow:hidden;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;position:relative;}
+.sav-head{background:var(--green);padding:28px 28px 24px;color:white;text-align:center;}
+.sav-head h2{font-family:var(--font-title);font-size:24px;font-weight:700;margin-bottom:6px;}
+.sav-head p{font-size:13px;opacity:0.8;}
+.sav-body{padding:20px 18px;}
+.sav-step{display:flex;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+.sav-step:last-of-type{border-bottom:none;margin-bottom:0;}
+.sav-num{width:36px;height:36px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;}
+.sav-step-content h3{font-size:15px;font-weight:700;color:var(--green-dark);margin-bottom:6px;}
+.sav-step-content p,.sav-step-content li{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+.sav-step-content ul{list-style:none;padding:0;margin-top:6px;}
+.sav-step-content li::before{content:"\2192 ";color:var(--green);font-weight:700;}
+.sav-contact-box{background:var(--green-light);border-radius:14px;padding:16px;text-align:center;margin-top:18px;}
+.sav-contact-box p{font-size:12px;color:var(--ink-soft);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+.sav-email-txt{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--green);display:block;margin-bottom:6px;word-break:break-all;}
+.sav-contact-box small{font-size:12px;color:var(--ink-soft);}
+.sav-close-btn{position:absolute;top:14px;right:14px;width:34px;height:34px;background:rgba(255,255,255,0.2);color:white;border:none;border-radius:50%;font-size:18px;cursor:pointer;}
+.screensaver{display:none;position:fixed;inset:0;z-index:2000;flex-direction:column;background:var(--green);overflow:hidden;color:#fff;}
+.screensaver.open{display:flex;}
+.ss-deco{position:absolute;inset:0;opacity:.07;background-image:radial-gradient(circle at 20% 18%, #fff 2px, transparent 2px),radial-gradient(circle at 75% 60%, #fff 2px, transparent 2px);background-size:90px 90px;z-index:0;}
+.ss-top{flex-shrink:0;padding:42px 28px 16px;text-align:center;z-index:2;}
+.ss-top .ss-script{font-family:'Caveat',cursive;font-size:30px;color:inherit;opacity:.8;line-height:1;margin-bottom:4px;}
+.ss-brand{font-family:var(--font-title);color:inherit;font-size:34px;font-weight:800;line-height:1.05;text-transform:uppercase;}
+.ss-brand span{display:block;font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:4px;opacity:.7;text-transform:uppercase;margin-top:8px;}
+.ss-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 36px;z-index:2;min-height:0;}
+.ss-badge{display:inline-block;background:var(--accent);color:#fff;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;border-radius:30px;margin-bottom:26px;box-shadow:0 8px 22px rgba(0,0,0,0.25);}
+.ss-img{max-width:min(82%,440px);max-height:36vh;object-fit:contain;border-radius:22px;margin-bottom:30px;box-shadow:0 18px 50px rgba(0,0,0,0.4);}
+.ss-title{font-family:var(--font-title);font-size:52px;font-weight:900;line-height:1.08;margin-bottom:22px;color:inherit;}
+.ss-desc{font-size:23px;font-weight:500;line-height:1.5;max-width:560px;opacity:.92;color:inherit;}
+.ss-bottom{flex-shrink:0;padding:30px 24px 40px;display:flex;justify-content:center;z-index:2;}
+.ss-cta{background:rgba(127,127,127,0.16);border:1.5px solid currentColor;backdrop-filter:blur(4px);color:inherit;padding:18px 42px;border-radius:50px;font-family:var(--font-body);font-size:19px;font-weight:700;letter-spacing:.4px;animation:ssPulse 2.4s ease-in-out infinite;}
+@keyframes ssPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+.loading-overlay{position:fixed;inset:0;background:var(--green);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s;}
+.loading-overlay.hidden{opacity:0;pointer-events:none;}
+.loading-dot{width:11px;height:11px;background:white;border-radius:50%;margin:0 5px;animation:bounce .6s alternate infinite;}
+.loading-dot:nth-child(2){animation-delay:.2s;}
+.loading-dot:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{to{transform:translateY(-12px);opacity:.5;}}
+</style>
+</head>
+<body>
+<div class="loading-overlay" id="loading-overlay">
+  <div style="display:flex;align-items:center;"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div>
+</div>
+<div class="page-wrapper">
+  <div class="hero">
+    <button class="sav-pill" onclick="document.getElementById('sav-overlay').classList.add('open')" title="SAV">SAV</button>
+    <div class="hero-script">Bienvenue chez</div>
+    <div class="hero-title">La Cuisine<br>de <span class="accent">Jeanine</span></div>
+    <div class="hero-week" id="week-pill">Menu de la semaine</div>
+  </div>
+  <button class="info-banner" id="info-banner" onclick="showScreensaver()">
+    <span class="info-banner-text">Cliquez ici pour les infos<br>et promotions en cours&nbsp;!</span>
+    <span class="info-banner-arrow">&#8594;</span>
+  </button>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="goTo('entrees',this)">Entr&eacute;es</button>
+    <button class="nav-tab" onclick="goTo('plats',this)">Plats</button>
+    <button class="nav-tab" onclick="goTo('desserts',this)">Desserts</button>
+    <button class="nav-tab" onclick="goTo('plus',this)">Petits +</button>
+  </div>
+  <div class="content" id="main-content">
+    <div class="section" id="entrees"><div class="section-label"><h2>Entr&eacute;es</h2><div class="rule"></div></div><div class="cards-grid" id="grid-entrees"></div></div>
+    <div class="section" id="plats"><div class="section-label"><h2>Plats</h2><div class="rule"></div></div><div class="cards-grid" id="grid-plats"></div></div>
+    <div class="section" id="desserts"><div class="section-label"><h2>Desserts</h2><div class="rule"></div></div><div class="cards-grid" id="grid-desserts"></div></div>
+    <div class="section" id="plus"><div class="section-label"><h2>Les Petits +</h2><div class="rule"></div></div><div class="plus-grid" id="grid-plus"></div></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box"><div class="modal-grip"></div><button class="modal-close" onclick="closeModal()">&#10005;</button><div id="modal-inner"></div></div>
+</div>
+<div class="sav-overlay" id="sav-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="sav-box">
+    <button class="sav-close-btn" onclick="document.getElementById('sav-overlay').classList.remove('open')">&#10005;</button>
+    <div class="sav-head"><h2>&#128295; Service Apr&egrave;s-Vente</h2><p>La Cuisine de Jeanine &mdash; Un probl&egrave;me avec votre achat ?</p></div>
+    <div class="sav-body">
+      <div class="sav-step"><div class="sav-num">1</div><div class="sav-step-content"><h3>Contester sur l'&eacute;cran</h3><ul><li>Un &eacute;cran de validation s'affiche</li><li>Cliquez sur "Contester un produit"</li><li>S&eacute;lectionnez le produit concern&eacute;</li></ul></div></div>
+      <div class="sav-step"><div class="sav-num">2</div><div class="sav-step-content"><h3>Contactez notre &eacute;quipe SAV</h3><ul><li>Nature du probl&egrave;me</li><li>Heure approximative de la transaction</li><li>Produits concern&eacute;s</li><li>4 derniers chiffres de votre carte / TR</li></ul></div></div>
+      <div class="sav-step"><div class="sav-num">3</div><div class="sav-step-content"><h3>R&eacute;solution &amp; remboursement</h3><ul><li>V&eacute;rification de votre transaction</li><li>R&eacute;solution du probl&egrave;me</li><li>Remboursement si n&eacute;cessaire</li></ul></div></div>
+      <div class="sav-contact-box"><p>&#128231; Nous contacter</p><span class="sav-email-txt" id="sav-email-display"></span><small>Notre &eacute;quipe vous r&eacute;pondra rapidement</small></div>
+    </div>
+  </div>
+</div>
+<div class="screensaver" id="screensaver" onclick="dismissScreensaver()">
+  <div class="ss-deco"></div>
+  <div class="ss-top"><div class="ss-script">Bienvenue chez</div><div class="ss-brand">La Cuisine de Jeanine<span>Parce que bien manger, ça commence par bien choisir</span></div></div>
+  <div class="ss-main"><div class="ss-badge" id="ss-badge" style="display:none"></div><img class="ss-img" id="ss-img" style="display:none" alt=""><div class="ss-title" id="ss-title"></div><div class="ss-desc" id="ss-desc"></div></div>
+  <div class="ss-bottom"><div class="ss-cta">Touchez l'&eacute;cran pour voir le menu</div></div>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, doc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyCd6uWcaGJDZbWIyzsmfEWlzd9llkwgQx8",
+  authDomain: "lcdjinteractif.firebaseapp.com",
+  projectId: "lcdjinteractif",
+  storageBucket: "lcdjinteractif.firebasestorage.app",
+  messagingSenderId: "155886757647",
+  appId: "1:155886757647:web:67ed0c7555f768e487407a"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const DEFAULT_DATA = {
+  week:'',
+  screensaver:{ badge:'Promotion du jour', title:'-50% \u00e0 partir de 15h00', desc:'Sur tous les produits en DLC courte \u2014 sauf saucissons, yaourts et fromages.', image:'', bg:'#005A04', textColor:'light' },
+  entrees:[
+    {id:'entree1',nom:'Mini Pizza Orientale',prix:'4\u20ac',image:'https://i.imgur.com/MBtd3oN.jpeg',desc:"Mini pizza garnie de merguez, mozzarella, oignons, poivrons et tomate sur p\u00e2te dor\u00e9e.",allergenes:'Gluten, lait'},
+    {id:'entree2',nom:"Salade au magret fum\u00e9 et Fourme d'Ambert",prix:'4\u20ac',image:'https://i.imgur.com/rdyB5qY.jpeg',desc:"Salade fra\u00eeche et fusilli, magret de canard fum\u00e9, Fourme d'Ambert, noix et tomate cerise.",allergenes:'Fruits \u00e0 coques, gluten, sulfites, arachides, s\u00e9same'}
+  ],
+  plats:[
+    {id:'plat1',nom:'Tomates farcies au b\u0153uf et riz blanc',prix:'7,90\u20ac',image:'https://i.imgur.com/8ZGRp5l.jpeg',desc:"Tomates garnies de b\u0153uf hach\u00e9 et d'\u00e9pices italiennes, riz blanc moelleux.",allergenes:'Gluten, lait, sulfites'},
+    {id:'plat2',nom:'Poulet grill\u00e9, l\u00e9gumes r\u00f4tis et Risotto',prix:'8\u20ac',image:'https://i.imgur.com/f8R2RT5.jpeg',desc:"Risotto cr\u00e9meux au safran, poulet grill\u00e9 et l\u00e9gumes de saison r\u00f4tis.",allergenes:'C\u00e9leri, gluten, lait, \u0153ufs, soja, sulfites'},
+    {id:'plat3',nom:'Wrap poulet pan\u00e9, ch\u00e8vre et prosciutto',prix:'6,80\u20ac',image:'https://i.imgur.com/NOQTkBu.jpeg',desc:"Wrap croustillant, poulet pan\u00e9, ch\u00e8vre fondant, prosciutto, salade et tomate.",allergenes:'Gluten, lait'},
+    {id:'plat4',nom:'Rigatoni au thon m\u00e9diterran\u00e9en',prix:'6\u20ac',image:'https://i.imgur.com/jtNyW5E.jpeg',desc:"Rigatoni au thon, tomates, anchois et c\u00e2pres, \u00e9pices italiennes.",allergenes:'Gluten, poisson, sulfites'},
+    {id:'plat5',nom:'Sandwich guacamole poulet',prix:'6,60\u20ac',image:'https://i.imgur.com/Jx8U0Qe.jpeg',desc:"Demi-baguette, poulet, guacamole, cheddar fondant et salade croquante.",allergenes:'Gluten, lait, s\u00e9same'}
+  ],
+  desserts:[
+    {id:'dessert1',nom:'Cookie matcha chocolat blanc',prix:'2\u20ac',image:'https://i.imgur.com/MnRYaYA.jpeg',desc:"Cookie moelleux au th\u00e9 matcha, chocolat blanc et cranberries.",allergenes:'Fruits \u00e0 coques, gluten, lait, \u0153ufs, soja'},
+    {id:'dessert2',nom:'Tiramisu',prix:'2,90\u20ac',image:'https://i.imgur.com/ajkPPOb.jpeg',desc:"Mascarpone, biscuits cuill\u00e8re et amaretto, cacao.",allergenes:'Gluten, lait, \u0153ufs'}
+  ],
+  plus:[
+    {id:'plus1',nom:'Donut caramel',prix:'1,95\u20ac',image:'https://i.imgur.com/U0WzRXe.jpeg',desc:'Donut fourr\u00e9 parfum caramel.',allergenes:'Lait, gluten'},
+    {id:'plus2',nom:'Petit pain',prix:'0,50\u20ac',image:'https://www.bridor.com/medias/sys_master/images/h18/hac/8919479222302/1200Wx1200H_SourceHD_IMAGE-Packshot-PAIN-MIEUXETRE-Petit_pain_50g_100_cuit_Bleu_Blanc_Coeur_37021-37021/1200Wx1200H-SourceHD-IMAGE-Packshot-PAIN-MIEUXETRE-Petit-pain-50g-100-cuit-Bleu-Blanc-Coeur-37021-37021.png',desc:'Farine de bl\u00e9, eau, levure, sel.',allergenes:'Gluten'},
+    {id:'plus3',nom:'Fromage Saint Paulin',prix:'1,25\u20ac',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKOj2MRCsOWIIy0X6B5NHCpk8dLu2yZz0Og&s',desc:'Lait pasteuris\u00e9 de vache, ferments lactiques.',allergenes:'Lait'},
+    {id:'plus4',nom:'Mini Saucisson parmesan',prix:'3,60\u20ac',image:'https://i.imgur.com/Fj7orlb.jpeg',desc:'Mini saucisson au parmesan.',allergenes:'Lait, sulfites'},
+    {id:'plus5',nom:'Yaourt nova sucr\u00e9',prix:'1,00\u20ac',image:'https://i.imgur.com/GuivBAI.jpeg',desc:'Yaourt sucr\u00e9.',allergenes:'Lait'},
+    {id:'plus6',nom:'Yaourt nova fruits',prix:'1,10\u20ac',image:'https://i.imgur.com/lDS8LQd.jpeg',desc:'Yaourt aux fruits.',allergenes:'Lait'}
+  ]
+};
+let currentData = DEFAULT_DATA;
+function esc(s){ return (s||'').toString(); }
+function renderMenu(d){
+  currentData = d;
+  var w=d.week||'';
+  document.getElementById('week-pill').textContent = w ? ('Semaine du '+w) : 'Menu de la semaine';
+  ['entrees','plats','desserts'].forEach(function(cat){
+    var g=document.getElementById('grid-'+cat); g.innerHTML='';
+    (d[cat]||[]).forEach(function(item){
+      var div=document.createElement('div'); div.className='card';
+      div.onclick=(function(i){return function(){openModal(i);};})(item);
+      div.innerHTML='<div class="card-img-wrap"><img class="card-img" src="'+item.image+'" onerror="this.style.opacity=0"></div>'
+        +'<div class="card-body"><div class="card-name">'+esc(item.nom)+'</div>'
+        +'<div class="card-foot"><span class="card-price">'+esc(item.prix)+'</span><span class="card-cta">Voir &#8594;</span></div></div>';
+      g.appendChild(div);
+    });
+  });
+  var gp=document.getElementById('grid-plus'); gp.innerHTML='';
+  (d.plus||[]).forEach(function(item){
+    var div=document.createElement('div'); div.className='plus-card';
+    div.onclick=(function(i){return function(){openModal(i);};})(item);
+    div.innerHTML='<div class="plus-card-img-wrap"><img class="plus-card-img" src="'+item.image+'" onerror="this.style.opacity=0"></div>'
+      +'<div class="plus-card-body"><div class="plus-card-name">'+esc(item.nom)+'</div>'
+      +'<div class="plus-card-price">'+esc(item.prix)+'</div></div>';
+    gp.appendChild(div);
+  });
+  buildScreensaver(d);
+  document.getElementById('loading-overlay').classList.add('hidden');
+}
+window.openModal = function(item){
+  var allerg = item.allergenes ? '<div class="modal-allergens"><div class="modal-allergens-title">&#9888; Allerg\u00e8nes</div><div class="modal-allergens-text">'+esc(item.allergenes)+'</div></div>' : '';
+  document.getElementById('modal-inner').innerHTML=
+    '<img class="modal-img" src="'+item.image+'" onerror="this.style.opacity=0">'
+    +'<div class="modal-info"><div class="modal-name">'+esc(item.nom)+'</div>'
+    +'<div class="modal-price">'+esc(item.prix)+'</div>'
+    +'<div class="modal-desc">'+esc(item.desc)+'</div>'+allerg+'</div>';
+  document.getElementById('modal-overlay').classList.add('open');
+  resetIdle();
+};
+window.closeModal = function(){ document.getElementById('modal-overlay').classList.remove('open'); };
+window.goTo = function(id,tab){
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  tab.classList.add('active');
+  var content=document.getElementById('main-content');
+  var section=document.getElementById(id);
+  // position précise : différence entre le haut de la section et le haut de la zone de scroll
+  var top = section.getBoundingClientRect().top - content.getBoundingClientRect().top + content.scrollTop - 6;
+  content.scrollTo({top: top, behavior:'smooth'});
+};
+function buildScreensaver(d){
+  var ss=d.screensaver||{};
+  var screen=document.getElementById('screensaver');
+  screen.style.background = ss.bg || '#005A04';
+  screen.style.color = (ss.textColor==='dark') ? '#422118' : '#ffffff';
+  var badge=document.getElementById('ss-badge');
+  if(ss.badge){ badge.textContent=ss.badge; badge.style.display='inline-block'; } else { badge.style.display='none'; }
+  var img=document.getElementById('ss-img');
+  if(ss.image){ img.src=ss.image; img.style.display='block'; img.onerror=function(){img.style.display='none';}; } else { img.style.display='none'; }
+  document.getElementById('ss-title').textContent = ss.title || '';
+  document.getElementById('ss-desc').textContent = ss.desc || '';
+}
+window.showScreensaver = function(){ buildScreensaver(currentData); document.getElementById('screensaver').classList.add('open'); clearTimeout(idleTimer); };
+window.dismissScreensaver = function(){ document.getElementById('screensaver').classList.remove('open'); resetIdle(); };
+var IDLE_MS = 2*60*1000, idleTimer=null;
+function resetIdle(){ clearTimeout(idleTimer); idleTimer=setTimeout(window.showScreensaver, IDLE_MS); }
+['click','touchstart','touchmove','keydown','mousemove'].forEach(function(ev){
+  document.addEventListener(ev, function(){ if(!document.getElementById('screensaver').classList.contains('open')) resetIdle(); }, {passive:true});
+});
+var el=document.getElementById('sav-email-display');
+if(el){el.textContent='contact'+'\u0040'+'lacuisinedejeanine.fr';}
+const menuRef = doc(db, 'menu', 'data');
+renderMenu(DEFAULT_DATA);
+resetIdle();
+onSnapshot(menuRef, function(snap){
+  renderMenu(snap.exists()? snap.data() : DEFAULT_DATA);
+}, function(err){ console.warn('Firebase indisponible', err); renderMenu(DEFAULT_DATA); });
+</script>
+</body>
+</html>
